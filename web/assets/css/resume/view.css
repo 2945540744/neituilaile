@@ -1,0 +1,120 @@
+.column {
+	padding: 10px 20px;
+	background-color: rgb(240,241,245);
+}
+
+.title {
+	background-color: white;
+	border-bottom: 1px solid #bbb;
+}
+
+.btn-link {
+	color: rgb(102,207,182);
+}
+
+.head-menu {
+	right: 20px;
+}
+
+.row-header {
+	padding: 10px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+em.required {
+	font-size: 0.6em;
+    padding: 0px 4px;
+    border: 1px solid rgb(248, 126, 102);
+    border-radius: 1em;
+    margin-left: 10px;
+    margin-bottom: 14px;
+    font-style: normal;
+    color: rgb(248, 126, 102);
+    font-weight: 100;
+}
+
+.dock-top-right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 10000;
+}
+
+.row-body {
+	position: relative;
+	padding: 10px 15px;
+	border: 1px solid #bbb; 
+	width: 100%;
+	background-color: white;
+}
+
+.row-body {
+	font-size: 0.9em;
+}
+
+.row-body .row {
+	line-height: 2em;
+	color: #666;
+}
+
+.exp-list {
+	padding-left: 20px;
+}
+
+.exp-item {
+	// list-style-type: none;
+	color: green;
+}
+
+.exp-item > span {
+	display: block;
+	width: 100%;
+	color: black;
+}
+
+.exp-item > pre {
+	margin-top: 5px;
+	color: #999;
+}
+
+.edu-list {
+	padding-left: 0;
+}
+
+.edu-item {
+	list-style-type: none;
+}
+
+.edu-item > span {
+	display: block;
+	width: 100%;
+}
+
+.edu-item > span > i {
+	font-style: normal;
+	font-weight: bold;
+}
+
+.edu-item > pre {
+	margin-left: -8px;
+	margin-top: 5px;
+	color: #999;
+}
+
+.intent > span {
+	display: block;
+	width: 100%;
+}
+
+.intent > pre {
+	margin-top: 5px;
+	color: #999; 
+}
+
+.btn-delivery {
+	width: 90%;
+	margin: 0 5%;
+}
+
+

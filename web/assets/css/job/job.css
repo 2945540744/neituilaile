@@ -1,0 +1,56 @@
+.btn-new-post {
+	margin: 15px auto;
+}
+
+.post-item {
+	margin: 5px;
+	border: 1px solid #eee;
+	border-radius: 1px;
+}
+
+.container {
+	margin: 0 auto;
+}
+
+.form-title {
+	margin-bottom: 15px;
+}
+
+.row > div > input {
+	text-align: right;
+	width: 100%;
+}
+
+.row {
+	// border-radius: 1px;
+	// border: 1px solid #eee;
+}
+.row .title {
+	width: 100%;
+	background:rgb(89,202,194); 
+	text-align: center;
+}
+
+.form-group {
+	border-radius: 1px;
+	border-bottom: 1px solid #eee;
+}
+
+.views {
+	margin: 5px 5px;
+}
+
+.post-title, .post-desc {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.bottom-menu button {
+	margin: 5px auto;
+	text-align: center;
+	width: 90%;
+}
+
+.bottom-menu .btn-half {
+	width: 45%;
+}

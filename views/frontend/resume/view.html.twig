@@ -1,0 +1,126 @@
+{% extends 'frontend/front-layout.html.twig' %}
+{% block sub_css_block %}
+<link rel="stylesheet" type="text/css" href="mobile-selector/bootstrap-fullscreen-select.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/resume/view.css">
+{% endblock %}
+
+{% block sub_js_block %}
+<script type="text/javascript" src="/assets/js/resume/view.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="row">
+		<span class="title">简历完整度：58%</span>
+		<a href="/resume/preview/:id" class="btn btn-link pull-right head-menu">预览</a>
+	</div>
+	<!-- 基本信息 -->
+	<div class="row column">
+		<div class="row-header">
+			<span class="">基本信息</span><em class="required">必填</em>	
+		</div>
+		<div class="row-body">
+			<a href="/resume/edit?part=basic" class="btn btn-link dock-top-right">编辑</a>
+			<div class="row">
+				<div class="col-xs-2 col-form-label">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</div>
+				<div class="col-xs-10">吴京</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</div>
+				<div class="col-xs-10">男</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">最高学历：</div>
+				<div class="col-xs-10">本科</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">工作年限：</div>
+				<div class="col-xs-10">4年</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">出生日期：</div>
+				<div class="col-xs-10">1992.03.01</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">所在城市：</div>
+				<div class="col-xs-10">杭州</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">联系电话：</div>
+				<div class="col-xs-10">13576893423</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">联系邮箱：</div>
+				<div class="col-xs-10">wujing@china.com</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">一句话介绍：</div>
+				<div class="col-xs-10">我很想知道一句话可以有多长，你知道吗，知道的话告诉我啊啊啊啊啊啊啊</div>
+			</div>
+		</div>
+	</div>
+	<!-- 工作经历 -->
+	<div class="row column">
+		<div class="row-header">
+			<span class="">工作经历</span><em class="required">必填</em>	
+		</div>
+		<div class="row-body">
+			<a href="/resume/edit?part=exp" class="btn btn-link dock-top-right">编辑</a>
+			<ul class="exp-list">
+				<li class="exp-item">
+					<span>2014.10 - 至今</span>
+					<span>Company/Position</span>
+					<pre>exp_content : 做了好多项目，为公司做出巨大贡献，这里是多行的，你要注意啊</pre>
+				</li>
+				<li class="exp-item">
+					<span>2012.06 - 2014.10</span>
+					<span>Company/Position</span>
+					<pre>exp_content : 做了好多项目，为公司做出巨大贡献，这里是多行的，你要注意啊</pre>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 教育经历 -->
+	<div class="row column">
+		<div class="row-header">
+			<span class="">教学经历</span><em class="required">必填</em>	
+		</div>
+		<div class="row-body">
+			<a href="/resume/edit?part=edu" class="btn btn-link dock-top-right">编辑</a>
+			<!-- 目前只收录一条教育经历（最高学历） -->
+			<ul class="edu-list">
+				<li class="edu-item">
+					<span>2009.06 - 2013.06</span>
+					<span><i>清华大学</i> &nbsp; 计算机专业（本科）</span>
+					<pre> 额外描述信息。。。</pre>
+				</li>
+			</ul>
+			<div class="edu-item">
+				
+			</div>
+		</div>
+	</div>
+	<!-- 求职意向 -->
+	<div class="row column">
+		<div class="row-header">
+			<span class="">求职意向</span><em class="required">必填</em>	
+		</div>
+		<div class="row-body">
+			<a href="/resume/edit?part=intent" class="btn btn-link dock-top-right">编辑</a>
+			<div class="intent">
+				<span>工作岗位(全职/兼职/实习)</span>
+				<span>期望城市 - 期望薪水</span>
+				<pre>个人其它说明</pre>
+			</div>
+			
+		</div>
+	</div>
+	<div class="row bottom-spacer"></div>
+	<!-- 底部菜单 -->
+	<div class="bottom-menu">
+		<button class="btn btn-mini btn-success btn-delivery" data-action="/job/delivery">投递简历</button>
+	</div>
+</div>
+
+{% endblock %}

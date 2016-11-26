@@ -1,0 +1,209 @@
+{% extends 'frontend/front-layout.html.twig' %}
+{% block sub_css_block %}
+<link rel="stylesheet" type="text/css" href="/assets/libs/mobile-selector/1.5.1/bootstrap-fullscreen-select.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/job/job.css">
+{% endblock %}
+
+{% block sub_js_block %}
+<script type="text/javascript" src="/assets/libs/mobile-selector/1.5.1/bootstrap-fullscreen-select.js"></script>
+<script type="text/javascript" src="/assets/js/job/new.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container main-container">
+	<form id="post-form" action="/job/add" method="post">
+		<div class="row form-title"><span class="title">发布职位</span></div>
+		<!-- 如果尚无公司信息则全展示，否则应当收起，因为项太多 -->
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">公司全称</div>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="company_name" placeholder="公司全称" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">公司简称</div>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="company_shortname" placeholder="公司简称" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">所属行业</div>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="company_field" placeholder="所属行业" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">人员规模</div>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="company_scale" placeholder="人员规模" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">融资阶段</div>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="company_fund" placeholder="融资阶段" />
+			</div>
+		</div>
+		<!--<div class="form-group row">
+			<div class="col-xs-3 col-form-label">公司Logo</div>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="company_logo" placeholder="公司Logo" />
+			</div>
+		</div>-->
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">公司官网</div>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="company_site" placeholder="公司官网" />
+			</div>
+		</div>
+		<div class="row spacer"></div>
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">职位类型</div>
+			<div class="col-xs-9">
+				<!-- <input type="text" name="post_type" placeholder="职位类型" /> -->
+				<select class="form-control col-xs-12 mobileSelect js-post-type" name="post_type" data-title="请选择职位类型" data-style="btn-link">
+					<optgroup label="技术">
+						<option value="后端开发">后端开发</option>	
+						<option value="前端开发">前端开发</option>
+						<option value="测试">测试</option>
+						<option value="运维">运维</option>
+						<option value="移动开发">移动开发</option>
+					</optgroup>
+					<optgroup label="产品">
+						<option value="产品经理">产品经理</option>
+						<option value="产品设计师">产品设计师</option>
+						<option value="产品总监">产品总监</option>
+					</optgroup>
+					<optgroup label="运营">
+						<option value="运营">运营</option>
+						<option value="编辑">编辑</option>
+						<option value="客服">客服</option>
+					</optgroup>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">职位名称</div>
+			<div class="col-xs-9">
+				<input type="text" class="form-control" name="post_name" placeholder="职位名称" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">技能要求</div>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="post_skills" placeholder="技能要求，每项之间以空格分隔" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">薪资范围</div>
+			<div class="col-xs-9">
+				<!-- <input type="text" name="post_salary" placeholder="薪资范围" /> -->
+				<select class="form-control col-xs-5 mobileSelect js-post-salary-min" name="post_salary_min" data-style="btn-blink">
+					<option value="1">1k</option>
+					<option value="2">2k</option>
+					<option value="3">3k</option>
+					<option value="4">4k</option>
+					<option value="5">5k</option>
+					<option value="6">6k</option>
+					<option value="7">7k</option>
+					<option value="8">8k</option>
+					<option value="9">9k</option>
+					<option value="10">10k</option>
+					<option value="11">11k</option>
+					<option value="12">12k</option>
+				</select>
+				<span class="col-xs-2">~</span>
+				<select class="form-control col-xs-5 mobileSelect js-post-salary-max" name="post_salary_max" data-style="btn-link">
+					<option value="1">1k</option>
+					<option value="2">2k</option>
+					<option value="3">3k</option>
+					<option value="4">4k</option>
+					<option value="5">5k</option>
+					<option value="6">6k</option>
+					<option value="7">7k</option>
+					<option value="8">8k</option>
+					<option value="9">9k</option>
+					<option value="10">10k</option>
+					<option value="11">11k</option>
+					<option value="12">12k</option>
+				</select>
+			</div>
+		</div>
+		<div class="row spacer"></div>
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">经验要求</div>
+			<div class="col-xs-9">
+				<!-- <input type="text" name="post_exp" placeholder="经验要求" /> -->
+				<select class="form-control col-xs-12 mobileSelect js-post-exp" name="post_exp" data-style="btn-link">
+					<option value="0">不限</option>
+					<option value="99">应届生</option>
+					<option value="1">1年以内</option>
+					<option value="2">1-3年</option>
+					<option value="3">3-5年</option>
+					<option value="4">5-10年</option>
+					<option value="5">10年以上</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">学历要求</div>
+			<div class="col-xs-9">
+				<!-- <input type="text" name="post_cert" placeholder="学历要求" /> -->
+				<select class="form-control col-xs-12 mobileSelect js-post-cert" name="post_cert" data-style="btn-link">
+					<option value="0">不限</option>
+					<option value="1">大专</option>
+					<option value="2">本科</option>
+					<option value="3">硕士</option>
+					<option value="4">博士</option>
+				</select>
+			</div>
+		</div>
+		<div class="row spacer"></div>
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">工作城市</div>
+			<div class="col-xs-9">
+				<!-- <input type="text" name="post_city" placeholder="工作城市" /> -->
+				<select class="form-control col-xs-12 mobileSelect js-post-city" name="post_city" placeholder="工作城市" data-style="data-link">
+					<optgroup label="北京">
+						<option value="bj">北京</option>
+					</optgroup>
+					<optgroup label="上海">
+						<option value="sh">上海</option>
+					</optgroup>
+					<optgroup label="浙江">
+						<option value="hz">杭州</option>
+						<option value="nb">宁波</option>
+					</optgroup>
+					<optgroup label="广东">
+						<option value="gz">广州</option>
+						<option value="sz">深圳</option>
+					</optgroup>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">工作地点</div>
+			<div class="col-xs-9">
+				<input type="text" name="post_address" placeholder="工作地点" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-xs-3 col-form-label">职位描述</div>
+			<div class="col-xs-9">
+				<!-- <input type="text" name="post_remark" placeholder="职位描述" /> -->
+				<textarea rows="10" class="col-xs-12" name="post_remark" placeholder="填写详细，清晰的职位描述有助于您更精确的展开招聘需求
+				例如：
+				1.工作内容...
+				2.任务要求...
+				3.特殊说明..." ></textarea>
+			</div>
+		</div>
+		<div class="row bottom-spacer"></div>
+		<div class="row bottom-menu col-xs-12">
+			<button type="button" class="btn btn-mini btn-primary col-xs-12 js-btn-edit">发布</button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

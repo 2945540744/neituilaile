@@ -1,0 +1,14 @@
+.row, input {
+	// border: 1px solid #eee !important;
+	border-bottom: 1px solid #eee;
+}
+
+.form-group > label {
+	padding-top: 5px;
+}
+
+.radio-label {
+	width: auto;
+	padding: 0 10px;
+}
+

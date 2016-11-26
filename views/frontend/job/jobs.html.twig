@@ -1,0 +1,29 @@
+{% extends 'frontend/front-layout.html.twig' %}
+{% block sub_css_block %}
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/job/job.css">
+{% endblock %}
+
+{% block sub_js_block %}
+<script type="text/javascript" src="/assets/js/job/list.js"></script>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+	<div class="row">
+		<span class="title">已发布的职位</span>
+	</div>
+	<div class="row bottom-menu col-xs-12">
+		<span class="col-xs-1"></span>
+		<button class="btn btn-secondary btn-mini col-xs-10 js-btn-new-post">发布新职位</button>
+	</div>
+	{% for job_info in job_info_list %}
+	<div class="row post-item col-xs-12" data-detail-url="/job/view/{{job_info.id}}">
+		<span>{{job_info.job_title|default('')}}</span>
+		<span></span>
+	</div>
+	{% endfor %}
+</div>
+
+{% endblock %}

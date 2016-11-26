@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="csrf_token" content="{{app.session.get('csrf_token') |default('')}}">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  {% block is_login %}
+  <meta name="is-login" content="0">
+  {% endblock %}
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+
+  {% block css_block %}
+  {% endblock %}
+
+  {%block fix_ie8 %}
+  <!--[if lt IE 9]>
+    <script src="dist/fix-ie8.js"></script>
+  <![endif]-->
+  {% endblock %}
+  
+</head>
+
+<body>
+
+  {% block inject_params %}
+  {% endblock %}
+
+  <input type="hidden" id="service" value="{{service|default('')}}">
+  <input type="hidden" id="logo" value="{{sys_param('logo_url') | default('')}}">
+  <input type="hidden" id="logo_xs" value="{{sys_param('logo_xs_url') | default('')}}">
+  {% if sys_param('logo_redirect_url') is not empty %}
+    <input type="hidden" id="logo_redirect" value="{{sys_param('logo_redirect_url') | default('#')}}">
+  {% else %}
+    <input type="hidden" id="logo_redirect" value="{{service | default('#')}}">
+  {% endif %}
+  
+  <input type="hidden" id="show_return_button" value="{{sys_param('show_return_button')}}">
+  <div id="app" class="app"></div>
+  
+  {% block js_block %}
+  {% endblock %}
+</body>
+</html>

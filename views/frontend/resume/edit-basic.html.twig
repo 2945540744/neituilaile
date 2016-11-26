@@ -1,0 +1,111 @@
+{% extends 'frontend/front-layout.html.twig' %}
+{% block sub_css_block %}
+<link rel="stylesheet" type="text/css" href="mobile-selector/bootstrap-fullscreen-select.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/resume/edit.css">
+{% endblock %}
+
+{% block sub_js_block %}
+<script type="text/javascript" src="/assets/js/resume/edit.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<form id="resume-form" action="/resume/edit" method="post">
+		<div class="row form-title">
+			<span class="title">编辑基本信息</span>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">姓名</label>
+			<div class="col-xs-9">
+				<input type="hidden" name="part" value="basic">
+				<input class="form-control" type="text" name="name" value="user.name"/>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">性别</label>
+			<div class="col-xs-9">
+				<label for="genderMale" class="radio-label"><input class="radio" type="radio" id="genderMale" name="gender" value="1"/>男</label>
+				<label for="genderFemale" class="radio-label"><input class="radio" type="radio" id="genderFemale" name="gender" value="0"/>女</label>
+			</div>
+		</div>
+
+		<div class="row form-group">
+			<label class="col-xs-3">最高学历</label>
+			<div class="col-xs-9">
+				<select class="form-control col-xs-12 mobileSelect js-user-edu" name="edu_level" data-style="btn-link">
+					<option value="0">高中</option>
+					<option value="1">大专</option>
+					<option value="2">本科</option>
+					<option value="3">硕士</option>
+					<option value="4">博士</option>
+				</select>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">工作年限</label>
+			<div class="col-xs-9">
+				<select class="form-control col-xs-12 mobileSelect js-post-exp" name="exp_level" data-style="btn-link">
+					<option value="10">在读</option>
+					<option value="99">应届生</option>
+					<option value="1">1年以内</option>
+					<option value="2">1-3年</option>
+					<option value="3">3-5年</option>
+					<option value="4">5-10年</option>
+					<option value="5">10年以上</option>
+				</select>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">生日</label>
+			<div class="col-xs-9">
+				<input class="form-control date-picker" type="text" name="birthday" value="user.birthday"/>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">所在城市</label>
+			<div class="col-xs-9">
+				<select class="form-control col-xs-12 mobileSelect js-post-city" name="user_city" placeholder="工作城市" data-style="data-link">
+					<optgroup label="北京">
+						<option value="bj">北京</option>
+					</optgroup>
+					<optgroup label="上海">
+						<option value="sh">上海</option>
+					</optgroup>
+					<optgroup label="浙江">
+						<option value="hz">杭州</option>
+						<option value="nb">宁波</option>
+					</optgroup>
+					<optgroup label="广东">
+						<option value="gz">广州</option>
+						<option value="sz">深圳</option>
+					</optgroup>
+				</select>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">联系电话</label>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="mobile" value="user.mobile"/>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">联系邮箱</label>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="email" value="user.email"/>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">一句话介绍</label>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="profile" value="user.profile"/>
+			</div>
+		</div>
+		<div class="row bottom-spacer"></div>
+		<div class="row bottom-menu col-xs-12">
+			<button type="button" class="btn btn-mini btn-primary col-xs-12 js-btn-edit">保存</button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

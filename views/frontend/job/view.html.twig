@@ -1,0 +1,78 @@
+{% extends 'frontend/front-layout.html.twig' %}
+{% block sub_css_block %}
+<link rel="stylesheet" type="text/css" href="mobile-selector/bootstrap-fullscreen-select.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/job/job.css">
+{% endblock %}
+
+{% block sub_js_block %}
+<script type="text/javascript" src="/assets/js/job/view.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="row">
+		<span class="title">{{job_info.job_title|default('')}}</span>
+	</div>
+	<!-- 职位的浏览情况 -->
+	<!--
+	<div class="row views col-xs-12 hide">
+		<span class="col-xs-4">xx人浏览</span>
+		<span class="col-xs-4">xx人该兴趣</span>
+		<span class="col-xs-4">xx分享展示</span>
+	</div>-->
+	<!-- 职位基本要求 -->
+	<div class="row col-xs-12">
+		<div class="col-xs-12">
+			<span class="post-title">{{job_info.job_title|default('')}}</span>	
+		</div>
+		<div class="col-xs-12">
+			<span>{{job_info.pay_range_from|default('')}}k ~ {{job_info.pay_range_to|default('')}}k</span>
+			<span>{{job_info.job_type|default('')}}</span>	
+		</div>
+		<div class="col-xs-12">
+			<span>{{job_info.address|default('')}}</span>
+			<span>{{job_info.experience_level|default('')}}</span>
+			<span>{{job_info.edu_level|default('')}}</span>	
+		</div>
+	</div>
+	<!-- 职位发布者信息 -->
+	<div class="row col-xs-12">
+		<div class="col-xs-3"><img src="#" class="avatar"></div>
+		<div class="col-xs-9">
+			<div class="col-xs-12">
+				<span>{{author_info.nickname|default('')}}</span>
+			</div>
+			<div class="col-xs-12">
+				<span>{author_info.position|default('')}</span>
+				<span>{{company_info.real_name_shot|default('')}}</span>
+				<span>{{company_info.industry|default('')}}</span>
+			</div>
+		</div>
+	</div>
+	<!-- 职位描述 -->
+	<div class="row col-xs-12">
+		<div class="col-xs-12">
+			<span class="post-desc">职位描述</span>
+		</div>
+		<div class="col-xs-12">
+			<pre>{{job_info.summary|default('')}}
+			</pre>
+		</div>
+	</div>
+	<!-- 公司信息 -->
+	<div class="row col-xs-12">
+		<div class="col-xs-12">{{company_info.scale|default('')}}</div>
+		<div class="col-xs-12">{{company_info.website|default('')}}</div>
+		<div class="col-xs-12">{{company_info.real_name_full|default('')}}</div>
+		<div class="col-xs-12">{{company_info.address|default('')}}</div>
+	</div>
+	<!-- <div class="row bottom-spacer"></div> -->
+	<!-- 底部菜单 -->
+	<div class="bottom-menu">
+		<button class="btn btn-mini btn-secondary btn-half js-btn-edit" data-action="/job/edit/{{job_info.id}}">编辑职位</button>
+		<button class="btn btn-mini btn-secondary btn-half js-btn-close" data-action="/job/close/{{job_info.id}}">关闭职位</button>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+.container {
+	width: 100%;
+}
+
+.bottom-menu {
+	position: fixed;
+	margin-left: -15px; 
+	bottom: 1px;
+	border: none !important;
+	text-align: center;
+	width: 100%;
+}
+
+.hide {
+	display: none !important;
+}
+
+.title {
+	padding: 10px 0;
+	width: 100%;
+	background:rgb(89,202,194); 
+	text-align: center;
+}
+
+.row.spacer {
+	height: 12px;
+	background-color: #eee;	
+}
+
+.row.bottom-spacer {
+	border: none; 
+	height: 50px;
+	width: 100%;
+}
+
+.btn-mobileSelect-gen {
+	margin: 10px 0 0 0;
+	width: 100% !important;
+	background-color: transparent;
+}
+
+.form-control {
+	border: none;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+.pull-right {
+	position: absolute;
+	right: 0;
+}

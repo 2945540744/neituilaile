@@ -1,0 +1,63 @@
+{% extends 'frontend/front-layout.html.twig' %}
+{% block sub_css_block %}
+<link rel="stylesheet" type="text/css" href="mobile-selector/bootstrap-fullscreen-select.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/resume/edit.css">
+{% endblock %}
+
+{% block sub_js_block %}
+<script type="text/javascript" src="/assets/js/resume/edit.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<form id="resume-form" action="/resume/edit" method="post">
+		<div class="row form-title">
+			<span class="title">编辑教育经历</span>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">毕业院校：</label>
+			<div class="col-xs-9">
+				<input type="hidden" name="part" value="edu">
+				<input class="form-control" type="text" name="college" value="college.name"/>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">专业：</label>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="major" value="college.major"/>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">入学时间：</label>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="startTime" value="college.startTime"/>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">毕业时间：</label>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="endTime" value="college.endTime"/>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">学历：</label>
+			<div class="col-xs-9">
+				<select class="form-control col-xs-12 mobileSelect" name="edu_level" data-style="btn-link">
+					<option value="0">高中</option>
+					<option value="1">大专</option>
+					<option value="2" selected>本科</option>
+					<option value="3">硕士</option>
+					<option value="4">博士</option>
+					<option value="4">博士后</option>
+				</select>
+			</div>
+		</div>
+		<div class="row bottom-spacer"></div>
+		<div class="row bottom-menu col-xs-12">
+			<button type="button" class="btn btn-mini btn-primary col-xs-12 js-btn-delete">删除此教育经历</button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

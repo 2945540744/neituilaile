@@ -1,0 +1,53 @@
+<?php
+
+return [
+    'env' => 'dev',
+    'debug' => false,
+    //非私有文件存放地址
+    'pub_file_dir'   => ROOT_DIR.'/web/files/',
+    'sessions_in_db'          => true,
+    //数据库配置
+    'database' => [
+        'driver' => 'pdo_mysql',
+        'host' => '127.0.0.1',
+        'port' => 3306,
+        'name' => 'neitui',
+        'user' => 'root',
+        'password' => '',
+        'charset' => 'utf8',
+    ],
+    
+    //邮件发送配置
+    'mail'         => [
+        'host'       => 'smtp.exmail.qq.com',
+        'port'       => '25',
+        'username'   => 'service@neitui.com',
+        'password'   => 'password_here',
+        'encryption' => null,
+        'auth_mode'  => null
+    ],
+    //第三方登录配置，注意，其中的key和secret请自行改成生产/开发环境下的
+    'oauth_clients' => [
+        'weixin'    => [
+            'name'                 => '微信网页登录接口',
+            'class'                => 'Neitui\OAuth\Client\WeixinwebOAuthClient',
+            'key'    => 'App ID',
+            'secret' => 'App Secret',
+            'apply_url'            => 'https://open.weixin.qq.com/cgi-bin/frame?t=home/web_tmpl&lang=zh_CN'
+        ],
+        'weixinmob' => [
+            'name'                 => '微信内分享登录接口',
+            'class'                => 'Neitui\OAuth\Client\WeixinmobOAuthClient',
+            'key'    => 'App ID',
+            'secret' => 'App Secret',
+            'apply_url'            => 'https://mp.weixin.qq.com/cgi-bin/readtemplate?t=register/step1_tmpl&lang=zh_CN'
+        ]
+    ],
+    //登录保护
+    'login_protect'  => [
+        'enabled'        => true, //会否开启登录保护
+        'username_limit' => 6, //同一username连续输错6次会被锁定用户
+        'ip_limit'       => 20, //同一IP连续输错20次会被锁定IP
+        'lock_duration'  => 1200 //锁定时长（秒）
+    ]
+];
