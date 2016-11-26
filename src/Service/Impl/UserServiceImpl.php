@@ -30,7 +30,7 @@ class UserServiceImpl extends BaseService implements UserService
         }
         if (empty($tmp_user_info)) {
         	$data['created']          = date('Y-m-d H:i:s');
-            return $this->getUserDao()->addUser($data_for_insert);
+            return $this->getUserDao()->addUser($data);
         }else{
         	$data['updated']          = date('Y-m-d H:i:s');
 			$this->getUserDao()->update($tmp_user_info['id'],$data);        	
