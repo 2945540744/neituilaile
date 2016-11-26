@@ -2,7 +2,7 @@
 {% block sub_css_block %}
 <link rel="stylesheet" type="text/css" href="mobile-selector/bootstrap-fullscreen-select.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/resume/view.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/resume/edit.css">
 {% endblock %}
 
 {% block sub_js_block %}
@@ -11,7 +11,90 @@
 
 {% block body %}
 <div class="container">
-	
+	<form id="resume-form" action="/resume/edit" method="post">
+		<div class="row form-title">
+			<span class="title">期望工作</span>
+			<a href="javascript:;" class="btn btn-link pull-right head-menu js-btn-edit">保存</a>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">岗位：</label>
+			<div class="col-xs-9">
+				<input type="hidden" name="part" value="exp">
+				<input class="form-control" type="text" name="jobName" value="intent.jobName"/>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">岗位类型：</label>
+			<div class="col-xs-9">
+				<select class="form-control col-xs-12 mobileSelect js-job-type" name="jobType" data-style="btn-link">
+					<option value="1">兼职</option>
+					<option value="2" selected>全职</option>
+					<option value="3">实习</option>
+				</select>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">期望城市：</label>
+			<div class="col-xs-9">
+				<select class="form-control col-xs-12 mobileSelect js-intent-city" name="city" placeholder="工作城市" data-style="data-link">
+					<optgroup label="北京">
+						<option value="bj">北京</option>
+					</optgroup>
+					<optgroup label="上海">
+						<option value="sh">上海</option>
+					</optgroup>
+					<optgroup label="浙江">
+						<option value="hz">杭州</option>
+						<option value="nb">宁波</option>
+					</optgroup>
+					<optgroup label="广东">
+						<option value="gz">广州</option>
+						<option value="sz">深圳</option>
+					</optgroup>
+				</select>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">期望月薪：</label>
+			<div class="col-xs-9">
+				<select class="form-control col-xs-5 mobileSelect js-intent-salary-min" name="intent_salary_min" data-style="btn-blink">
+					<option value="1">1k</option>
+					<option value="2">2k</option>
+					<option value="3">3k</option>
+					<option value="4">4k</option>
+					<option value="5">5k</option>
+					<option value="6">6k</option>
+					<option value="7">7k</option>
+					<option value="8">8k</option>
+					<option value="9">9k</option>
+					<option value="10">10k</option>
+					<option value="11">11k</option>
+					<option value="12">12k</option>
+				</select>
+				<span class="col-xs-2">~</span>
+				<select class="form-control col-xs-5 mobileSelect js-intent-salary-max" name="intent_salary_max" data-style="btn-link">
+					<option value="1">1k</option>
+					<option value="2">2k</option>
+					<option value="3">3k</option>
+					<option value="4">4k</option>
+					<option value="5">5k</option>
+					<option value="6">6k</option>
+					<option value="7">7k</option>
+					<option value="8">8k</option>
+					<option value="9">9k</option>
+					<option value="10">10k</option>
+					<option value="11">11k</option>
+					<option value="12">12k</option>
+				</select>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">补充说明：</label>
+			<div class="col-xs-9">
+				<textarea class="form-control text-field" rows="15" name="remark" placeholder="">intent.remark</textarea>
+			</div>
+		</div>
+	</form>
 </div>
 
 {% endblock %}

@@ -2,7 +2,7 @@
 {% block sub_css_block %}
 <link rel="stylesheet" type="text/css" href="mobile-selector/bootstrap-fullscreen-select.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/resume/view.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/resume/edit.css">
 {% endblock %}
 
 {% block sub_js_block %}
@@ -12,6 +12,47 @@
 {% block body %}
 <div class="container">
 	<form id="resume-form" class="" action="/resume/edit" method="post">
+		<div class="row form-title">
+			<span class="title">编辑工作经历</span>
+			<a href="javascript:;" class="btn btn-link pull-right head-menu js-btn-edit">保存</a>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">公司名称：</label>
+			<div class="col-xs-9">
+				<input type="hidden" name="part" value="exp">
+				<input class="form-control" type="text" name="company" value="exp.company"/>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">岗位：</label>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="position" value="exp.position"/>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">入职时间：</label>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="startTime" value="exp.startTime"/>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">离职时间：</label>
+			<div class="col-xs-9">
+				<input class="form-control" type="text" name="endTime" value="exp.endTime"/>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="col-xs-3">工作内容：</label>
+			<div class="col-xs-9">
+				<textarea class="form-control text-field" rows="15" name="content" placeholder="职责描述：xxxxx
+				工作地点：xxxx
+				项目描述：xxxxxx">exp.content</textarea>
+			</div>
+		</div>
+		<div class="row bottom-spacer"></div>
+		<div class="row bottom-menu col-xs-12">
+			<button type="button" class="btn btn-mini btn-primary col-xs-12 js-btn-delete">删除此工作经历</button>
+		</div>
 	</form>
 </div>
 
