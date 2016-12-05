@@ -1,6 +1,8 @@
 <?php
 namespace Neitui\OAuth\Client;
 
+use Neitui\Common\CurlToolkit;
+
 abstract class AbstractOAuthClient
 {
     protected $config;
@@ -30,42 +32,17 @@ abstract class AbstractOAuthClient
      */
     public function postRequest($url, $params)
     {
-        $curl = curl_init();
-
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_USERAGENT, $this->userAgent);
-        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
-        curl_setopt($curl, CURLOPT_TIMEOUT, $this->timeout);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_HEADER, 0);
-        curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
-        curl_setopt($curl, CURLOPT_URL, $url);
-
-        $response = curl_exec($curl);
-
-        curl_close($curl);
-
-        return $response;
+        return CurlToolkit::request('POST', $url, $params, array(), array(
+            'connectTimeout' => $this->connectTimeout,
+            'timeout'        => $this->timeout
+        ));
     }
 
     public function getRequest($url, $params)
     {
-        $curl = curl_init();
-
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
-        curl_setopt($curl, CURLOPT_USERAGENT, $this->userAgent);
-        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
-        curl_setopt($curl, CURLOPT_TIMEOUT, $this->timeout);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_HEADER, 0);
-
-        $url = $url.'?'.http_build_query($params);
-        curl_setopt($curl, CURLOPT_URL, $url);
-
-        $response = curl_exec($curl);
-
-        curl_close($curl);
-        return $response;
+        return CurlToolkit::request('GET', $url, $params, array(), array(
+            'connectTimeout' => $this->connectTimeout,
+            'timeout'        => $this->timeout
+        ));
     }
 }

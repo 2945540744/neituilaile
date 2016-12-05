@@ -2,6 +2,8 @@
 
 namespace Neitui\OAuth\Client;
 
+use Neitui\Context\NLogger;
+
 class WeixinmobOAuthClient extends AbstractOAuthClient
 {
     const USERINFO_URL    = 'https://api.weixin.qq.com/sns/userinfo';
@@ -27,7 +29,8 @@ class WeixinmobOAuthClient extends AbstractOAuthClient
             'code'       => $code,
             'grant_type' => 'authorization_code'
         );
-        $result   = $this->getRequest(self::OAUTH_TOKEN_URL, $params);
+        $result = $this->getRequest(self::OAUTH_TOKEN_URL, $params);
+        NLogger::getLogger('WeixinmobOAuthClient')->debug('getAccessToken : ', $result);
         $rawToken = array();
         $rawToken = json_decode($result, true);
         return array(
@@ -42,14 +45,15 @@ class WeixinmobOAuthClient extends AbstractOAuthClient
     public function getUserInfo($token)
     {
         $params = array(
-        		'openid'       => $token['openid'],
-        		'access_token' => $token['access_token']);
+            'openid'       => $token['openid'],
+            'access_token' => $token['access_token']);
         $result = $this->getRequest(self::USERINFO_URL, $params);
-        $info   = json_decode($result, true);
-        $token['unionid'] = $info['unionid'];
+        NLogger::getLogger('WeixinmobOAuthClient')->debug('getUserInfo : ', $result);
+        $info              = json_decode($result, true);
+        $token['unionid']  = $info['unionid'];
         $token['nickname'] = $info['nickname'];
-        $token['avatar'] = $info['headimgurl'];
-        $token['gender'] = $info['sex'];
+        $token['avatar']   = $info['headimgurl'];
+        $token['gender']   = $info['sex'];
         return $token;
     }
 

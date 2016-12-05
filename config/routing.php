@@ -41,6 +41,12 @@ $app->get('/job/index', 'JobController:index');
 
 //简历
 $app->get('/resume/index', 'ResumeController:index');
-$app->get('/resume/info/{type}/{id}', 'ResumeController:info');
-$app->post('/resume/info/{type}/{id}', 'ResumeController:info');
+$app->get('/resume/edit/basic', 'ResumeController:editBasic');
+$app->post('/resume/edit/basic', 'ResumeController:editBasic');
+$app->get('/resume/edit/edu', 'ResumeController:editEdu');
+$app->post('/resume/edit/edu', 'ResumeController:editEdu');
+$app->get('/resume/edit/exp', 'ResumeController:editExp');
+$app->post('/resume/edit/exp', 'ResumeController:editExp');
+$app->get('/resume/edit/intent', 'ResumeController:editIntent');
+$app->post('/resume/edit/intent', 'ResumeController:editIntent');
 $app->post('/resume/delete/{type}/{id}', 'ResumeController:delete');

@@ -68,9 +68,8 @@ class CurrentUser implements CurrentUserInterface, UserInterface, AdvancedUserIn
 
     public function isEqualTo(UserInterface $user)
     {
-        if ($this->email !== $user->getUsername()
-            || array_diff($this->roles, $user->getRoles())
-            || array_diff($user->getRoles(), $this->roles)) {
+        if (array_diff($this->getRoles(), $user->getRoles())
+            || array_diff($user->getRoles(), $this->getRoles())) {
             return false;
         }
 

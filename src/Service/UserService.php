@@ -4,7 +4,7 @@ namespace Neitui\Service;
 
 interface UserService
 {
-//     public function getUserByWeixinId($wid);
+    public function getUserByUsername($username);
 
-//     public function register($user);
+    public function getUserByWxUnionId($wid);
 }

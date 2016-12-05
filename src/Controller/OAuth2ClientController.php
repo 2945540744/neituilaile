@@ -2,6 +2,7 @@
 namespace Neitui\Controller;
 
 use Silex\Application;
+use Neitui\Context\NLogger;
 use Neitui\Common\FileToolkit;
 use Neitui\Common\FileUploader;
 use Neitui\Context\CurrentUser;
@@ -36,10 +37,12 @@ class OAuth2ClientController extends BaseController
         if (!empty($service)) {
             $callbackUrl .= '?service='.$service;
         }
-        $token     = $client->getAccessToken($code, $callbackUrl);
-        $user_info = $client->getUserInfo($token);
+        $token    = $client->getAccessToken($code, $callbackUrl);
+        $userInfo = $client->getUserInfo($token);
+        // $userInfo['headimgurl'] = $this->downloadAvatar($userInfo['avatar']);
         //处理微信用户与我们用户的对应
-        $user = $this->getUserService()->getUserInfo($user_info, $type);
+        $user = $this->getUserService()->register($userInfo, $type);
+        NLogger::getLogger('OAuth2ClientController')->debug('confirmLogin user : ', $user);
         SecurityToolkit::login($app, $request, new CurrentUser($user));
 
         return new RedirectResponse($service ? $service : '/job/index');

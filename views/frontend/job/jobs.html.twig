@@ -18,9 +18,9 @@
 		<span class="col-xs-1"></span>
 		<button class="btn btn-secondary btn-mini col-xs-10 js-btn-new-post">发布新职位</button>
 	</div>
-	{% for job_info in job_info_list %}
-	<div class="row post-item col-xs-12" data-detail-url="/job/view/{{job_info.id}}">
-		<span>{{job_info.job_title|default('')}}</span>
+	{% for job in jobList %}
+	<div class="row post-item col-xs-12" data-detail-url="/job/view/{{job.id}}">
+		<span>{{job.title|default('')}}</span>
 		<span></span>
 	</div>
 	{% endfor %}

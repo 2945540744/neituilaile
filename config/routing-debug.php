@@ -17,3 +17,4 @@ $app->get('/test/logger', 'TestController:testLogger')->bind('test_logger');
 $app->get('/test/adduser', 'TestController:testAddUser')->bind('test_add_user');
 $app->get('/test/clearsession', 'TestController:testClearSession')->bind('test_clear_session');
 $app->get('/test/phpinfo', 'TestController:testPhpinfo')->bind('test_phpinfo');
+$app->get('/test/curl', 'TestController:testCurl')->bind('test_curl');

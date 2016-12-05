@@ -2,36 +2,17 @@
 
 namespace Neitui\Dao\Impl;
 
-// use Neitui\Dao\UserDao;
+use Neitui\Dao\CompanyDao;
 use Codeages\Biz\Framework\Dao\GeneralDaoImpl;
 
-class CompanyDaoImpl extends GeneralDaoImpl //implements UserDao
+class CompanyDaoImpl extends GeneralDaoImpl implements CompanyDao
 {
-    protected $table = 'company';
-    
-    public function getCompanyIdByName($name = ''){
-    	return $this->getByFields(array('real_name_full' => $name));
-    }
-    
-    public function getInfoById($id = 0){
-    	return $this->getByFields(array('id' => $id));
-    }
-    
-    public function addCompanyInfo(array $data = []){
-    	$company_id = 0;
-    	if($data['real_name_full']){
-    		$company_id = $this->getCompanyIdByName($data['real_name_full']);
-    		if(!$company_id){
-    			$this->create($data);
-    		}
-    	}
-    	return $company_id;
-    }
+    protected $table = 'n2_company';
 
     public function declares()
     {
         return array(
-//             'timestamps' => array('created', 'updated')
+            'timestamps' => array('created', 'updated')
         );
     }
 }

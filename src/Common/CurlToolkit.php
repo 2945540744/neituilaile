@@ -10,7 +10,7 @@ class CurlToolkit
 
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $conditions['connectTimeout']);
         curl_setopt($curl, CURLOPT_TIMEOUT, $conditions['timeout']);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);

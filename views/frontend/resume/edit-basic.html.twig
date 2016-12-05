@@ -11,7 +11,7 @@
 
 {% block body %}
 <div class="container">
-	<form id="resume-form" action="/resume/edit" method="post">
+	<form id="resume-form" action="/resume/edit/basic" method="post">
 		<div class="row form-title">
 			<span class="title">编辑基本信息</span>
 			<a href="javascript:;" class="btn btn-link pull-right head-menu js-btn-edit">保存</a>
@@ -19,8 +19,7 @@
 		<div class="row form-group">
 			<label class="col-xs-3">姓名</label>
 			<div class="col-xs-9">
-				<input type="hidden" name="part" value="basic">
-				<input class="form-control" type="text" name="name" value="user.name"/>
+				<input class="form-control" type="text" name="name" value="basic.name"/>
 			</div>
 		</div>
 		<div class="row form-group">
@@ -60,7 +59,7 @@
 		<div class="row form-group">
 			<label class="col-xs-3">生日</label>
 			<div class="col-xs-9">
-				<input class="form-control date-picker" type="text" name="birthday" value="user.birthday"/>
+				<input class="form-control date-picker" type="text" name="birthday" value="basic.birthday"/>
 			</div>
 		</div>
 		<div class="row form-group">
@@ -87,19 +86,19 @@
 		<div class="row form-group">
 			<label class="col-xs-3">联系电话</label>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="mobile" value="user.mobile"/>
+				<input class="form-control" type="text" name="mobile" value="basic.mobile"/>
 			</div>
 		</div>
 		<div class="row form-group">
 			<label class="col-xs-3">联系邮箱</label>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="email" value="user.email"/>
+				<input class="form-control" type="text" name="email" value="basic.email"/>
 			</div>
 		</div>
 		<div class="row form-group">
 			<label class="col-xs-3">一句话介绍</label>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="profile" value="user.profile"/>
+				<input class="form-control" type="text" name="profile" value="basic.profile"/>
 			</div>
 		</div>
 		<div class="row bottom-spacer"></div>

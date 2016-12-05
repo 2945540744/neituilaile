@@ -13,7 +13,6 @@ require_once ROOT_DIR.'/vendor/autoload.php';
 $parameters = require ROOT_DIR.'/config/parameters.php';
 
 define('PUB_FILE_DIR', $parameters['pub_file_dir'], true);
-// define('EMAIL_FROM', $parameters['mail']['username'], true);
 
 $app = new Application();
 

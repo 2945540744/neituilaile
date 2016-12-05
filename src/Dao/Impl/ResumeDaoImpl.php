@@ -2,38 +2,23 @@
 
 namespace Neitui\Dao\Impl;
 
-// use Neitui\Dao\UserDao;
+use Neitui\Dao\ResumeDao;
 use Codeages\Biz\Framework\Dao\GeneralDaoImpl;
 
-class ResumeDaoImpl extends GeneralDaoImpl//implements UserDao
-
+class ResumeDaoImpl extends GeneralDaoImpl implements ResumeDao
 {
-    protected $table = 'cv';
+    protected $table = 'n2_resume';
 
-    public function getByUsername($username)
+    public function getByUserId($userId)
     {
-        return $this->getByFields(array('username' => $username));
-    }
-
-    public function getByWxUnionId($wx_union_id = '')
-    {
-        return (array) $this->getByFields(array('outer_wx_unionid' => $wx_union_id));
-    }
-
-    public function getInfoById($id = '')
-    {
-        return $this->getByFields(array('id' => $id));
-    }
-
-    public function addUser(array $data = [])
-    {
-        return $this->create($data);
+        return $this->getByFields(array('member_id' => $userId));
     }
 
     public function declares()
     {
         return array(
-//             'timestamps' => array('created', 'updated')
+            'timestamps' => array('created', 'updated'),
+            'orderbys'   => array()
         );
     }
 }

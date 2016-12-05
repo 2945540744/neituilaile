@@ -10,8 +10,8 @@ $(document).ready(function(){
 	});
 	//update post
 	$('.js-btn-edit').off('click').on('click', function(){
-		if(validator.form()){
+		// if(validator.form()){
 			$('#post-form').submit();	
-		}
+		// }
 	});	
 });

@@ -12,30 +12,29 @@
 
 {% block body %}
 <div class="container main-container">
-	<form id="post-form" action="/job/edit/{{job_info.id}}" method="post">
+	<form id="post-form" action="/job/edit/{{job.id}}" method="post">
 		<div class="row form-title"><span class="title">编辑职位</span></div>
 		<div class="row spacer"></div>
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">职位类型</div>
 			<div class="col-xs-9">
-				<!-- <input type="text" name="post_type" placeholder="职位类型" /> -->
-				<select class="form-control col-xs-12 mobileSelect js-post-type" name="post_type" data-title="请选择职位类型" data-style="btn-link">
+				<select class="form-control col-xs-12 mobileSelect js-post-type" name="job_type" data-title="请选择职位类型" data-style="btn-link">
 					<optgroup label="技术">
-						<option value="后端开发" {% if job_info.job_type == '后端开发' %}selected="selected"{% endif %}>后端开发</option>	
-						<option value="前端开发" {% if job_info.job_type == '前端开发' %}selected="selected"{% endif %}>前端开发</option>
-						<option value="测试" {% if job_info.job_type == '测试' %}selected="selected"{% endif %}>测试</option>
-						<option value="运维" {% if job_info.job_type == '运维' %}selected="selected"{% endif %}>运维</option>
-						<option value="移动开发" {% if job_info.job_type == '移动开发' %}selected="selected"{% endif %}>移动开发</option>
+						<option value="后端开发" {% if job.job_type == '后端开发' %}selected="selected"{% endif %}>后端开发</option>	
+						<option value="前端开发" {% if job.job_type == '前端开发' %}selected="selected"{% endif %}>前端开发</option>
+						<option value="测试" {% if job.job_type == '测试' %}selected="selected"{% endif %}>测试</option>
+						<option value="运维" {% if job.job_type == '运维' %}selected="selected"{% endif %}>运维</option>
+						<option value="移动开发" {% if job.job_type == '移动开发' %}selected="selected"{% endif %}>移动开发</option>
 					</optgroup>
 					<optgroup label="产品">
-						<option value="产品经理" {% if job_info.job_type == '产品经理' %}selected="selected"{% endif %}>产品经理</option>
-						<option value="产品设计师" {% if job_info.job_type == '产品设计师' %}selected="selected"{% endif %}>产品设计师</option>
-						<option value="产品总监" {% if job_info.job_type == '产品总监' %}selected="selected"{% endif %}>产品总监</option>
+						<option value="产品经理" {% if job.job_type == '产品经理' %}selected="selected"{% endif %}>产品经理</option>
+						<option value="产品设计师" {% if job.job_type == '产品设计师' %}selected="selected"{% endif %}>产品设计师</option>
+						<option value="产品总监" {% if job.job_type == '产品总监' %}selected="selected"{% endif %}>产品总监</option>
 					</optgroup>
 					<optgroup label="运营">
-						<option value="运营" {% if job_info.job_type == '运营' %}selected="selected"{% endif %}>运营</option>
-						<option value="编辑" {% if job_info.job_type == '编辑' %}selected="selected"{% endif %}>编辑</option>
-						<option value="客服" {% if job_info.job_type == '客服' %}selected="selected"{% endif %}>客服</option>
+						<option value="运营" {% if job.job_type == '运营' %}selected="selected"{% endif %}>运营</option>
+						<option value="编辑" {% if job.job_type == '编辑' %}selected="selected"{% endif %}>编辑</option>
+						<option value="客服" {% if job.job_type == '客服' %}selected="selected"{% endif %}>客服</option>
 					</optgroup>
 				</select>
 			</div>
@@ -43,47 +42,46 @@
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">职位名称</div>
 			<div class="col-xs-9">
-				<input type="text" class="form-control" name="post_name" placeholder="职位名称" value="{{job_info.job_title|default('')}}"/>
+				<input type="text" class="form-control" name="title" placeholder="职位名称" value="{{job.title|default('')}}"/>
 			</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">技能要求</div>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="post_skills" placeholder="技能要求，每项之间以空格分隔" value="{{job_info.skills}}"/>
+				<input class="form-control" type="text" name="skills" placeholder="技能要求，每项之间以空格分隔" value="{{job.skills}}"/>
 			</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">薪资范围</div>
 			<div class="col-xs-9">
-				<!-- <input type="text" name="post_salary" placeholder="薪资范围" /> -->
-				<select class="form-control col-xs-5 mobileSelect js-post-salary-min" name="post_salary_min" data-style="btn-blink">
-					<option value="1" {% if job_info.pay_range_from == '1' %}selected="selected"{% endif %}>1k</option>
-					<option value="2" {% if job_info.pay_range_from == '2' %}selected="selected"{% endif %}>2k</option>
-					<option value="3" {% if job_info.pay_range_from == '3' %}selected="selected"{% endif %}>3k</option>
-					<option value="4" {% if job_info.pay_range_from == '4' %}selected="selected"{% endif %}>4k</option>
-					<option value="5" {% if job_info.pay_range_from == '5' %}selected="selected"{% endif %}>5k</option>
-					<option value="6" {% if job_info.pay_range_from == '6' %}selected="selected"{% endif %}>6k</option>
-					<option value="7" {% if job_info.pay_range_from == '7' %}selected="selected"{% endif %}>7k</option>
-					<option value="8" {% if job_info.pay_range_from == '8' %}selected="selected"{% endif %}>8k</option>
-					<option value="9" {% if job_info.pay_range_from == '9' %}selected="selected"{% endif %}>9k</option>
-					<option value="10" {% if job_info.pay_range_from == '10' %}selected="selected"{% endif %}>10k</option>
-					<option value="11" {% if job_info.pay_range_from == '11' %}selected="selected"{% endif %}>11k</option>
-					<option value="12" {% if job_info.pay_range_from == '12' %}selected="selected"{% endif %}>12k</option>
+				<select class="form-control col-xs-5 mobileSelect js-post-salary-min" name="pay_range_from" data-style="btn-blink">
+					<option value="1" {% if job.pay_range_from == '1' %}selected="selected"{% endif %}>1k</option>
+					<option value="2" {% if job.pay_range_from == '2' %}selected="selected"{% endif %}>2k</option>
+					<option value="3" {% if job.pay_range_from == '3' %}selected="selected"{% endif %}>3k</option>
+					<option value="4" {% if job.pay_range_from == '4' %}selected="selected"{% endif %}>4k</option>
+					<option value="5" {% if job.pay_range_from == '5' %}selected="selected"{% endif %}>5k</option>
+					<option value="6" {% if job.pay_range_from == '6' %}selected="selected"{% endif %}>6k</option>
+					<option value="7" {% if job.pay_range_from == '7' %}selected="selected"{% endif %}>7k</option>
+					<option value="8" {% if job.pay_range_from == '8' %}selected="selected"{% endif %}>8k</option>
+					<option value="9" {% if job.pay_range_from == '9' %}selected="selected"{% endif %}>9k</option>
+					<option value="10" {% if job.pay_range_from == '10' %}selected="selected"{% endif %}>10k</option>
+					<option value="11" {% if job.pay_range_from == '11' %}selected="selected"{% endif %}>11k</option>
+					<option value="12" {% if job.pay_range_from == '12' %}selected="selected"{% endif %}>12k</option>
 				</select>
 				<span class="col-xs-2">~</span>
-				<select class="form-control col-xs-5 mobileSelect js-post-salary-max" name="post_salary_max" data-style="btn-link">
-					<option value="1" {% if job_info.pay_range_from == '1' %}selected="selected"{% endif %}>1k</option>
-					<option value="2" {% if job_info.pay_range_from == '2' %}selected="selected"{% endif %}>2k</option>
-					<option value="3" {% if job_info.pay_range_from == '3' %}selected="selected"{% endif %}>3k</option>
-					<option value="4" {% if job_info.pay_range_from == '4' %}selected="selected"{% endif %}>4k</option>
-					<option value="5" {% if job_info.pay_range_from == '5' %}selected="selected"{% endif %}>5k</option>
-					<option value="6" {% if job_info.pay_range_from == '6' %}selected="selected"{% endif %}>6k</option>
-					<option value="7" {% if job_info.pay_range_from == '7' %}selected="selected"{% endif %}>7k</option>
-					<option value="8" {% if job_info.pay_range_from == '8' %}selected="selected"{% endif %}>8k</option>
-					<option value="9" {% if job_info.pay_range_from == '9' %}selected="selected"{% endif %}>9k</option>
-					<option value="10" {% if job_info.pay_range_from == '10' %}selected="selected"{% endif %}>10k</option>
-					<option value="11" {% if job_info.pay_range_from == '11' %}selected="selected"{% endif %}>11k</option>
-					<option value="12" {% if job_info.pay_range_from == '12' %}selected="selected"{% endif %}>12k</option>
+				<select class="form-control col-xs-5 mobileSelect js-post-salary-max" name="pay_range_to" data-style="btn-link">
+					<option value="1" {% if job.pay_range_to == '1' %}selected="selected"{% endif %}>1k</option>
+					<option value="2" {% if job.pay_range_to == '2' %}selected="selected"{% endif %}>2k</option>
+					<option value="3" {% if job.pay_range_to == '3' %}selected="selected"{% endif %}>3k</option>
+					<option value="4" {% if job.pay_range_to == '4' %}selected="selected"{% endif %}>4k</option>
+					<option value="5" {% if job.pay_range_to == '5' %}selected="selected"{% endif %}>5k</option>
+					<option value="6" {% if job.pay_range_to == '6' %}selected="selected"{% endif %}>6k</option>
+					<option value="7" {% if job.pay_range_to == '7' %}selected="selected"{% endif %}>7k</option>
+					<option value="8" {% if job.pay_range_to == '8' %}selected="selected"{% endif %}>8k</option>
+					<option value="9" {% if job.pay_range_to == '9' %}selected="selected"{% endif %}>9k</option>
+					<option value="10" {% if job.pay_range_to == '10' %}selected="selected"{% endif %}>10k</option>
+					<option value="11" {% if job.pay_range_to == '11' %}selected="selected"{% endif %}>11k</option>
+					<option value="12" {% if job.pay_range_to == '12' %}selected="selected"{% endif %}>12k</option>
 				</select>
 			</div>
 		</div>
@@ -91,28 +89,26 @@
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">经验要求</div>
 			<div class="col-xs-9">
-				<!-- <input type="text" name="post_exp" placeholder="经验要求" /> -->
-				<select class="form-control col-xs-12 mobileSelect js-post-exp" name="post_exp" data-style="btn-link">
-					<option value="0" {% if job_info.experience_level == 0 %}selected="selected"{% endif %}>不限</option>
-					<option value="99" {% if job_info.experience_level == 99 %}selected="selected"{% endif %}>应届生</option>
-					<option value="1" {% if job_info.experience_level == 1 %}selected="selected"{% endif %}>1年以内</option>
-					<option value="2" {% if job_info.experience_level == 2 %}selected="selected"{% endif %}>1-3年</option>
-					<option value="3" {% if job_info.experience_level == 3 %}selected="selected"{% endif %}>3-5年</option>
-					<option value="4" {% if job_info.experience_level == 4 %}selected="selected"{% endif %}>5-10年</option>
-					<option value="5" {% if job_info.experience_level == 5 %}selected="selected"{% endif %}>10年以上</option>
+				<select class="form-control col-xs-12 mobileSelect js-post-exp" name="exp_level" data-style="btn-link">
+					<option value="0" {% if job.exp_level == 0 %}selected="selected"{% endif %}>不限</option>
+					<option value="99" {% if job.exp_level == 99 %}selected="selected"{% endif %}>应届生</option>
+					<option value="1" {% if job.exp_level == 1 %}selected="selected"{% endif %}>1年以内</option>
+					<option value="2" {% if job.exp_level == 2 %}selected="selected"{% endif %}>1-3年</option>
+					<option value="3" {% if job.exp_level == 3 %}selected="selected"{% endif %}>3-5年</option>
+					<option value="4" {% if job.exp_level == 4 %}selected="selected"{% endif %}>5-10年</option>
+					<option value="5" {% if job.exp_level == 5 %}selected="selected"{% endif %}>10年以上</option>
 				</select>
 			</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">学历要求</div>
 			<div class="col-xs-9">
-				<!-- <input type="text" name="post_cert" placeholder="学历要求" /> -->
-				<select class="form-control col-xs-12 mobileSelect js-post-cert" name="post_cert" data-style="btn-link">
-					<option value="0" {% if job_info.edu_level == 0 %}selected="selected"{% endif %}>不限</option>
-					<option value="1" {% if job_info.edu_level == 1 %}selected="selected"{% endif %}>大专</option>
-					<option value="2" {% if job_info.edu_level == 2 %}selected="selected"{% endif %}>本科</option>
-					<option value="3" {% if job_info.edu_level == 3 %}selected="selected"{% endif %}>硕士</option>
-					<option value="4" {% if job_info.edu_level == 4 %}selected="selected"{% endif %}>博士</option>
+				<select class="form-control col-xs-12 mobileSelect js-post-cert" name="edu_level" data-style="btn-link">
+					<option value="0" {% if job.edu_level == 0 %}selected="selected"{% endif %}>不限</option>
+					<option value="1" {% if job.edu_level == 1 %}selected="selected"{% endif %}>大专</option>
+					<option value="2" {% if job.edu_level == 2 %}selected="selected"{% endif %}>本科</option>
+					<option value="3" {% if job.edu_level == 3 %}selected="selected"{% endif %}>硕士</option>
+					<option value="4" {% if job.edu_level == 4 %}selected="selected"{% endif %}>博士</option>
 				</select>
 			</div>
 		</div>
@@ -120,21 +116,20 @@
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">工作城市</div>
 			<div class="col-xs-9">
-				<!-- <input type="text" name="post_city" placeholder="工作城市" /> -->
-				<select class="form-control col-xs-12 mobileSelect js-post-city" name="post_city" placeholder="工作城市" data-style="data-link">
+				<select class="form-control col-xs-12 mobileSelect js-post-city" name="addr_city" placeholder="工作城市" data-style="data-link">
 					<optgroup label="北京">
-						<option value="bj" {% if job_info.addr_city == 'bj' %}selected="selected"{% endif %}>北京</option>
+						<option value="bj" {% if job.addr_city == 'bj' %}selected="selected"{% endif %}>北京</option>
 					</optgroup>
 					<optgroup label="上海">
-						<option value="sh" {% if job_info.addr_city == 'sh' %}selected="selected"{% endif %}>上海</option>
+						<option value="sh" {% if job.addr_city == 'sh' %}selected="selected"{% endif %}>上海</option>
 					</optgroup>
 					<optgroup label="浙江">
-						<option value="hz" {% if job_info.addr_city == 'hz' %}selected="selected"{% endif %}>杭州</option>
-						<option value="nb" {% if job_info.addr_city == 'nb' %}selected="selected"{% endif %}>宁波</option>
+						<option value="hz" {% if job.addr_city == 'hz' %}selected="selected"{% endif %}>杭州</option>
+						<option value="nb" {% if job.addr_city == 'nb' %}selected="selected"{% endif %}>宁波</option>
 					</optgroup>
 					<optgroup label="广东">
-						<option value="gz" {% if job_info.addr_city == 'gz' %}selected="selected"{% endif %}>广州</option>
-						<option value="sz" {% if job_info.addr_city == 'sz' %}selected="selected"{% endif %}>深圳</option>
+						<option value="gz" {% if job.addr_city == 'gz' %}selected="selected"{% endif %}>广州</option>
+						<option value="sz" {% if job.addr_city == 'sz' %}selected="selected"{% endif %}>深圳</option>
 					</optgroup>
 				</select>
 			</div>
@@ -142,18 +137,17 @@
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">工作地点</div>
 			<div class="col-xs-9">
-				<input type="text" name="post_address" placeholder="工作地点" value="{{job_info.address|default('')}}"/>
+				<input type="text" name="address" placeholder="工作地点" value="{{job.address|default('')}}"/>
 			</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">职位描述</div>
 			<div class="col-xs-9">
-				<!-- <input type="text" name="post_remark" placeholder="职位描述" /> -->
-				<textarea rows="10" class="col-xs-12" name="post_remark" placeholder="填写详细，清晰的职位描述有助于您更精确的展开招聘需求
+				<textarea rows="10" class="col-xs-12" name="summary" placeholder="填写详细，清晰的职位描述有助于您更精确的展开招聘需求
 				例如：
 				1.工作内容...
 				2.任务要求...
-				3.特殊说明..." >{{job_info.summary|default('')}}</textarea>
+				3.特殊说明..." >{{job.summary|default('')}}</textarea>
 			</div>
 		</div>
 		<div class="row bottom-spacer"></div>

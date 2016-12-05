@@ -4,6 +4,7 @@ namespace Neitui\Controller\Test;
 
 use Monolog\Logger;
 use Silex\Application;
+use Neitui\Common\CurlToolkit;
 use Neitui\Context\LogFactory;
 use Neitui\Controller\BaseController;
 use Symfony\Component\HttpFoundation\Request;
@@ -68,6 +69,15 @@ class TestController extends BaseController
     public function testPhpinfo(Application $app, Request $request)
     {
         phpinfo();
+    }
+
+    public function testCurl(Application $app, Request $request)
+    {
+        $raw = CurlToolkit::request('GET', 'https://api.github.com/repos/vmg/redcarpet/issues?state=closed', array(
+            'User-Agent' => 'Neitui OAuth Client 2.0'
+        ));
+        var_dump($raw);
+        return true;
     }
 
     protected function getUserService()

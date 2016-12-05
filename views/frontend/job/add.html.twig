@@ -18,31 +18,31 @@
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">公司全称</div>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="company_name" placeholder="公司全称" />
+				<input class="form-control" type="text" name="full_name" placeholder="公司全称" />
 			</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">公司简称</div>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="company_shortname" placeholder="公司简称" />
+				<input class="form-control" type="text" name="short_name" placeholder="公司简称" />
 			</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">所属行业</div>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="company_field" placeholder="所属行业" />
+				<input class="form-control" type="text" name="industry" placeholder="所属行业" />
 			</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">人员规模</div>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="company_scale" placeholder="人员规模" />
+				<input class="form-control" type="text" name="scale" placeholder="人员规模" />
 			</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">融资阶段</div>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="company_fund" placeholder="融资阶段" />
+				<input class="form-control" type="text" name="fund" placeholder="融资阶段" />
 			</div>
 		</div>
 		<!--<div class="form-group row">
@@ -54,15 +54,14 @@
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">公司官网</div>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="company_site" placeholder="公司官网" />
+				<input class="form-control" type="text" name="website" placeholder="公司官网" />
 			</div>
 		</div>
 		<div class="row spacer"></div>
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">职位类型</div>
 			<div class="col-xs-9">
-				<!-- <input type="text" name="post_type" placeholder="职位类型" /> -->
-				<select class="form-control col-xs-12 mobileSelect js-post-type" name="post_type" data-title="请选择职位类型" data-style="btn-link">
+				<select class="form-control col-xs-12 mobileSelect js-post-type" name="job_type" data-title="请选择职位类型" data-style="btn-link">
 					<optgroup label="技术">
 						<option value="后端开发">后端开发</option>	
 						<option value="前端开发">前端开发</option>
@@ -86,20 +85,20 @@
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">职位名称</div>
 			<div class="col-xs-9">
-				<input type="text" class="form-control" name="post_name" placeholder="职位名称" />
+				<input type="text" class="form-control" name="title" placeholder="职位名称" />
 			</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">技能要求</div>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="post_skills" placeholder="技能要求，每项之间以空格分隔" />
+				<input class="form-control" type="text" name="skills" placeholder="技能要求，每项之间以空格分隔" />
 			</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">薪资范围</div>
 			<div class="col-xs-9">
 				<!-- <input type="text" name="post_salary" placeholder="薪资范围" /> -->
-				<select class="form-control col-xs-5 mobileSelect js-post-salary-min" name="post_salary_min" data-style="btn-blink">
+				<select class="form-control col-xs-5 mobileSelect js-post-salary-min" name="pay_range_from" data-style="btn-blink">
 					<option value="1">1k</option>
 					<option value="2">2k</option>
 					<option value="3">3k</option>
@@ -114,7 +113,7 @@
 					<option value="12">12k</option>
 				</select>
 				<span class="col-xs-2">~</span>
-				<select class="form-control col-xs-5 mobileSelect js-post-salary-max" name="post_salary_max" data-style="btn-link">
+				<select class="form-control col-xs-5 mobileSelect js-post-salary-max" name="pay_range_to" data-style="btn-link">
 					<option value="1">1k</option>
 					<option value="2">2k</option>
 					<option value="3">3k</option>
@@ -135,7 +134,7 @@
 			<div class="col-xs-3 col-form-label">经验要求</div>
 			<div class="col-xs-9">
 				<!-- <input type="text" name="post_exp" placeholder="经验要求" /> -->
-				<select class="form-control col-xs-12 mobileSelect js-post-exp" name="post_exp" data-style="btn-link">
+				<select class="form-control col-xs-12 mobileSelect js-post-exp" name="exp_level" data-style="btn-link">
 					<option value="0">不限</option>
 					<option value="99">应届生</option>
 					<option value="1">1年以内</option>
@@ -150,7 +149,7 @@
 			<div class="col-xs-3 col-form-label">学历要求</div>
 			<div class="col-xs-9">
 				<!-- <input type="text" name="post_cert" placeholder="学历要求" /> -->
-				<select class="form-control col-xs-12 mobileSelect js-post-cert" name="post_cert" data-style="btn-link">
+				<select class="form-control col-xs-12 mobileSelect js-post-cert" name="edu_level" data-style="btn-link">
 					<option value="0">不限</option>
 					<option value="1">大专</option>
 					<option value="2">本科</option>
@@ -164,7 +163,7 @@
 			<div class="col-xs-3 col-form-label">工作城市</div>
 			<div class="col-xs-9">
 				<!-- <input type="text" name="post_city" placeholder="工作城市" /> -->
-				<select class="form-control col-xs-12 mobileSelect js-post-city" name="post_city" placeholder="工作城市" data-style="data-link">
+				<select class="form-control col-xs-12 mobileSelect js-post-city" name="addr_city" placeholder="工作城市" data-style="data-link">
 					<optgroup label="北京">
 						<option value="bj">北京</option>
 					</optgroup>
@@ -185,18 +184,17 @@
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">工作地点</div>
 			<div class="col-xs-9">
-				<input type="text" name="post_address" placeholder="工作地点" />
+				<input type="text" name="address" placeholder="工作地点" />
 			</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-3 col-form-label">职位描述</div>
 			<div class="col-xs-9">
-				<!-- <input type="text" name="post_remark" placeholder="职位描述" /> -->
-				<textarea rows="10" class="col-xs-12" name="post_remark" placeholder="填写详细，清晰的职位描述有助于您更精确的展开招聘需求
-				例如：
-				1.工作内容...
-				2.任务要求...
-				3.特殊说明..." ></textarea>
+				<textarea rows="10" class="col-xs-12" name="summary" placeholder="填写详细，清晰的职位描述有助于您更精确的展开招聘需求
+例如：
+1.工作内容...
+2.任务要求...
+3.特殊说明..." ></textarea>
 			</div>
 		</div>
 		<div class="row bottom-spacer"></div>

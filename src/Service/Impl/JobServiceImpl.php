@@ -2,83 +2,98 @@
 
 namespace Neitui\Service\Impl;
 
+use Neitui\Common\ArrayToolkit;
+
 // use Neitui\Service\JobService;
 // use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 class JobServiceImpl extends BaseService//implements JobService
 
 {
-    public function getInfoById($id = 0)
+    public function getJob($id)
     {
         return $this->getJobDao()->get($id);
     }
 
-    public function addJob(array $data = [], $userid = 0)
+    public function findJobList($userId)
     {
-        $data_for_insert = array();
-
-        $data_company                   = [];
-        $data_company['real_name_full'] = $data['company_name'];
-        $data_company['real_name_shot'] = $data['company_shortname'];
-        $data_company['industry']       = $data['company_field'];
-        $data_company['scale']          = $data['company_scale'];
-        $data_company['fund']           = $data['company_fund'];
-        $data_company['website']        = $data['company_site'];
-        $data_company['creator_id']     = $userid;
-
-        $data_for_insert['owner_company_id'] = (int) $this->getCompanyDao()->addCompanyInfo($data_company);
-        $data_for_insert['job_title']        = $data['post_name'];
-        $data_for_insert['job_type']         = $data['post_type'];
-        $data_for_insert['skills']           = $data['post_skills'];
-        $data_for_insert['pay_range_from']   = (int) $data['post_salary_min'];
-        $data_for_insert['pay_range_to']     = (int) $data['post_salary_max'];
-        $data_for_insert['experience_level'] = (int) $data['post_exp'];
-        $data_for_insert['edu_level']        = (int) $data['post_cert'];
-
-//         $data['post_city'];
-        $data_for_insert['address'] = $data['post_address'];
-        $data_for_insert['summary'] = $data['post_remark'];
-
-        $data_for_insert['creator_id'] = $userid;
-        $data_for_insert['created']    = date('Y-m-d H:i:s');
-
-        return $this->getJobDao()->addJobInfo($data_for_insert);
+        return $this->getJobDao()->findInField('creator', array($userId));
     }
 
-    public function editJob($id = 0, array $data = [], $userid = 0)
+    public function createJob($job, $userId)
     {
-        $data_for_update                     = [];
-        $data_for_update['job_title']        = $data['post_name'];
-        $data_for_update['job_type']         = $data['post_type'];
-        $data_for_update['skills']           = $data['post_skills'];
-        $data_for_update['pay_range_from']   = (int) $data['post_salary_min'];
-        $data_for_update['pay_range_to']     = (int) $data['post_salary_max'];
-        $data_for_update['experience_level'] = (int) $data['post_exp'];
-        $data_for_update['edu_level']        = (int) $data['post_cert'];
-        //         $data['post_city'];
-        $data_for_update['address']    = $data['post_address'];
-        $data_for_update['summary']    = $data['post_remark'];
-        $data_for_update['updator_id'] = $userid;
-        $data_for_update['updated']    = date('Y-m-d H:i:s');
+        $job['creator'] = $userId;
+        //create company
+        $company = array();
+        if (isset($job['company_id'])) {
+            $company = $this->getCompanyDao()->get($job['company_id']);
+        }
+        if (isset($job['full_name'])) {
+            $company['full_name'] = $job['full_name'];
+        }
+        if (isset($job['short_name'])) {
+            $company['short_name'] = $job['short_name'];
+        }
+        if (isset($job['industry'])) {
+            $company['industry'] = $job['industry'];
+        }
+        if (isset($job['scale'])) {
+            $company['scale'] = $job['scale'];
+        }
+        if (isset($job['fund'])) {
+            $company['fund'] = $job['fund'];
+        }
+        if (isset($job['website'])) {
+            $company['website'] = $job['website'];
+        }
+        if (isset($company['id'])) {
+            $company['updator'] = $userId;
+            $this->getCompanyDao()->update($company['id'], $company);
+        } else {
+            $company['creator'] = $userId;
+            $company            = $this->getCompanyDao()->create($company);
+            $job['company_id']  = $company['id'];
+        }
 
-        return $this->getJobDao()->editJobInfoById($id, $data_for_update);
+        $job = ArrayToolkit::parts($job, array(
+            'job_type',
+            'title',
+            'skills',
+            'pay_range_from',
+            'pay_range_to',
+            'exp_level',
+            'edu_level',
+            'addr_city',
+            'address',
+            'summary'
+        ));
+
+        $job['creator'] = $userId;
+
+        return $this->getJobDao()->create($job);
     }
 
-    public function viewJob($id = 0)
+    public function updateJob($job, $userId)
     {
-        $job_info     = $this->getJobDao()->getInfoById($id);
-        $company_info = $this->getCompanyDao()->getInfoById($job_info['owner_company_id']);
-        $author_info  = $this->getUserDao()->getInfoById($job_info['creator_id']);
-        return array(
-            'job_info'     => $job_info,
-            'company_info' => $company_info,
-            'author_info'  => $author_info
-        );
+        $job['updator'] = $userId;
+
+        return $this->getJobDao()->update($job['id'], $job);
     }
 
-    public function getJobList(array $condition = [])
+    public function deleteJob($jobId, $userId)
     {
-        return $this->getJobDao()->search($condition, array('id' => 'DESC'), 0, 100);
+        return $this->getJobDao()->delete($jobId);
+    }
+
+    public function closeJob($jobId, $userId)
+    {
+        //check if job exist
+        return $this->getJobDao()->update($jobId, array('status' => 2));
+    }
+
+    public function getCompany($id)
+    {
+        return $this->getCompanyDao()->get($id);
     }
 
     protected function getJobDao()

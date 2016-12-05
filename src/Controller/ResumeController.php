@@ -10,12 +10,74 @@ class ResumeController extends BaseController
 {
     public function index(Application $app, Request $request)
     {
-        $info = $this->getResumeService()->getResume($app['user']->id);
+        $userId = $app['user']['id'];
+        $basic  = $this->getUserService()->getUser($userId);
+        $edu    = $this->getUserService()->getEducation($userId);
+        $exp    = $this->getUserService()->getCompanies($userId);
+        $resume = $this->getResumeService()->getResumeByUserId($userId);
 
-        $params['company_list']   = $info['company_list']; //工作经历
-        $params['education_list'] = $info['education_list']; //教育经历
-        $params['basic_info']     = $info['basic_info']; //基本信息
-        return $this->render('frontend/resume/view.html.twig', $params);
+        return $app['twig']->render('frontend/resume/view.html.twig', array(
+            'basic'  => $basic,
+            'edus'   => $edu,
+            'exps'   => $exp,
+            'resume' => $resume
+        ));
+    }
+
+    public function editBasic(Application $app, Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $data = RequestToolkit::getPostData($request);
+            $this->getUserService()->updateUser($data['id'], $data);
+            return new RedirectResponse('/resume/edit/basic');
+        }
+
+        $basic = $this->getUserService()->getUser($app['user']['id']);
+        return $app['twig']->render('frontend/resume/edit-basic.html.twig', array(
+            'basic' => $basic
+        ));
+    }
+
+    public function editEdu(Application $app, Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $data = RequestToolkit::getPostData($request);
+            $this->getUserService()->saveEdu($data['id'], $data);
+            return new RedirectResponse('/resume/edit/edu');
+        }
+
+        $edu = $this->getUserService()->getEducation($app['user']['id']);
+        return $app['twig']->render('frontend/resume/edit-edu.html.twig', array(
+            'edu' => $edu
+        ));
+    }
+
+    public function editExp(Application $app, Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $data = RequestToolkit::getPostData($request);
+            $this->getUserService()->saveExp($data['id'], $data);
+            return new RedirectResponse('/resume/edit/exp');
+        }
+
+        $exp = $this->getUserService()->getCompanies($app['user']['id']);
+        return $app['twig']->render('frontend/resume/edit-exp.html.twig', array(
+            'exp' => $exp
+        ));
+    }
+
+    public function editIntent(Application $app, Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $data = RequestToolkit::getPostData($request);
+            $this->getUserService()->saveExp($data['id'], $data);
+            return new RedirectResponse('/resume/edit/exp');
+        }
+
+        $exp = $this->getUserService()->getCompanies($app['user']['id']);
+        return $app['twig']->render('frontend/resume/edit-exp.html.twig', array(
+            'exp' => $exp
+        ));
     }
 
     public function info(Application $app, Request $request, $type = '', $id = 0)
@@ -63,7 +125,7 @@ class ResumeController extends BaseController
                     $info = $this->getResumeService()->getResumeInfo($user_id);
                     break;
             }
-            return $this->render('frontend/resume/'.$type.'.html.twig', $info);
+            return $app['twig']->render('frontend/resume/'.$type.'.html.twig', $info);
         }
     }
 
@@ -77,14 +139,14 @@ class ResumeController extends BaseController
 
         $part = $request->query->get('part', 'basic');
 
-        return $this->render('frontend/resume/edit-'.$part.'.html.twig', array(
+        return $app['twig']->render('frontend/resume/edit-'.$part.'.html.twig', array(
             // params: ..user,basic
         ));
     }
 
     public function preview(Application $app, Request $request)
     {
-        return $this->render('frontend/resume/preview.html.twig', array(
+        return $app['twig']->render('frontend/resume/preview.html.twig', array(
             // params: resume info
         ));
     }
@@ -94,7 +156,7 @@ class ResumeController extends BaseController
         $part = $request->request->get('part');
         $id   = $request->request->get('id');
         $this->tryDeleteResumePart($id, $part);
-        return $this->render('frontend/resume/edit-'.$part.'.html.twig', array(
+        return $app['twig']->render('frontend/resume/edit-'.$part.'.html.twig', array(
             // params: ..user,basic
         ));
     }

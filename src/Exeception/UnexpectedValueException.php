@@ -1,5 +1,5 @@
 <?php
-namespace Neitui\Context\Exception;
+namespace Neitui\Exception;
 
 class UnexpectedValueException extends BaseException
 {

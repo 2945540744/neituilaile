@@ -1,6 +1,8 @@
 <?php
 namespace Neitui\OAuth\Client;
 
+use Neitui\Context\NLogger;
+
 class WeixinwebOAuthClient extends AbstractOAuthClient
 {
     const USERINFO_URL    = 'https://api.weixin.qq.com/sns/userinfo';
@@ -25,9 +27,11 @@ class WeixinwebOAuthClient extends AbstractOAuthClient
             'code'       => $code,
             'grant_type' => 'authorization_code'
         );
-        $result   = $this->getRequest(self::OAUTH_TOKEN_URL, $params);
-        $rawToken = array();
-        $rawToken = json_decode($result, true);
+        $result = $this->getRequest(self::OAUTH_TOKEN_URL, $params);
+        NLogger::getLogger('WeixinwebOAuthClient')->debug('getAccessToken : ', $result);
+        $this->checkResult($result);
+        // $rawToken = json_decode($result, true);
+        $rawToken = $result;
         return array(
             'expiredTime'  => $rawToken['expires_in'],
             'access_token' => $rawToken['access_token'],
@@ -42,19 +46,20 @@ class WeixinwebOAuthClient extends AbstractOAuthClient
             'openid'       => $token['openid'],
             'access_token' => $token['access_token']);
         $result = $this->getRequest(self::USERINFO_URL, $params);
-        $info   = json_decode($result, true);
-//         $this->checkResult($info);
-        $token['unionid']  = $info['unionid'];
-        $token['nickname'] = $info['nickname'];
-        $token['avatar']   = $info['headimgurl'];
-        $token['gender']   = $info['sex'];
+        NLogger::getLogger('WeixinwebOAuthClient')->debug('getUserinfo : ', $result);
+        // $info = json_decode($result, true);
+        $this->checkResult($result);
+        $token['unionid']  = $result['unionid'];
+        $token['nickname'] = $result['nickname'];
+        $token['avatar']   = $result['headimgurl'];
+        $token['gender']   = $result['sex'];
         return $token;
     }
 
     private function checkResult($result)
     {
         if (isset($result['errcode'])) {
-            throw new InvalidArgumentException('与微信通讯出错：'.$result['errmsg']);
+            throw new \Exception('与微信通讯出错：'.$result['errmsg']);
         }
     }
 }

@@ -114,7 +114,6 @@ if (typeof jQuery === 'undefined') {
                 }
 
                 this.classNames = this.$e.attr('class');
-                console.log(this.$e.attr('class'));
 
                 if(this.classNames){
                     var tmp = this.classNames.split(' ');

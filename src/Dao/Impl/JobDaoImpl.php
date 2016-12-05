@@ -8,28 +8,13 @@ use Codeages\Biz\Framework\Dao\GeneralDaoImpl;
 class JobDaoImpl extends GeneralDaoImpl//implements UserDao
 
 {
-    protected $table = 'job';
-
-    public function getInfoById($id = 0)
-    {
-        return $this->getByFields(array('id' => $id));
-    }
-
-    public function addJobInfo(array $data = [])
-    {
-        return $this->create($data);
-    }
-
-    public function editJobInfoById($id = 0, array $data = [])
-    {
-        return $this->update($id, $data);
-    }
+    protected $table = 'n2_job';
 
     public function declares()
     {
         return array(
-//             'timestamps' => array('created', 'updated')
-            'orderbys' => array('id')
+            'timestamps' => array('created', 'updated'),
+            'orderbys'   => array('id')
         );
     }
 }
