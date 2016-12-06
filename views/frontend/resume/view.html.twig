@@ -16,65 +16,65 @@
 		<a href="/resume/preview/:id" class="btn btn-link pull-right head-menu">预览</a>
 	</div>
 	<!-- 基本信息 -->
-	<div class="row column">
+	<div id="basic-info" class="row column">
 		<div class="row-header">
 			<span class="">基本信息</span><em class="required">必填</em>	
 		</div>
 		<div class="row-body">
 			<a href="/resume/edit/basic" class="btn btn-link dock-top-right">编辑</a>
 			<div class="row">
-				<div class="col-xs-2 col-form-label">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</div>
-				<div class="col-xs-10">{{basic.nickname}}</div>
+				<div class="col-xs-4 col-form-label">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</div>
+				<div class="col-xs-8">{{basic.nickname}}</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-2">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</div>
-				<div class="col-xs-10">{{basic.gender == 1 ? '男' : '女'}}</div>
+				<div class="col-xs-4">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</div>
+				<div class="col-xs-8">{{basic.gender}}</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-2">最高学历：</div>
-				<div class="col-xs-10">{{basic.edu_level|default('')}}</div>
+				<div class="col-xs-4">最高学历：</div>
+				<div class="col-xs-8">{{basic.edu_level|default('')}}</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-2">工作年限：</div>
-				<div class="col-xs-10">{{basic.exp_level|default('')}}</div>
+				<div class="col-xs-4">工作年限：</div>
+				<div class="col-xs-8">{{basic.exp_level|default('')}}</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-2">出生日期：</div>
-				<div class="col-xs-10">{{basic.birthday|default('')}}</div>
+				<div class="col-xs-4">出生日期：</div>
+				<div class="col-xs-8">{{basic.birthday|default('')}}</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-2">所在城市：</div>
-				<div class="col-xs-10">{{basic.addr_city|default('')}}</div>
+				<div class="col-xs-4">所在城市：</div>
+				<div class="col-xs-8">{{basic.addr_city|default('')}}</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-2">联系电话：</div>
-				<div class="col-xs-10">{{basic.mobile|default('')}}</div>
+				<div class="col-xs-4">联系电话：</div>
+				<div class="col-xs-8">{{basic.mobile|default('')}}</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-2">联系邮箱：</div>
-				<div class="col-xs-10">{{basic.email|default('')}}</div>
+				<div class="col-xs-4">联系邮箱：</div>
+				<div class="col-xs-8">{{basic.email|default('')}}</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-2">一句话介绍：</div>
-				<div class="col-xs-10">{{basic.profile|default('')}}</div>
+				<div class="col-xs-4">一句话介绍：</div>
+				<div class="col-xs-8">{{basic.profile|default('')}}</div>
 			</div>
 		</div>
 	</div>
 	<!-- 工作经历 -->
-	<div class="row column">
+	<div id="exp-info" class="row column">
 		<div class="row-header">
 			<span class="">工作经历</span><em class="required">必填</em>	
 		</div>
 		<div class="row-body">
 			<a href="/resume/edit/exp" class="btn btn-link dock-top-right">编辑</a>
-			<ul class="exp-list">
-				{% for exp in exps %}
+			{# <ul class="exp-list"> #}
+				{# {% for exp in exps %}
 					<li class="exp-item">
-						<span>{{exp.work_start_date}} - {{exp.work_end_date}}</span>
+						<span>{{exp.start_date}} - {{exp.end_date}}</span>
 						<span>{{exp.company_name}}/{{exp.position_name}}</span>
 						<pre>{{exp.summary}}</pre>
 					</li>
-				{% endfor %}
+				{% endfor %} #}
 				{# <li class="exp-item">
 					<span>2014.10 - 至今</span>
 					<span>Company/Position</span>
@@ -85,30 +85,44 @@
 					<span>Company/Position</span>
 					<pre>exp_content : 做了好多项目，为公司做出巨大贡献，这里是多行的，你要注意啊</pre>
 				</li> #}
-			</ul>
+			{# </ul> #}
+			<div class="exp-item">
+				{% for exp in exps %}
+					<span>{{exp.start_date}} - {{exp.end_date}}</span>
+					<span>{{exp.company_name}}/{{exp.position_name}}</span>
+					<pre>{{exp.summary}}</pre>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 	<!-- 教育经历 -->
-	<div class="row column">
+	<div id="edu-info" class="row column">
 		<div class="row-header">
 			<span class="">教学经历</span><em class="required">必填</em>	
 		</div>
 		<div class="row-body">
 			<a href="/resume/edit/edu" class="btn btn-link dock-top-right">编辑</a>
 			<!-- 目前只收录一条教育经历（最高学历） -->
-			<ul class="edu-list">
+			{# <ul class="edu-list">
 				{% for edu in edus %}
 					<li class="edu-item">
-						<span>{{edu.edu_start_date}} - {{edu.edu_start_date}}</span>
-						<span><i>{{edu.school_name}}</i> &nbsp; {{edu.major_name}}（{{edu.edu_level}}）</span>
+						<span>{{edu.start_date|default('')}} - {{edu.end_date|default('')}}</span>
+						<span><i>{{edu.school_name|default('')}}</i> &nbsp; {{edu.major_name|default('')}}（{{edu.edu_level|default('')}}）</span>
 						<pre>{{edu.summary}}</pre>
 					</li>
 				{% endfor %}
-			</ul>
+			</ul> #}
+			<div class="edu-item">
+				{% for edu in edus %}
+					<span>{{edu.start_date|default('')}} - {{edu.end_date|default('')}}</span>
+					<span><i>{{edu.school_name|default('')}}</i> &nbsp; {{edu.major_name|default('')}}（{{edu.edu_level|default('')}}）</span>
+					<pre>{{edu.summary}}</pre>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 	<!-- 求职意向 -->
-	<div class="row column">
+	<div id="intent-info" class="row column">
 		<div class="row-header">
 			<span class="">求职意向</span><em class="required">必填</em>	
 		</div>
@@ -116,9 +130,9 @@
 			<a href="/resume/edit/intent" class="btn btn-link dock-top-right">编辑</a>
 			<div class="intent">
 				{% if resume is not empty %}
-					<span>{{resume.intent_post|default('')}}({{resume.work_type}})</span>
-					<span>{{resume.work_city}} - {{resume.intent_pay_from}}~{{resume.intent_pay_to}}</span>
-					<pre>{{resume.summary}}</pre>
+					<span>{{resume.post_name|default('')}}({{resume.job_type|default('')}})</span>
+					<span>{{resume.addr_city|default('')}} - {{resume.pay_range_from}}k~{{resume.pay_range_to}}k</span>
+					<pre>{{resume.summary|default('')}}</pre>
 				{% endif %}
 			</div>
 			

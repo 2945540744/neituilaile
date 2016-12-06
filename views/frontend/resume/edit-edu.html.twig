@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block sub_js_block %}
-<script type="text/javascript" src="/assets/js/resume/edit.js"></script>
+<script type="text/javascript" src="/assets/js/resume/edit-edu.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -17,40 +17,39 @@
 			<a href="javascript:;" class="btn btn-link pull-right head-menu js-btn-edit">保存</a>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">毕业院校：</label>
-			<div class="col-xs-9">
+			<label class="col-xs-4">毕业院校：</label>
+			<div class="col-xs-8">
 				<input type="hidden" name="part" value="edu">
-				<input class="form-control" type="text" name="college" value="college.name"/>
+				<input class="form-control" type="text" name="school_name" value="{{edu.school_name|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">专业：</label>
-			<div class="col-xs-9">
-				<input class="form-control" type="text" name="major" value="college.major"/>
+			<label class="col-xs-4">专业：</label>
+			<div class="col-xs-8">
+				<input class="form-control" type="text" name="major_name" value="{{edu.major_name|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">入学时间：</label>
-			<div class="col-xs-9">
-				<input class="form-control" type="text" name="startTime" value="college.startTime"/>
+			<label class="col-xs-4">入学时间：</label>
+			<div class="col-xs-8">
+				<input class="form-control" type="text" name="start_date" value="{{edu.start_date|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">毕业时间：</label>
-			<div class="col-xs-9">
-				<input class="form-control" type="text" name="endTime" value="college.endTime"/>
+			<label class="col-xs-4">毕业时间：</label>
+			<div class="col-xs-8">
+				<input class="form-control" type="text" name="end_date" value="{{edu.end_date|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">学历：</label>
-			<div class="col-xs-9">
+			<label class="col-xs-4">学历：</label>
+			<div class="col-xs-8">
 				<select class="form-control col-xs-12 mobileSelect" name="edu_level" data-style="btn-link">
-					<option value="0">高中</option>
-					<option value="1">大专</option>
-					<option value="2" selected>本科</option>
-					<option value="3">硕士</option>
-					<option value="4">博士</option>
-					<option value="4">博士后</option>
+					<option value="高中" {% if edu.edu_level == '高中' %}selected{% endif %}>高中</option>
+					<option value="专科" {% if edu.edu_level == '专科' %}selected{% endif %}>专科</option>
+					<option value="本科" {% if edu.edu_level == '本科' %}selected{% endif %}>本科</option>
+					<option value="硕士" {% if edu.edu_level == '硕士' %}selected{% endif %}>硕士</option>
+					<option value="博士" {% if edu.edu_level == '博士' %}selected{% endif %}>博士</option>
 				</select>
 			</div>
 		</div>

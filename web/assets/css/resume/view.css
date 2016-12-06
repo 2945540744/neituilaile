@@ -83,7 +83,7 @@ em.required {
 }
 
 .edu-item {
-	list-style-type: none;
+	// list-style-type: none;
 }
 
 .edu-item > span {
@@ -97,7 +97,6 @@ em.required {
 }
 
 .edu-item > pre {
-	margin-left: -8px;
 	margin-top: 5px;
 	color: #999;
 }
@@ -115,6 +114,14 @@ em.required {
 .btn-delivery {
 	width: 90%;
 	margin: 0 5%;
+}
+
+pre {
+	white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
 }
 
 

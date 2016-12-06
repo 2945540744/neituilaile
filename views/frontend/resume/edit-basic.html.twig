@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block sub_js_block %}
-<script type="text/javascript" src="/assets/js/resume/edit.js"></script>
+<script type="text/javascript" src="/assets/js/resume/edit-basic.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -19,14 +19,20 @@
 		<div class="row form-group">
 			<label class="col-xs-3">姓名</label>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="name" value="basic.name"/>
+				<input class="form-control" type="text" name="name" value="{{basic.nickname|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
 			<label class="col-xs-3">性别</label>
 			<div class="col-xs-9">
-				<label for="genderMale" class="radio-label"><input class="radio" type="radio" id="genderMale" name="gender" value="1"/>男</label>
-				<label for="genderFemale" class="radio-label"><input class="radio" type="radio" id="genderFemale" name="gender" value="0"/>女</label>
+				<label for="genderMale" class="radio-label">
+					<input class="radio" type="radio" id="genderMale" name="gender" value="男" {% if basic.gender|default('男') == '男' %}checked{% endif %}/>
+					男
+				</label>
+				<label for="genderFemale" class="radio-label">
+					<input class="radio" type="radio" id="genderFemale" name="gender" value="女" {% if basic.gender|default('男') == '女' %}checked{% endif %}/>
+					女
+				</label>
 			</div>
 		</div>
 
@@ -34,11 +40,11 @@
 			<label class="col-xs-3">最高学历</label>
 			<div class="col-xs-9">
 				<select class="form-control col-xs-12 mobileSelect js-user-edu" name="edu_level" data-style="btn-link">
-					<option value="0">高中</option>
-					<option value="1">大专</option>
-					<option value="2">本科</option>
-					<option value="3">硕士</option>
-					<option value="4">博士</option>
+					<option value="高中" {% if basic.edu_level == '高中' %}selected{% endif %}>高中</option>
+					<option value="专科" {% if basic.edu_level == '专科' %}selected{% endif %}>专科</option>
+					<option value="本科" {% if basic.edu_level == '本科' %}selected{% endif %}>本科</option>
+					<option value="硕士" {% if basic.edu_level == '硕士' %}selected{% endif %}>硕士</option>
+					<option value="博士" {% if basic.edu_level == '博士' %}selected{% endif %}>博士</option>
 				</select>
 			</div>
 		</div>
@@ -46,39 +52,39 @@
 			<label class="col-xs-3">工作年限</label>
 			<div class="col-xs-9">
 				<select class="form-control col-xs-12 mobileSelect js-post-exp" name="exp_level" data-style="btn-link">
-					<option value="10">在读</option>
-					<option value="99">应届生</option>
-					<option value="1">1年以内</option>
-					<option value="2">1-3年</option>
-					<option value="3">3-5年</option>
-					<option value="4">5-10年</option>
-					<option value="5">10年以上</option>
+					<option value="在读" {% if basic.exp_level == '在读' %}selected{% endif %}>在读</option>
+					<option value="应届生" {% if basic.exp_level == '应届生' %}selected{% endif %}>应届生</option>
+					<option value="1年以内" {% if basic.exp_level == '1年以内' %}selected{% endif %}>1年以内</option>
+					<option value="1-3年" {% if basic.exp_level == '1-3年' %}selected{% endif %}>1-3年</option>
+					<option value="3-5年" {% if basic.exp_level == '3-5年' %}selected{% endif %}>3-5年</option>
+					<option value="5-10年" {% if basic.exp_level == '5-10年' %}selected{% endif %}>5-10年</option>
+					<option value="10年以上" {% if basic.exp_level == '10年以上' %}selected{% endif %}>10年以上</option>
 				</select>
 			</div>
 		</div>
 		<div class="row form-group">
 			<label class="col-xs-3">生日</label>
 			<div class="col-xs-9">
-				<input class="form-control date-picker" type="text" name="birthday" value="basic.birthday"/>
+				<input class="form-control date-picker" type="text" name="birthday" value="{{basic.birthday|default('')}}" placeholder="1990-01-01" />
 			</div>
 		</div>
 		<div class="row form-group">
 			<label class="col-xs-3">所在城市</label>
 			<div class="col-xs-9">
-				<select class="form-control col-xs-12 mobileSelect js-post-city" name="user_city" placeholder="工作城市" data-style="data-link">
+				<select class="form-control col-xs-12 mobileSelect js-post-city" name="addr_city" placeholder="所在城市" data-style="data-link">
 					<optgroup label="北京">
-						<option value="bj">北京</option>
+						<option value="北京" {% if basic.addr_city == '北京' %}selected{% endif %}>北京</option>
 					</optgroup>
 					<optgroup label="上海">
-						<option value="sh">上海</option>
+						<option value="上海" {% if basic.addr_city == '上海' %}selected{% endif %}>上海</option>
 					</optgroup>
 					<optgroup label="浙江">
-						<option value="hz">杭州</option>
-						<option value="nb">宁波</option>
+						<option value="杭州" {% if basic.addr_city == '杭州' %}selected{% endif %}>杭州</option>
+						<option value="宁波" {% if basic.addr_city == '宁波' %}selected{% endif %}>宁波</option>
 					</optgroup>
 					<optgroup label="广东">
-						<option value="gz">广州</option>
-						<option value="sz">深圳</option>
+						<option value="广州" {% if basic.addr_city == '广州' %}selected{% endif %}>广州</option>
+						<option value="深圳" {% if basic.addr_city == '深圳' %}selected{% endif %}>深圳</option>
 					</optgroup>
 				</select>
 			</div>
@@ -86,19 +92,19 @@
 		<div class="row form-group">
 			<label class="col-xs-3">联系电话</label>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="mobile" value="basic.mobile"/>
+				<input class="form-control" type="text" name="mobile" value="{{basic.mobile|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
 			<label class="col-xs-3">联系邮箱</label>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="email" value="basic.email"/>
+				<input class="form-control" type="text" name="email" value="{{basic.email|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
 			<label class="col-xs-3">一句话介绍</label>
 			<div class="col-xs-9">
-				<input class="form-control" type="text" name="profile" value="basic.profile"/>
+				<input class="form-control" type="text" name="profile" value="{{basic.profile|default('')}}"/>
 			</div>
 		</div>
 		<div class="row bottom-spacer"></div>

@@ -31,14 +31,13 @@ class WeixinmobOAuthClient extends AbstractOAuthClient
         );
         $result = $this->getRequest(self::OAUTH_TOKEN_URL, $params);
         NLogger::getLogger('WeixinmobOAuthClient')->debug('getAccessToken : ', $result);
-        $rawToken = array();
-        $rawToken = json_decode($result, true);
+        $this->checkResult($result);
         return array(
-            'userId'       => $userInfo['tpid'],
-            'expiredTime'  => $rawToken['expires_in'],
-            'access_token' => $rawToken['access_token'],
-            'token'        => $rawToken['access_token'],
-            'openid'       => $rawToken['openid']
+            // 'userId'       => $result['tpid'],
+            'expiredTime'  => $result['expires_in'],
+            'access_token' => $result['access_token'],
+            'token'        => $result['access_token'],
+            'openid'       => $result['openid']
         );
     }
 
@@ -49,12 +48,18 @@ class WeixinmobOAuthClient extends AbstractOAuthClient
             'access_token' => $token['access_token']);
         $result = $this->getRequest(self::USERINFO_URL, $params);
         NLogger::getLogger('WeixinmobOAuthClient')->debug('getUserInfo : ', $result);
-        $info              = json_decode($result, true);
-        $token['unionid']  = $info['unionid'];
-        $token['nickname'] = $info['nickname'];
-        $token['avatar']   = $info['headimgurl'];
-        $token['gender']   = $info['sex'];
+        $this->checkResult($result);
+        $token['unionid']  = $result['unionid'];
+        $token['nickname'] = $result['nickname'];
+        $token['avatar']   = $result['headimgurl'];
+        $token['gender']   = $result['sex'];
         return $token;
     }
 
+    private function checkResult($result)
+    {
+        if (isset($result['errcode'])) {
+            throw new \Exception('与微信通讯出错：'.$result['errmsg']);
+        }
+    }
 }

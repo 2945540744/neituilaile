@@ -2,6 +2,7 @@
 
 namespace Neitui\Service\Impl;
 
+use Neitui\Common\ArrayToolkit;
 use Neitui\Service\UserService;
 
 class UserServiceImpl extends BaseService implements UserService
@@ -28,7 +29,7 @@ class UserServiceImpl extends BaseService implements UserService
         if ($existed) {
             $existed['nickname'] = $user['nickname'];
             $existed['username'] = $user['nickname'];
-            $existed['gender']   = $user['gender'];
+            $existed['gender']   = $user['gender'] == 1 ? '男' : '女';
             $existed['avatar']   = $user['avatar'];
             $existed['updated']  = date('Y-m-d H:i:s');
             var_dump($user);
@@ -51,10 +52,76 @@ class UserServiceImpl extends BaseService implements UserService
         return $this->getUserDao()->create($new);
     }
 
+    public function updateUser($id, $fields)
+    {
+        $fields = ArrayToolkit::parts($fields, array(
+            'nickname',
+            'gender',
+            'edu_level',
+            'exp_level',
+            'birthday',
+            'addr_city',
+            'mobile',
+            'email',
+            'profile'
+        ));
+
+        return $this->getUserDao()->update($id, $fields);
+    }
+
+    public function saveEdu($userId, $edu)
+    {
+        $edu = ArrayToolkit::parts($edu, array(
+            'school_name',
+            'major_name',
+            'start_date',
+            'end_date',
+            'edu_level'
+        ));
+
+        $existed = $this->getEducation($userId);
+        if (!empty($existed)) {
+            $edu = array_merge($existed, $edu);
+        }
+
+        if (!isset($edu['id'])) {
+            $this->getUserEducationDao()->create($edu);
+        } else {
+            $this->getUserEducationDao()->update($edu['id'], $edu);
+        }
+    }
+
+    public function saveExp($userId, $exp)
+    {
+        $exp = ArrayToolkit::parts($exp, array(
+            'company_name',
+            'position_name',
+            'start_date',
+            'end_date',
+            'summary'
+        ));
+        //假设只有一份工作经历
+        $existed = $this->getCompanies($userId);
+        if (!empty($existed)) {
+            $exp = array_merge($existed[0], $exp);
+        }
+
+        if (!isset($exp['id'])) {
+            $exp['member_id'] = $userId;
+            $this->getUserCompanyDao()->create($exp);
+        } else {
+            $this->getUserCompanyDao()->update($exp['id'], $exp);
+        }
+    }
+
     //目前只录入用户的最高教育经历
     public function getEducation($userId)
     {
-        return $this->getUserEducationDao()->findByUserId($userId);
+        $edus = $this->getUserEducationDao()->findByUserId($userId);
+        if (!empty($edus)) {
+            return $edus[0];
+        }
+        return array();
     }
 
     //用户的工作经历

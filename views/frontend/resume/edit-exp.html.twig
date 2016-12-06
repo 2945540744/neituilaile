@@ -6,47 +6,47 @@
 {% endblock %}
 
 {% block sub_js_block %}
-<script type="text/javascript" src="/assets/js/resume/edit.js"></script>
+<script type="text/javascript" src="/assets/js/resume/edit-exp.js"></script>
 {% endblock %}
 
 {% block body %}
 <div class="container">
 	<form id="resume-form" class="" action="/resume/edit/exp" method="post">
 		<div class="row form-title">
-			<span class="title">编辑工作经历</span>
+			<span class="title">编辑最近工作经历</span>
 			<a href="javascript:;" class="btn btn-link pull-right head-menu js-btn-edit">保存</a>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">公司名称：</label>
-			<div class="col-xs-9">
+			<label class="col-xs-4">公司名称：</label>
+			<div class="col-xs-8">
 				<input type="hidden" name="part" value="exp">
-				<input class="form-control" type="text" name="company" value="exp.company"/>
+				<input class="form-control" type="text" name="company_name" value="{{exp.company_name|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">岗位：</label>
-			<div class="col-xs-9">
-				<input class="form-control" type="text" name="position" value="exp.position"/>
+			<label class="col-xs-4">岗位：</label>
+			<div class="col-xs-8">
+				<input class="form-control" type="text" name="position_name" value="{{exp.position_name|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">入职时间：</label>
-			<div class="col-xs-9">
-				<input class="form-control" type="text" name="startTime" value="exp.startTime"/>
+			<label class="col-xs-4">入职时间：</label>
+			<div class="col-xs-8">
+				<input class="form-control" type="text" name="start_date" value="{{exp.start_date|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">离职时间：</label>
-			<div class="col-xs-9">
-				<input class="form-control" type="text" name="endTime" value="exp.endTime"/>
+			<label class="col-xs-4">离职时间：</label>
+			<div class="col-xs-8">
+				<input class="form-control" type="text" name="end_date" value="{{exp.end_date|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">工作内容：</label>
-			<div class="col-xs-9">
-				<textarea class="form-control text-field" rows="15" name="content" placeholder="职责描述：xxxxx
+			<label class="col-xs-4">工作内容：</label>
+			<div class="col-xs-8">
+				<textarea class="form-control text-field" rows="15" name="summary" placeholder="职责描述：xxxxx
 				工作地点：xxxx
-				项目描述：xxxxxx">exp.content</textarea>
+				项目描述：xxxxxx">{{exp.summary|default('')}}</textarea>
 			</div>
 		</div>
 		<div class="row bottom-spacer"></div>

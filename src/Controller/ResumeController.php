@@ -3,8 +3,10 @@
 namespace Neitui\Controller;
 
 use Silex\Application;
+use Neitui\Common\RequestToolkit;
 use Symfony\Component\HttpFoundation\Request;
 use Neitui\Exception\InvalidArgumentException;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ResumeController extends BaseController
 {
@@ -18,7 +20,7 @@ class ResumeController extends BaseController
 
         return $app['twig']->render('frontend/resume/view.html.twig', array(
             'basic'  => $basic,
-            'edus'   => $edu,
+            'edus'   => array($edu),
             'exps'   => $exp,
             'resume' => $resume
         ));
@@ -28,8 +30,8 @@ class ResumeController extends BaseController
     {
         if ($request->isMethod('POST')) {
             $data = RequestToolkit::getPostData($request);
-            $this->getUserService()->updateUser($data['id'], $data);
-            return new RedirectResponse('/resume/edit/basic');
+            $this->getUserService()->updateUser($app['user']['id'], $data);
+            return new RedirectResponse('/resume/index');
         }
 
         $basic = $this->getUserService()->getUser($app['user']['id']);
@@ -42,8 +44,8 @@ class ResumeController extends BaseController
     {
         if ($request->isMethod('POST')) {
             $data = RequestToolkit::getPostData($request);
-            $this->getUserService()->saveEdu($data['id'], $data);
-            return new RedirectResponse('/resume/edit/edu');
+            $this->getUserService()->saveEdu($app['user']['id'], $data);
+            return new RedirectResponse('/resume/index');
         }
 
         $edu = $this->getUserService()->getEducation($app['user']['id']);
@@ -56,13 +58,13 @@ class ResumeController extends BaseController
     {
         if ($request->isMethod('POST')) {
             $data = RequestToolkit::getPostData($request);
-            $this->getUserService()->saveExp($data['id'], $data);
-            return new RedirectResponse('/resume/edit/exp');
+            $this->getUserService()->saveExp($app['user']['id'], $data);
+            return new RedirectResponse('/resume/index');
         }
 
         $exp = $this->getUserService()->getCompanies($app['user']['id']);
         return $app['twig']->render('frontend/resume/edit-exp.html.twig', array(
-            'exp' => $exp
+            'exp' => empty($exp) ? array() : $exp[0]
         ));
     }
 
@@ -70,13 +72,13 @@ class ResumeController extends BaseController
     {
         if ($request->isMethod('POST')) {
             $data = RequestToolkit::getPostData($request);
-            $this->getUserService()->saveExp($data['id'], $data);
-            return new RedirectResponse('/resume/edit/exp');
+            $this->getResumeService()->saveResume($app['user']['id'], $data);
+            return new RedirectResponse('/resume/index');
         }
 
-        $exp = $this->getUserService()->getCompanies($app['user']['id']);
-        return $app['twig']->render('frontend/resume/edit-exp.html.twig', array(
-            'exp' => $exp
+        $resume = $this->getResumeService()->getResumeByUserId($app['user']['id']);
+        return $app['twig']->render('frontend/resume/edit-intent.html.twig', array(
+            'resume' => $resume
         ));
     }
 
