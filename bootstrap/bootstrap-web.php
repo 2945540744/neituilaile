@@ -28,10 +28,10 @@ $app->register(new Silex\Provider\ServiceControllerServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => ROOT_DIR.'/views'
 ));
-// $app['twig'] = $app->extend('twig', function ($twig, $app) {
-//     $twig->addExtension(new Neitui\Common\SysParamExtension());
-//     return $twig;
-// });
+$app['twig'] = $app->extend('twig', function ($twig, $app) {
+    $twig->addExtension(new Neitui\Common\WebExtension());
+    return $twig;
+});
 
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.logfile' => ROOT_DIR.'/var/logs/app.log'

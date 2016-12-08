@@ -17,7 +17,8 @@ class WebExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('dict', array($this, 'getDictValue'))
+            new \Twig_SimpleFunction('dict', array($this, 'getDictValue')),
+            new \Twig_SimpleFunction('age', array($this, 'calcAge'))
         );
     }
 
@@ -28,6 +29,15 @@ class WebExtension extends \Twig_Extension
             return $dicts[$dict][$key];
         }
         return null;
+    }
+
+    public function calcAge($date)
+    {
+        if (empty($date)) {
+            return '未知';
+        }
+
+        return ((int) date('Y', time()) - (int) substr($date, 0, 4)).'岁';
     }
 
     public function getName()

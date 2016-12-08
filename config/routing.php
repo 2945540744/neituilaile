@@ -50,3 +50,4 @@ $app->post('/resume/edit/exp', 'ResumeController:editExp');
 $app->get('/resume/edit/intent', 'ResumeController:editIntent');
 $app->post('/resume/edit/intent', 'ResumeController:editIntent');
 $app->post('/resume/delete/{type}/{id}', 'ResumeController:delete');
+$app->get('/resume/preview', 'ResumeController:preview');

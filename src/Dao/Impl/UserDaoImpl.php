@@ -2,11 +2,10 @@
 
 namespace Neitui\Dao\Impl;
 
-// use Neitui\Dao\UserDao;
+use Neitui\Dao\UserDao;
 use Codeages\Biz\Framework\Dao\GeneralDaoImpl;
 
-class UserDaoImpl extends GeneralDaoImpl//implements UserDao
-
+class UserDaoImpl extends GeneralDaoImpl implements UserDao
 {
     protected $table = 'n2_member';
 
