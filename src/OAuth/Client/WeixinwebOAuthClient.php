@@ -1,6 +1,8 @@
 <?php
 namespace Neitui\OAuth\Client;
 
+use Neitui\Context\NLogger;
+
 class WeixinwebOAuthClient extends AbstractOAuthClient
 {
     const USERINFO_URL    = 'https://api.weixin.qq.com/sns/userinfo';
@@ -26,9 +28,8 @@ class WeixinwebOAuthClient extends AbstractOAuthClient
             'grant_type' => 'authorization_code'
         );
         $result = $this->getRequest(self::OAUTH_TOKEN_URL, $params);
-        // NLogger::getLogger('WeixinwebOAuthClient')->debug('getAccessToken : ', $result);
+        NLogger::getLogger('WeixinwebOAuthClient')->debug('getAccessToken : ', $result);
         $this->checkResult($result);
-        // $rawToken = json_decode($result, true);
         $rawToken = $result;
         return array(
             'expiredTime'  => $rawToken['expires_in'],
@@ -44,8 +45,7 @@ class WeixinwebOAuthClient extends AbstractOAuthClient
             'openid'       => $token['openid'],
             'access_token' => $token['access_token']);
         $result = $this->getRequest(self::USERINFO_URL, $params);
-        // NLogger::getLogger('WeixinwebOAuthClient')->debug('getUserinfo : ', $result);
-        // $info = json_decode($result, true);
+        NLogger::getLogger('WeixinwebOAuthClient')->debug('getUserinfo : ', $result);
         $this->checkResult($result);
         $token['unionid']  = $result['unionid'];
         $token['nickname'] = $result['nickname'];
