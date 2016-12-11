@@ -2,8 +2,6 @@
 
 namespace Neitui\OAuth\Client;
 
-use Neitui\Context\NLogger;
-
 class WeixinmobOAuthClient extends AbstractOAuthClient
 {
     const USERINFO_URL    = 'https://api.weixin.qq.com/sns/userinfo';
@@ -30,7 +28,7 @@ class WeixinmobOAuthClient extends AbstractOAuthClient
             'grant_type' => 'authorization_code'
         );
         $result = $this->getRequest(self::OAUTH_TOKEN_URL, $params);
-        NLogger::getLogger('WeixinmobOAuthClient')->debug('getAccessToken : ', $result);
+        // NLogger::getLogger('WeixinmobOAuthClient')->debug('getAccessToken : ', $result);
         $this->checkResult($result);
         return array(
             // 'userId'       => $result['tpid'],
@@ -47,7 +45,7 @@ class WeixinmobOAuthClient extends AbstractOAuthClient
             'openid'       => $token['openid'],
             'access_token' => $token['access_token']);
         $result = $this->getRequest(self::USERINFO_URL, $params);
-        NLogger::getLogger('WeixinmobOAuthClient')->debug('getUserInfo : ', $result);
+        // NLogger::getLogger('WeixinmobOAuthClient')->debug('getUserInfo : ', $result);
         $this->checkResult($result);
         $token['unionid']  = $result['unionid'];
         $token['nickname'] = $result['nickname'];
