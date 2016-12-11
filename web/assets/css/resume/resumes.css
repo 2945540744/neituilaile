@@ -1,0 +1,43 @@
+body {
+	background-color: #eee;
+}
+
+.delivery_time {
+	padding-top: 20px;
+	padding-bottom: 10px;
+	text-align: center;
+	font-size: 0.8em;
+	line-height: 1.5em;
+	color: #aaa;
+}
+
+.resume {
+	border-radius: 2px;
+	background-color: transparent;
+}
+
+.delivery_content {
+	margin: 0 15px;
+	padding: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    background: white;
+}
+
+.resume-header {
+	color: #bbb;
+	line-height: 2.5em;
+    border-bottom: 1px solid #eee;
+}
+
+.resume-post {
+	font-weight: bold;
+	color: black;
+}
+
+.user-avatar {
+	float: left;
+	border-radius: 1em; 
+	height: 4em; 
+	width: 4em;
+}

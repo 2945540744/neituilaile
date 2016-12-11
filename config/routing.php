@@ -23,6 +23,8 @@ $app['OAuth2ClientController'] = function () use ($app) {
 
 $app->get('/', 'DefaultController:index')->bind('index');
 $app->get('/login', 'DefaultController:login')->bind('login');
+$app->get('/my', 'DefaultController:my')->bind('my');
+$app->get('/switch/{identity}', 'DefaultController:switchIdentity')->bind('switchID');
 
 $app->get('/oauth2/login/{type}', 'OAuth2ClientController:login')->bind('login_by_oauth2');
 $app->get('/oauth2/confirm/{type}', 'OAuth2ClientController:confirmLogin')->bind('confirm_login_by_oauth2');
@@ -51,3 +53,5 @@ $app->get('/resume/edit/intent', 'ResumeController:editIntent');
 $app->post('/resume/edit/intent', 'ResumeController:editIntent');
 $app->post('/resume/delete/{type}/{id}', 'ResumeController:delete');
 $app->get('/resume/preview', 'ResumeController:preview');
+$app->get('/resume/resumes', 'ResumeController:resumes');
+$app->get('/resume/delivery/{jobId}', 'ResumeController:delivery');

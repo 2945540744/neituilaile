@@ -1,0 +1,51 @@
+{% extends 'frontend/front-layout.html.twig' %}
+{% block sub_css_block %}
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/resume/resumes.css">
+{% endblock %}
+
+{% block sub_js_block %}
+<script type="text/javascript" src="/assets/js/resume/resumes.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="row">
+		<span class="title">简历管理</span>
+		{# <a href="/resume/preview" class="btn btn-link pull-right head-menu">预览</a> #}
+	</div>	
+	{# <div class="row resume">
+		<div class="col-sm-12 delivery_time">{date|humanizedDate}</div>
+		<div class="col-sm-12 delivery_content">
+			<div class="col-sm-12 resume-header">
+				投递给"<span class="resume-post">{post_name}</span>"职位
+			</div>
+			<div style="padding-left: 15px; padding-top: 15px;">
+				<img src="###"  class="user-avatar">
+				<div style="float: left; padding-left: 10px;">
+					<span style="display: block;">{nickname}的在线简历</span>
+					<a style="display: block;" href="{'/resume/preview?rid=' ~ resume.id}"><i class="icon icon-preview"></i>点击查看</a>
+				</div>
+			</div>
+		</div>
+	</div> #}
+	{% for resume in resumes %}
+	<div class="row resume">
+		<div class="col-sm-12 delivery_time">{{resume.delivery_time}}</div>
+		<div class="col-sm-12 delivery_content">
+			<div class="col-sm-12 resume-header">
+				投递给"<span class="resume-post">{{d.job_title}}</span>"职位
+			</div>
+			<div style="padding-left: 15px; padding-top: 15px;">
+				<img src="###"  class="user-avatar">
+				<div style="float: left; padding-left: 10px;">
+					<span style="display: block;">{{d.nickname}}的在线简历</span>
+					<a style="display: block;" href="{'/resume/preview?rid=' ~ resume.resume_id}"><i class="icon icon-preview"></i>点击查看</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+
+</div>
+{% endblock %}

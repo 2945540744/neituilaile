@@ -16,6 +16,11 @@ class ResumeServiceImpl extends BaseService
         return $this->getResumeDao()->getByUserId($userId);
     }
 
+    public function findDeliveredResumes($companyId)
+    {
+        return $this->getResumeDao()->findDeliveredResumes($companyId);
+    }
+
     public function saveResume($userId, $resume)
     {
         $resume = ArrayToolkit::parts($resume, array(

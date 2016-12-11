@@ -1,0 +1,37 @@
+.nickname {
+	margin: 0 auto;	
+	text-align: center;
+	display: block;
+	border: 1px solid #ddd;
+	background-color: #eee;
+	border-radius: 50%;
+	line-height: 8em;
+    width: 8em;
+}
+
+.user-nav {
+	margin-top: 20px;
+}
+
+.user-nav > ul {
+	width: 100%;
+	list-style: none;
+}
+
+.user-nav > ul > li {
+	width: 100%;
+	border-bottom: 1px solid #bbb;
+	line-height: 4em;
+}
+
+.user-nav > ul > li > a {
+    padding: 5px 0;
+	color: black;
+    font-weight: bold;
+}
+
+.pull-right {
+	position: relative;
+	float: right;
+	right: 15px;
+}

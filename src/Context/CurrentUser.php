@@ -24,7 +24,18 @@ class CurrentUser implements CurrentUserInterface, UserInterface, AdvancedUserIn
             }
             return $this->roles;
         }
+        //说明：
+        //1. 'ROLE_USER'和'ROLE_ADMIN'表达普通用户和超管；
+        //2. 'RECRUITER'和'JOBHUNTER'表达招聘者和求职者身份；每个用户都可以拥有此两种身份，但不能同时使用
         return array('ROLE_USER');
+    }
+
+    public function getCurrentIdentity()
+    {
+        if (!empty($this->fields['current_identity'])) {
+            return $this->fields['current_identity'];
+        }
+        return 'JOBHUNTER';
     }
 
     public function getPassword()
@@ -83,10 +94,10 @@ class CurrentUser implements CurrentUserInterface, UserInterface, AdvancedUserIn
 
     public function __set($name, $value)
     {
-        if (array_key_exists($name, $this->fields)) {
-            $this->fields[$name] = $value;
-        }
-        throw new \RuntimeException("fail to set : {$name} is not exist in CurrentUser.");
+        // if (array_key_exists($name, $this->fields)) {
+        $this->fields[$name] = $value;
+        // }
+        // throw new \RuntimeException("fail to set : {$name} is not exist in CurrentUser.");
     }
 
     public function __get($name)

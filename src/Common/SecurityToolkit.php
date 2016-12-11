@@ -24,18 +24,11 @@ class SecurityToolkit
 
     public static function login(Application $app, $request, $currentUser)
     {
+        if (empty($currentUser['current_identity'])) {
+            $currentUser['current_identity'] = 'JOBHUNTER';
+        }
         $token = new UsernamePasswordToken($currentUser, null, 'secured', $currentUser->getRoles());
         $app['security.token_storage']->setToken($token);
         $request->getSession()->set('_security_secured', serialize($token));
-        // $app['service.kernel']->setUser($currentUser);
-
-//         self::configTgc($app);
-
-        // $service = $request->query->get('service');
-        // if (empty($service)) {
-        //     $service = $request->getSession()->get('service');
-        // }
-
-//         self::createLoginLog($app, $request, $currentUser, $service);
     }
 }

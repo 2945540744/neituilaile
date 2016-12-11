@@ -70,8 +70,13 @@
 	<!-- <div class="row bottom-spacer"></div> -->
 	<!-- 底部菜单 -->
 	<div class="bottom-menu">
-		<button class="btn btn-mini btn-secondary btn-half js-btn-edit" data-action="/job/edit/{{job.id}}">编辑职位</button>
-		<button class="btn btn-mini btn-secondary btn-half js-btn-close" data-action="/job/close/{{job.id}}">关闭职位</button>
+
+		{% if user.id === job.creator %}
+			<button class="btn btn-mini btn-secondary btn-half js-btn-edit" data-action="/job/edit/{{job.id}}">编辑职位</button>
+		    <button class="btn btn-mini btn-secondary btn-half js-btn-close" data-action="/job/close/{{job.id}}">关闭职位</button>
+		{% elseif user.current_identity == 'JOBHUNTER' %}
+			<button class="btn btn-mini btn-secondary btn-half js-btn-edit" data-action="/resume/delivery/{{job.id}}">投递简历</button>
+		{% endif %}
 	</div>
 </div>
 

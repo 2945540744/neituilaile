@@ -20,7 +20,7 @@ class CustomLogoutSuccessHandler implements LogoutSuccessHandlerInterface
         $session = $request->getSession();
         $session->invalidate();
 
-        $redirect_url = '/job/index';
+        $redirect_url = '/';
 
         return new RedirectResponse($redirect_url);
     }

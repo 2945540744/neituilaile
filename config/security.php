@@ -1,10 +1,8 @@
 <?php
 
 use Neitui\Context\UserProvider;
-use Neitui\Common\SecurityToolkit;
 use Neitui\Context\AuthenticationEntryPoint;
 use Neitui\Context\CustomLogoutSuccessHandler;
-use Symfony\Component\Security\Http\SecurityEvents;
 use Neitui\Context\NeituiAuthenticationFailureHandler;
 use Neitui\Context\NeituiAuthenticationSuccessHandler;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
@@ -27,7 +25,7 @@ $app['security.firewalls'] = array(
             'check_path' => '/login_check'
         ),
         'remember_me' => array(
-            'key'                => 'dsafewf34t54tgeagqa',
+            'key'                => 'dsjflkjgewfsefjiwejga',
             'always_remember_me' => true
         ),
         'logout'      => array('logout_path' => '/logout'),
@@ -70,6 +68,6 @@ $app['security.entry_point.form._proto'] = $app->protect(function ($name, array 
     return new AuthenticationEntryPoint($app['security.http_utils'], $login_path);
 });
 
-$app->on(SecurityEvents::INTERACTIVE_LOGIN, function ($event) use ($app) {
-    SecurityToolkit::configTgc($app);
-});
+// $app->on(SecurityEvents::INTERACTIVE_LOGIN, function ($event) use ($app) {
+//     SecurityToolkit::configTgc($app);
+// });

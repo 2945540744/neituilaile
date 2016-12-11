@@ -17,6 +17,11 @@ class UserServiceImpl extends BaseService implements UserService
         return $this->getUserDao()->getByFields(array('username' => $username));
     }
 
+    public function getCompanyByUserId($userId)
+    {
+        return $this->getCompanyDao()->getByUserId($userId);
+    }
+
     public function getUserByWxUnionId($wid)
     {
         return $this->getUserDao()->getByFields(array('wx_unionid' => $wid));
@@ -32,8 +37,6 @@ class UserServiceImpl extends BaseService implements UserService
             $existed['gender']   = $user['gender'] == 1 ? '男' : '女';
             $existed['avatar']   = $user['avatar'];
             $existed['updated']  = date('Y-m-d H:i:s');
-            var_dump($user);
-            var_dump($existed);
             return $this->getUserDao()->update($existed['id'], $existed);
         }
         $new = array(
@@ -50,6 +53,17 @@ class UserServiceImpl extends BaseService implements UserService
             $new['wx_web'] = $user['openid'];
         }
         return $this->getUserDao()->create($new);
+    }
+
+    public function switchUserIdentity($userId, $identity)
+    {
+        $identity = strtoupper($identity);
+        $user     = $this->getUser($userId);
+        if ($user['current_identity'] === $identity) {
+            return $user;
+        }
+        $user['current_identity'] = $identity;
+        return $this->getUserDao()->update($userId, $user);
     }
 
     public function updateUser($id, $fields)
@@ -125,7 +139,7 @@ class UserServiceImpl extends BaseService implements UserService
     }
 
     //用户的工作经历
-    public function getCompanies($userId)
+    public function getExperiences($userId)
     {
         return $this->getUserCompanyDao()->findByUserId($userId);
     }

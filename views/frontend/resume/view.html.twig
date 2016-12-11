@@ -1,6 +1,5 @@
 {% extends 'frontend/front-layout.html.twig' %}
 {% block sub_css_block %}
-<link rel="stylesheet" type="text/css" href="mobile-selector/bootstrap-fullscreen-select.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/resume/view.css">
 {% endblock %}
@@ -12,7 +11,8 @@
 {% block body %}
 <div class="container">
 	<div class="row">
-		<span class="title">简历完整度：58%</span>
+		{# <span class="title">简历完整度：58%</span> #}
+		<span class="title">我的简历</span>
 		<a href="/resume/preview" class="btn btn-link pull-right head-menu">预览</a>
 	</div>
 	<!-- 基本信息 -->
@@ -90,7 +90,7 @@
 				{% for exp in exps %}
 					<span>{{exp.start_date}} - {{exp.end_date}}</span>
 					<span>{{exp.company_name}}/{{exp.position_name}}</span>
-					<pre>{{exp.summary}}</pre>
+					<pre>{{exp.summary|default('')}}</pre>
 				{% endfor %}
 			</div>
 		</div>
@@ -116,7 +116,7 @@
 				{% for edu in edus %}
 					<span>{{edu.start_date|default('')}} - {{edu.end_date|default('')}}</span>
 					<span><i>{{edu.school_name|default('')}}</i> &nbsp; {{edu.major_name|default('')}}（{{edu.edu_level|default('')}}）</span>
-					<pre>{{edu.summary}}</pre>
+					<pre>{{edu.summary|default('')}}</pre>
 				{% endfor %}
 			</div>
 		</div>
@@ -138,11 +138,10 @@
 			
 		</div>
 	</div>
-	<div class="row bottom-spacer"></div>
-	<!-- 底部菜单 -->
+{# 	<div class="row bottom-spacer"></div>
 	<div class="bottom-menu">
 		<button class="btn btn-mini btn-success btn-delivery" data-action="/job/delivery">投递简历</button>
-	</div>
+	</div>#}
 </div>
 
 {% endblock %}

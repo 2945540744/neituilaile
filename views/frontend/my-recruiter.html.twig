@@ -1,0 +1,42 @@
+{% extends 'frontend/front-layout.html.twig' %}
+{% block sub_css_block %}
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/my.css">
+{% endblock %}
+
+{% block sub_js_block %}
+<script type="text/javascript" src="/assets/js/my.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="row">
+		<span class="title">我的</span>
+	</div>
+	<div class="row align-center" style="display: block; margin-top: 20px;">
+		<div class="nickname">{{user.nickname}}</div>
+	</div>
+	<div class="row user-nav">
+		<ul>
+			<li>
+				<a href="/resume/resumes">
+					<span>简历管理</span>
+					<span class="pull-right">></span>
+				</a>
+			</li>
+			<li>
+				<a href="/job/index">
+					<span>职位管理</span>
+					<span class="pull-right">></span>
+				</a>
+			</li>
+			<li>
+				<a href="/switch/jobhunter">
+					<span>切换为求职者身份</span>
+					<span class="pull-right">></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}

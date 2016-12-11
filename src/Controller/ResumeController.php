@@ -14,7 +14,7 @@ class ResumeController extends BaseController
         $userId = $app['user']['id'];
         $basic  = $this->getUserService()->getUser($userId);
         $edu    = $this->getUserService()->getEducation($userId);
-        $exp    = $this->getUserService()->getCompanies($userId);
+        $exp    = $this->getUserService()->getExperiences($userId);
         $resume = $this->getResumeService()->getResumeByUserId($userId);
 
         return $app['twig']->render('frontend/resume/view.html.twig', array(
@@ -61,7 +61,7 @@ class ResumeController extends BaseController
             return new RedirectResponse('/resume/index');
         }
 
-        $exp = $this->getUserService()->getCompanies($app['user']['id']);
+        $exp = $this->getUserService()->getExperiences($app['user']['id']);
         return $app['twig']->render('frontend/resume/edit-exp.html.twig', array(
             'exp' => empty($exp) ? array() : $exp[0]
         ));
@@ -87,13 +87,34 @@ class ResumeController extends BaseController
         $userId = 46;
         $basic  = $this->getUserService()->getUser($userId);
         $edu    = $this->getUserService()->getEducation($userId);
-        $exp    = $this->getUserService()->getCompanies($userId);
+        $exp    = $this->getUserService()->getExperiences($userId);
         $resume = $this->getResumeService()->getResumeByUserId($userId);
         return $app['twig']->render('frontend/resume/preview.html.twig', array(
             'basic'  => $basic,
             'edus'   => $edu,
             'exps'   => empty($exp) ? array() : $exp[0],
             'resume' => $resume
+        ));
+    }
+
+    public function delivery(Application $app, Request $request, $jobId)
+    {
+        //获取当前用户的简历，投递给指定的job
+        $user = $app['user'];
+        try {
+            $this->getResumeService()->deliveryResume($jobId, $user['id']);
+            return $this->jsonSuccess();
+        } catch (\Exception $e) {
+            return $this->jsonError($e->getMessage());
+        }
+    }
+
+    public function resumes(Application $app, Request $request)
+    {
+        $resumes = $this->getResumeService()->findDeliveredResumes($app['user']['id']);
+
+        return $app['twig']->render('frontend/resume/resumes.html.twig', array(
+            'resumes' => $resumes
         ));
     }
 

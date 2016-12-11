@@ -45,7 +45,7 @@ class OAuth2ClientController extends BaseController
         NLogger::getLogger('OAuth2ClientController')->debug('confirmLogin user : ', $user);
         SecurityToolkit::login($app, $request, new CurrentUser($user));
 
-        return new RedirectResponse($service ? $service : '/job/index');
+        return new RedirectResponse($service ? $service : '/');
     }
 
     private function downloadAvatar($uri)
