@@ -149,6 +149,11 @@ class UserServiceImpl extends BaseService implements UserService
         return $this->kernel->dao('Neitui:UserDao');
     }
 
+    protected function getCompanyDao()
+    {
+        return $this->kernel->dao('Neitui:CompanyDao');
+    }
+
     protected function getUserCompanyDao()
     {
         return $this->kernel->dao('Neitui:UserCompanyDao');

@@ -69,6 +69,7 @@ class JobServiceImpl extends BaseService//implements JobService
         ));
 
         $job['creator'] = $userId;
+        $job['status']  = '开放';
 
         return $this->getJobDao()->create($job);
     }
@@ -88,7 +89,7 @@ class JobServiceImpl extends BaseService//implements JobService
     public function closeJob($jobId, $userId)
     {
         //check if job exist
-        return $this->getJobDao()->update($jobId, array('status' => 2));
+        return $this->getJobDao()->update($jobId, array('status' => '关闭'));
     }
 
     public function getCompany($id)

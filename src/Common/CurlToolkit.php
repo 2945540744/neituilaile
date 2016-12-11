@@ -42,6 +42,11 @@ class CurlToolkit
 
         $response = curl_exec($curl);
         $curlinfo = curl_getinfo($curl);
+        if (false == $response) {
+            $err = curl_error($curl);
+            curl_close($curl);
+            throw new \Exception($err);
+        }
         NLogger::getLogger('CurlToolkit')->debug('request : ', array($response));
 
         $body = substr($response, $curlinfo['header_size']);

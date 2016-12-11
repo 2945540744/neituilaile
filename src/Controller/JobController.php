@@ -19,12 +19,21 @@ class JobController extends BaseController
 
     public function view(Application $app, $id = 0)
     {
-        $job     = $this->getJobService()->getJob($id);
-        $company = $this->getJobService()->getCompany($job['company_id']);
+        $job         = $this->getJobService()->getJob($id);
+        $owner       = $this->getUserService()->getUser($job['creator']);
+        $company     = $this->getJobService()->getCompany($job['company_id']);
+        $user        = $app['user'];
+        $isDelivered = false;
+        if ($user['id'] != $job['creator']) {
+            $record      = $this->getResumeService()->getDeliveryRecord($job['id'], $user['id']);
+            $isDelivered = !empty($record);
+        }
         return $app['twig']->render('frontend/job/view.html.twig', array(
-            'job'     => $job,
-            'company' => $company,
-            'user'    => $app['user']
+            'job'         => $job,
+            'owner'       => $owner,
+            'company'     => $company,
+            'user'        => $app['user'],
+            'isDelivered' => $isDelivered
         ));
     }
 
@@ -46,7 +55,7 @@ class JobController extends BaseController
             $data       = $request->request->all();
             $data['id'] = $id;
             $this->getJobService()->updateJob($data, $app['user']['id']);
-            return new RedirectResponse('/job/edit/'.$id);
+            return new RedirectResponse('/job/view/'.$id);
         }
 
         return $app['twig']->render('frontend/job/edit.html.twig', array(
@@ -55,8 +64,28 @@ class JobController extends BaseController
         ));
     }
 
+    public function close(Application $app, Request $request, $id)
+    {
+        try {
+            $this->getJobService()->closeJob($id, $app['user']['id']);
+            return $this->jsonSuccess();
+        } catch (\Exception $e) {
+            return $this->jsonError($e->getMessage());
+        }
+    }
+
     protected function getJobService()
     {
         return $this->kernel->service('Neitui:JobService');
+    }
+
+    protected function getResumeService()
+    {
+        return $this->kernel->service('Neitui:ResumeService');
+    }
+
+    protected function getUserService()
+    {
+        return $this->kernel->service('Neitui:UserService');
     }
 }

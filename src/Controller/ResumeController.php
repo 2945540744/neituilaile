@@ -111,7 +111,9 @@ class ResumeController extends BaseController
 
     public function resumes(Application $app, Request $request)
     {
-        $resumes = $this->getResumeService()->findDeliveredResumes($app['user']['id']);
+        $company = $this->getUserService()->getCompanyByUserId($app['user']['id']);
+        // var_dump($company);exit();
+        $resumes = $this->getResumeService()->findDeliveredResumes($company['id']);
 
         return $app['twig']->render('frontend/resume/resumes.html.twig', array(
             'resumes' => $resumes

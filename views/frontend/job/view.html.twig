@@ -38,13 +38,13 @@
 	</div>
 	<!-- 职位发布者信息 -->
 	<div class="row col-xs-12">
-		<div class="col-xs-3"><img src="{{user.avatar}}" class="avatar-sm"></div>
+		<div class="col-xs-3"><img src="{{owner.avatar}}" class="avatar-sm"></div>
 		<div class="col-xs-9">
 			<div class="col-xs-12">
-				<span>{{user.nickname|default('')}}</span>
+				<span>{{owner.nickname|default('')}}</span>
 			</div>
 			<div class="col-xs-12">
-				<span>{{user.position|default('')}}</span>
+				<span>{{owner.position|default('')}}</span>
 				<span>{{company.real_name_shot|default('')}}</span>
 				<span>{{company.industry|default('')}}</span>
 			</div>
@@ -70,12 +70,17 @@
 	<!-- <div class="row bottom-spacer"></div> -->
 	<!-- 底部菜单 -->
 	<div class="bottom-menu">
-
-		{% if user.id === job.creator %}
+		{% if job.status == '关闭' %}
+			<button class="btn btn-mini btn-secondary btn-half disabled">已关闭</button>			
+		{% elseif user.id == job.creator %}
 			<button class="btn btn-mini btn-secondary btn-half js-btn-edit" data-action="/job/edit/{{job.id}}">编辑职位</button>
-		    <button class="btn btn-mini btn-secondary btn-half js-btn-close" data-action="/job/close/{{job.id}}">关闭职位</button>
+			<button class="btn btn-mini btn-secondary btn-half js-btn-close" data-action="/job/close/{{job.id}}">关闭职位</button>
 		{% elseif user.current_identity == 'JOBHUNTER' %}
-			<button class="btn btn-mini btn-secondary btn-half js-btn-edit" data-action="/resume/delivery/{{job.id}}">投递简历</button>
+			{% if isDelivered %}
+			<button class="btn btn-mini btn-secondary btn-half disabled">已投递</button>
+			{% else %}
+			<button class="btn btn-mini btn-secondary btn-half js-btn-delivery" data-action="/resume/delivery/{{job.id}}">投递简历</button>
+			{% endif %}
 		{% endif %}
 	</div>
 </div>

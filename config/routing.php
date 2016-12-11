@@ -36,6 +36,7 @@ $app->post('/job/add', 'JobController:add');
 $app->get('/job/edit/{id}', 'JobController:edit');
 $app->post('/job/edit/{id}', 'JobController:edit');
 $app->get('/job/view/{id}', 'JobController:view');
+$app->post('/job/close/{id}', 'JobController:close');
 $app->get('/job/list', 'JobController:index');
 $app->get('/job/index', 'JobController:index');
 
@@ -54,4 +55,4 @@ $app->post('/resume/edit/intent', 'ResumeController:editIntent');
 $app->post('/resume/delete/{type}/{id}', 'ResumeController:delete');
 $app->get('/resume/preview', 'ResumeController:preview');
 $app->get('/resume/resumes', 'ResumeController:resumes');
-$app->get('/resume/delivery/{jobId}', 'ResumeController:delivery');
+$app->post('/resume/delivery/{jobId}', 'ResumeController:delivery');

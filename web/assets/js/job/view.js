@@ -6,6 +6,33 @@ $(document).ready(function(){
 	});
 
 	$('.js-btn-close').off('click').on('click', function(event){
-		alert('Close the Post: '+ $(event.target).data('action'));
+		// alert('Close the Post: '+ $(event.target).data('action'));
+		$.ajax({
+			url: $(event.currentTarget).data('action'),
+			type: 'POST',
+			success: function(resp){
+				if(resp.success){
+					alert('职位关闭成功！');
+					location.reload();
+				}else{
+					alert('职位关闭失败：' + resp.message);
+				}
+			}
+		});
+	});
+
+	$('.js-btn-delivery').off('click').on('click', function(event){
+		$.ajax({
+			url: $(event.currentTarget).data('action'),
+			type: 'POST',
+			success: function(resp){
+				if(resp.success){
+					alert('简历投递成功！');
+					location.reload();
+				}else{
+					alert('简历投递失败：' + resp.message);
+				}
+			}
+		});
 	});
 });
