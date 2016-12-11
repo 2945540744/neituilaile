@@ -1,6 +1,8 @@
 <?php
 namespace Neitui\Common;
 
+use Neitui\Context\NLogger;
+
 class CurlToolkit
 {
     public static function request($method, $url, $params = array(), $headers = array(), $conditions = array())
@@ -40,6 +42,7 @@ class CurlToolkit
 
         $response = curl_exec($curl);
         $curlinfo = curl_getinfo($curl);
+        NLogger::getLogger('CurlToolkit')->debug('request : ', array($response));
 
         $body = substr($response, $curlinfo['header_size']);
         curl_close($curl);
