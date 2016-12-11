@@ -1,6 +1,5 @@
 {% extends 'frontend/front-layout.html.twig' %}
 {% block sub_css_block %}
-<link rel="stylesheet" type="text/css" href="mobile-selector/bootstrap-fullscreen-select.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/resume/preview.css">
 {% endblock %}
@@ -12,44 +11,42 @@
 {% block body %}
 <div class="container">
   <div class="row basic">
-  	<div class="col-3">
+  	<div class="col-12 align-center">
   		<img src="{{basic.avatar}}" class="preview-avatar">
   	</div>
-  	<div class="col-9">
+  	<div class="col-12 align-center">
   		<div class="">
 	  		<span class="nickname">{{basic.nickname}}</span>
 	  		<span class="age">{{age(basic.birthday)}}</span>
 	  	</div>
 	  	<div class="weight">
 	  		<span>现任 {{exps.position_name}}</span>&nbsp;
-	  		<span>{{exps.company_name}}</span>
+	  		<span>{{resume.on_the_job ? '在职' : '离职'}}</span>
+	  		@<span>{{exps.company_name}}</span>
 	  	</div>
 	  	<div class="light">
-	  		<span><i class="icon icon-exp-level">{{basic.exp_level}}</span>
-	  		<span><i class="icon icon-edu-level">{{basic.edu_level}}</span>
-	  		<span><i class="icon icon-pay-range">{{resume.pay_range_from}}k-{{resume.pay_range_to}}k</span>
+	  		<span><i class="icon icon-exp-level"></i>{{basic.exp_level}}</span>
+	  		<span><i class="icon icon-edu-level"></i>{{basic.edu_level}}</span>
+	  		<span><i class="icon icon-pay-range"></i>{{resume.pay_range_from}}k-{{resume.pay_range_to}}k</span>
 	  	</div>
   	</div>
   	
   	<div class="col-12">
   		<pre style="padding: 3px 5px;">{{resume.summary}}</pre>
   	</div>
-  	<div class="col-12">
-  		{{resume.on_the_job ? '在职-暂不考虑' : '离职-随时到岗'}}
-  	</div>
   </div>
 
   <div class="row resume">
   	<div class="column-header">求职期望</div>
   	<div class="col-12">
-  		<span class="pull-left subtitle">{{resume.post_name}}</span>
-  		<span class="pull-right salary">{{resume.pay_range_from}}-{{resume.pay_range_to}}</span>
+  		<span class="weight">{{resume.post_name}}</span>
+  		<span class="pull-right">{{resume.pay_range_from}}k~{{resume.pay_range_to}}k</span>
   	</div>
   	<div class="col-12">
   		<span>期望行业：</span>
   		<span>{{resume.industry}}</span>
   	</div>
-  	<div class="col-sma-12">
+  	<div class="col-12">
   		<span>期望城市：</span>
   		<span>{{resume.addr_city}}</span>
   	</div>
@@ -62,7 +59,7 @@
   		<span class="pull-right date-range">{{exps.start_date}}-{{exps.end_date}}</span>
   	</div>
   	<div class="col-12">
-  		<span>{{exps.position_name}}</span>
+  		<span>任职 {{exps.position_name}}</span>
   	</div>
   	<div class="col-12">
   		<pre>{{exps.summary}}</pre>

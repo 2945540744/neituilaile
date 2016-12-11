@@ -44,9 +44,9 @@ $app['security.access_rules'] = array(
     array('^/login_check', 'IS_AUTHENTICATED_ANONYMOUSLY'),
     array('^/oauth2', 'IS_AUTHENTICATED_ANONYMOUSLY'),
     array('^/test', 'IS_AUTHENTICATED_ANONYMOUSLY'),
-    // array('^.*$', 'ROLE_USER')
+    array('^.*$', 'ROLE_USER')
     //test only
-    array('^.*$', 'IS_AUTHENTICATED_ANONYMOUSLY')
+    // array('^.*$', 'IS_AUTHENTICATED_ANONYMOUSLY')
 );
 
 $app['security.default_encoder'] = function ($app) {

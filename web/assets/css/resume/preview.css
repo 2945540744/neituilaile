@@ -3,15 +3,20 @@ body {
 }
 .container {
 	background-color: #eee;
-	margin: 5px;
 }
+
 .row {
-	margin-top: 15px;
+	padding-left: 15px;
+	padding-right: 15px; 
 	background-color: white;
 }
+.row + div.row {
+	margin-top: 15px;
+}
+
+
 .col-3 {
 	width: 25%;
-	height: auto;
 }
 
 .col-9 {
@@ -26,7 +31,6 @@ body {
 .basic > div {
 	float: left;
 	display: inline-block;
-	height: 25px;
 }
 
 .basic > .col-3 {
@@ -34,7 +38,7 @@ body {
 }
 
 .preview-avatar {
-	float:left;
+	border-radius: 50%;
 	width: 100px;
 	height: 100px;
 }
@@ -59,8 +63,24 @@ body {
 }
 
 .column-header {
+	padding: 5px 0;
     width: 100%;
     font-weight: bold;
     font-size: 1.1em;
     color: #0ea25b;
+}
+
+.pull-right {
+	position: relative;
+	float: right;
+	right: 15px;
+}
+
+pre {
+	text-indent: 2em;
+	margin-right: 15px;
+}
+
+.align-center {
+	text-align: center;
 }
