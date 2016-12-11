@@ -12,7 +12,12 @@ class DefaultController extends BaseController
 {
     public function index(Application $app)
     {
-        return new RedirectResponse('/my');
+        // return new RedirectResponse('/my');
+        $jobs = $this->getJobService()->searchJobs();
+
+        return $app['twig']->render('frontend/index.html.twig', array(
+            'jobs' => $jobs
+        ));
     }
 
     public function login(Application $app, Request $request)
@@ -46,5 +51,10 @@ class DefaultController extends BaseController
     protected function getUserService()
     {
         return $this->kernel->service('Neitui:UserService');
+    }
+
+    protected function getJobService()
+    {
+        return $this->kernel->service('Neitui:JobService');
     }
 }

@@ -22,6 +22,7 @@ $app['OAuth2ClientController'] = function () use ($app) {
 };
 
 $app->get('/', 'DefaultController:index')->bind('index');
+$app->get('/index', 'DefaultController:index')->bind('index_2');
 $app->get('/login', 'DefaultController:login')->bind('login');
 $app->get('/my', 'DefaultController:my')->bind('my');
 $app->get('/switch/{identity}', 'DefaultController:switchIdentity')->bind('switchID');

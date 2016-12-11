@@ -1,0 +1,58 @@
+.bottom-nav {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+    background-color: #00b38a;
+}
+
+.bottom-nav > a {
+	display: inline-block;
+	width: 33.3%;
+    line-height: 3em;
+	text-align: center;
+	color: #0b429e;
+	font-size: 1.2em;
+}
+
+.bottom-nav > .active {
+	color: white;
+}
+
+.jobs {
+	margin-top: 10px;
+}
+
+.job {
+    margin: 0 15px;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+.company-logo {
+	float: left;
+}
+
+.company-logo > img {
+	width: 4.5em;
+	height: 4.5em;
+}
+
+.job-info {
+	position: relative;
+    float: left;
+}
+
+.job-info > .company {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.job-info > .job-detail {
+	font-size: 0.8em;
+	color: #666;
+}
+
+.job-info > .job-time {
+	font-size: 0.6em;
+	color: #bbb;
+}

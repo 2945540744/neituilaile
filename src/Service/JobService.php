@@ -6,6 +6,8 @@ interface JobService
 {
     public function getJob($id);
 
+    public function findJobs();
+
     public function findJobList($userId);
 
     public function createJob($job, $userId);

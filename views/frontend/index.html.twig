@@ -16,5 +16,28 @@
 	<div class="row slides">
 		{# image slides #}
 	</div>
+	<div class="row jobs">
+		{%for job in jobs %}
+		<div class="col-sm-12 job">
+			<div class="company-logo">
+				<img src="{{job.company_logo|default('')}}">
+			</div>
+			<div class="job-info">
+				<div class="col-sm-12 company">
+					<span>{{job.short_name|default('')}}</span>
+				</div>
+				<div class="col-sm-12 job-detail">
+					<span>{{job.title|default('')}}[{{job.addr_city|default('')}}]</span>
+					<span class="">{{job.pay_range_from}}k~{{job.pay_range_to}}k</span>
+				</div>
+				<div class="col-sm-12 job-time">
+					<span>{{job.updated|date('H:i:s')}}</span>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+{% include 'frontend/bottom-nav.html.twig' %}
 </div>
+
 {% endblock %}

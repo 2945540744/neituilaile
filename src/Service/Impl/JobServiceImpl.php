@@ -15,9 +15,14 @@ class JobServiceImpl extends BaseService//implements JobService
         return $this->getJobDao()->get($id);
     }
 
+    public function searchJobs()
+    {
+        return $this->getJobDao()->searchJobs();
+    }
+
     public function findJobList($userId)
     {
-        return $this->getJobDao()->findInField('creator', array($userId));
+        return $this->getJobDao()->findJobList('creator', array($userId));
     }
 
     public function createJob($job, $userId)
