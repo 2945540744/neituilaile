@@ -1,0 +1,22 @@
+{% extends 'frontend/front-layout.html.twig' %}
+{% block sub_css_block %}
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+<style type="text/css">
+.content > div {
+	margin: 0 10px;
+	flex-shrink: 1;
+}
+</style>
+{% endblock %}
+
+
+{% block body %}
+<div class="content" style="display: flex; border: 1px solid black; flex-flow: row wrap; width: 700px; height: 500px; margin: 0 auto; padding-top: 10%;">
+	<div style="height: 100px; width: 20%; background: #eee;">1111</div>
+	<div style="height:200px; width: 10%; background: #bbb; order: 1;">222</div>
+	<div style="height:50px; width: 20%; background: #aaa;">333</div>
+	<div style="height:200px; width: 5%; background: #999;">444</div>
+	<div style="height:300px; width: 5%; background: #888;">555</div>
+	<div style="height:100px; width: 200%; background: #777;">666</div>
+</div>
+{% endblock %}

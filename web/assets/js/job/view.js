@@ -35,4 +35,19 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+	$('.js-favorite').off('click').on('click', function(event){
+		$.ajax({
+			url: $(event.currentTarget).data('url'),
+			type: 'POST',
+			success: function(resp){
+				if(resp.success){
+					alert('职位收藏成功！');
+					location.reload();
+				}else{
+					alert('职位收藏失败：' + resp.message);
+				}
+			}
+		});
+	});
 });

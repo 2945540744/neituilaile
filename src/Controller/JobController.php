@@ -74,6 +74,28 @@ class JobController extends BaseController
         }
     }
 
+    public function favorites(Application $app, Request $request)
+    {
+        $jobs = $this->getJobService()->getFavorites($app['user']['id']);
+        return $app['twig']->render('frontend/job/favorites.html.twig', array(
+            'jobs' => $jobs
+        ));
+    }
+
+    public function favorite(Application $app, Request $request, $jobId, $favorite)
+    {
+        try {
+            if ($favorite === 1) {
+                $this->getJobService()->addFavorite($jobId, $app['user']['id']);
+            } else {
+                $this->getJobService()->removeFavorite($jobId, $app['user']['id']);
+            }
+            return $this->jsonSuccess();
+        } catch (\Exception $e) {
+            return $this->jsonError($e->getMessage());
+        }
+    }
+
     protected function getJobService()
     {
         return $this->kernel->service('Neitui:JobService');

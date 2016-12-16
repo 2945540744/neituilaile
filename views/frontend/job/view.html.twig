@@ -11,62 +11,60 @@
 
 {% block body %}
 <div class="container">
-	<div class="row">
-		<span class="title">{{job.job_title|default('')}}</span>
+	<div class="row title">
+		<span class="title">职位详情</span>
 	</div>
-	<!-- 职位的浏览情况 -->
-	<!--
-	<div class="row views col-xs-12 hide">
-		<span class="col-xs-4">xx人浏览</span>
-		<span class="col-xs-4">xx人该兴趣</span>
-		<span class="col-xs-4">xx分享展示</span>
-	</div>-->
 	<!-- 职位基本要求 -->
-	<div class="row col-xs-12">
-		<div class="col-xs-12">
-			<span class="post-title">{{job.job_title|default('')}}</span>	
+	<div class="row col-12" style="margin-top: 10px;">
+		<div class="col-12" style="border-bottom: 1px solid #bbb; padding: 0 15px;">
+			<span class="post-title">{{job.title|default('')}}</span>	
+			<span class="pull-right">
+			{% if isFavorited|default(false) %}
+				<span>已收藏</span>
+			{% else %}
+				<a class="js-favorite" data-url="/job/{job.id}/favorite">收藏</a>
+			{% endif %}
+			</span>
 		</div>
-		<div class="col-xs-12">
-			<span>{{job.pay_range_from|default('')}}k ~ {{job.pay_range_to|default('')}}k</span>
-			<span>{{job.job_type|default('')}}</span>	
+		<div class="col-12" style="padding: 10px 15px;">
+			<span class="col-12">薪水：{{job.pay_range_from|default('')}}k ~ {{job.pay_range_to|default('')}}k</span>
+			<span class="col-12">经验：{{job.experience_level|default('不限')}}</span>
+			<span class="col-12">教育：{{job.edu_level|default('')}}</span>	
+			<span class="col-12">地点：{{job.address|default('')}}</span>
 		</div>
-		<div class="col-xs-12">
-			<span>{{job.address|default('')}}</span>
-			<span>{{job.experience_level|default('')}}</span>
-			<span>{{job.edu_level|default('')}}</span>	
-		</div>
+	</div>
+	<!-- 公司信息 -->
+	<div class="row col-12" style="border-bottom: 1px dashed #6699ff; border-top: 1px dashed #6699ff; margin: 15px 0; padding: 10px 0;">
+		{# <div class="col-12">{{company.scale|default('')}}</div>
+		<div class="col-12">{{company.website|default('')}}</div>
+		<div class="col-12">{{company.real_name_full|default('')}}</div>
+		<div class="col-12">{{company.address|default('')}}</div> #}
+		<span style="padding: 0 15px;">公司主页</span>
+		<a href="company/view/{job.company_id}" class="pull-right"> > </a>
 	</div>
 	<!-- 职位发布者信息 -->
-	<div class="row col-xs-12">
+	{# <div class="row col-12">
 		<div class="col-xs-3"><img src="{{owner.avatar}}" class="avatar-sm"></div>
 		<div class="col-xs-9">
-			<div class="col-xs-12">
+			<div class="col-12">
 				<span>{{owner.nickname|default('')}}</span>
 			</div>
-			<div class="col-xs-12">
+			<div class="col-12">
 				<span>{{owner.position|default('')}}</span>
 				<span>{{company.real_name_shot|default('')}}</span>
 				<span>{{company.industry|default('')}}</span>
 			</div>
 		</div>
-	</div>
+	</div> #}
 	<!-- 职位描述 -->
-	<div class="row col-xs-12">
-		<div class="col-xs-12">
-			<span class="post-desc">职位描述</span>
-		</div>
-		<div class="col-xs-12">
+	<div class="row col-12">
+		<span class="post-desc" style="background: #6699ff; width: 100%; text-align: left; margin-bottom: 10px; padding: 0 15px; color: white;">职位描述</span>
+		<div class="col-12" style="padding: 0 15px;">
 			<pre>{{job.summary|default('')}}
 			</pre>
 		</div>
 	</div>
-	<!-- 公司信息 -->
-	<div class="row col-xs-12">
-		<div class="col-xs-12">{{company.scale|default('')}}</div>
-		<div class="col-xs-12">{{company.website|default('')}}</div>
-		<div class="col-xs-12">{{company.real_name_full|default('')}}</div>
-		<div class="col-xs-12">{{company.address|default('')}}</div>
-	</div>
+	
 	<!-- <div class="row bottom-spacer"></div> -->
 	<!-- 底部菜单 -->
 	<div class="bottom-menu">

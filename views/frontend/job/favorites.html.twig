@@ -1,0 +1,44 @@
+{% extends 'frontend/front-layout.html.twig' %}
+{% block sub_css_block %}
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/job/favorites.css">
+{% endblock %}
+
+{% block sub_js_block %}
+<script type="text/javascript" src="/assets/js/job/favorites.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="row">
+		<span class="title">我的收藏</span>
+	</div>	
+	{% for job in jobs %}
+	<div class="col-sm-12 job">
+		<div class="company-logo">
+			<img src="{{job.company_logo|default('')}}">
+		</div>
+		<div class="job-info">
+			<div class="col-sm-12 company">
+				<span>{{job.short_name|default('')}}</span>
+			</div>
+			<div class="col-sm-12 job-detail">
+				<span>{{job.title|default('')}}[{{job.addr_city|default('')}}]</span>
+				<span class="">{{job.pay_range_from}}k~{{job.pay_range_to}}k</span>
+			</div>
+			<div class="col-sm-12 job-time">
+				<span>{{job.updated|date('H:i:s')}}</span>
+			</div>
+		</div>
+		<div class="job-action">
+			<button class="btn btn-primary js-btn-unfavorite" data-url="/job/favorite/{{job.id}}/0">取消收藏</button>
+			{% if job.deliveryed|default(false) %}
+			<span>已投递</span>
+			{% else %}
+			<button class="js-btn-delivery">投递简历</button>
+			{% endif %}
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

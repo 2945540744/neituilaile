@@ -17,7 +17,8 @@
 		{# image slides #}
 	</div>
 	<div class="row jobs">
-		{%for job in jobs %}
+		{% for job in jobs %}
+		<a href="/job/view/{{job.id}}" style="display: block; width: 100%;">
 		<div class="col-sm-12 job">
 			<div class="company-logo">
 				<img src="{{job.company_logo|default('')}}">
@@ -35,6 +36,7 @@
 				</div>
 			</div>
 		</div>
+		</a>
 		{% endfor %}
 	</div>
 {% include 'frontend/bottom-nav.html.twig' %}

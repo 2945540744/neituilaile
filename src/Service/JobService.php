@@ -17,4 +17,8 @@ interface JobService
     public function deleteJob($jobId, $userId);
 
     public function closeJob($jobId, $userId);
+
+    public function addFavorite($jobId, $userId);
+
+    public function removeFavorite($jobId, $userId);
 }

@@ -1,4 +1,6 @@
 .container {
+	padding: 0;
+	margin: 0;
 	width: 100%;
 }
 
@@ -63,8 +65,9 @@ pre {
 }
 
 .pull-right {
-	position: absolute;
-	right: 0;
+	position: relative;
+	float: right;
+	right: 5px;
 }
 
 .avatar-sm {
@@ -76,3 +79,4 @@ pre {
 .align-center {
 	text-align: center;
 }
+

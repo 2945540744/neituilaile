@@ -97,6 +97,30 @@ class JobServiceImpl extends BaseService//implements JobService
         return $this->getJobDao()->update($jobId, array('status' => '关闭'));
     }
 
+    public function addFavorite($jobId, $userId)
+    {
+        $fav = $this->getFavoriteDao()->getFavorite($jobId, $userId);
+        if (!empty($fav)) {
+            throw new \Exception('职位已被收藏，不能重复收藏');
+        }
+        $fields = array(
+            'member_id'   => $userId,
+            'fav_type_id' => $jobId,
+            'fav_type'    => 1
+        );
+
+        return $this->getFavoriteDao()->create($fields);
+    }
+
+    public function removeFavorite($jobId, $userId)
+    {
+        $fav = $this->getFavoriteDao()->getFavorite($jobId, $userId);
+        if (!empty($fav)) {
+            throw new \Exception('您尚未收藏该职位');
+        }
+        return $this->getFavoriteDao()->delete($fav['id']);
+    }
+
     public function getCompany($id)
     {
         return $this->getCompanyDao()->get($id);
@@ -105,6 +129,11 @@ class JobServiceImpl extends BaseService//implements JobService
     protected function getJobDao()
     {
         return $this->kernel->dao('Neitui:JobDao');
+    }
+
+    protected function getFavoriteDao()
+    {
+        return $this->kernel->dao('Neitui:FavoriteDao');
     }
 
     protected function getCompanyDao()
