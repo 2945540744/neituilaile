@@ -34,7 +34,7 @@ class UserServiceImpl extends BaseService implements UserService
         $existed = $this->getUserDao()->getByWxUnionId($user['unionid']);
         if ($existed) {
             $existed['nickname'] = $user['nickname'];
-            $existed['username'] = $user['nickname'];
+            $existed['username'] = $user['nickname'].'-'.time().mt_rand(0, 1000);
             $existed['gender']   = $user['gender'] == 1 ? '男' : '女';
             $existed['avatar']   = $user['avatar'];
             $existed['updated']  = date('Y-m-d H:i:s');
