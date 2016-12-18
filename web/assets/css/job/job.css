@@ -3,7 +3,8 @@
 }
 
 .post-item {
-	margin: 8px;
+	margin: 5px;
+	padding-bottom: 5px;
 	border-bottom: 1px dashed #bbb;
 	color: #333;
 	text-decoration: none;

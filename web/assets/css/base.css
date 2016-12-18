@@ -116,4 +116,13 @@ select {
 	text-align: right;
 }
 
+.btn-closed {
+	background-color: #ccc;
+	font-style: normal;
+    border-radius: 15px;
+    font-size: 0.5em;
+    line-height: 0.8em;
+    color: #666;
+}
+
 
