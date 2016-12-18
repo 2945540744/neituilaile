@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$('.js-btn-delivery').off('click').on('click', function(event){
 		$.ajax({
-			url: $(event.currentTarget).data('action'),
+			url: $(event.currentTarget).data('url'),
 			type: 'POST',
 			success: function(resp){
 				if(resp.success){

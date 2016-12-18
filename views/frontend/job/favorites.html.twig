@@ -1,6 +1,7 @@
 {% extends 'frontend/front-layout.html.twig' %}
 {% block sub_css_block %}
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/index.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/job/favorites.css">
 {% endblock %}
 
@@ -16,7 +17,7 @@
 	{% for job in jobs %}
 	<div class="col-sm-12 job">
 		<div class="company-logo">
-			<img src="{{job.company_logo|default('')}}">
+			<img src="{{job.company_logo|default('/assets/img/company-default-logo.ico')}}">
 		</div>
 		<div class="job-info">
 			<div class="col-sm-12 company">
@@ -31,11 +32,11 @@
 			</div>
 		</div>
 		<div class="job-action">
-			<button class="btn btn-primary js-btn-unfavorite" data-url="/job/favorite/{{job.id}}/0">取消收藏</button>
+			<button class="btn btn-mini btn-link js-btn-unfavorite" data-url="/job/favorite/{{job.id}}/0">取消收藏</button>
 			{% if job.deliveryed|default(false) %}
 			<span>已投递</span>
 			{% else %}
-			<button class="js-btn-delivery">投递简历</button>
+			<button class="btn btn-mini btn-success js-btn-delivery" data-url="/resume/delivery/{{job.id}}">投递简历</button>
 			{% endif %}
 		</div>
 	</div>

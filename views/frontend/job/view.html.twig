@@ -18,6 +18,7 @@
 	<div class="row col-12" style="margin-top: 10px;">
 		<div class="col-12" style="border-bottom: 1px solid #bbb; padding: 0 15px;">
 			<span class="post-title">{{job.title|default('')}}</span>	
+			{% if user.id != job.creator %}
 			<span class="pull-right">
 			{% if isFavorited|default(false) %}
 				<span>已收藏</span>
@@ -25,6 +26,7 @@
 				<a class="js-favorite" data-url="/job/favorite/{{job.id}}/1">收藏</a>
 			{% endif %}
 			</span>
+			{% endif %}
 		</div>
 		<div class="col-12" style="padding: 10px 15px;">
 			<span class="col-12">薪水：{{job.pay_range_from|default('')}}k ~ {{job.pay_range_to|default('')}}k</span>

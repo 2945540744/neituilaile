@@ -24,11 +24,12 @@ class JobController extends BaseController
         $company     = $this->getJobService()->getCompany($job['company_id']);
         $user        = $app['user'];
         $isDelivered = false;
+        $isFavorited = false;
         if ($user['id'] != $job['creator']) {
             $record      = $this->getResumeService()->getDeliveryRecord($job['id'], $user['id']);
             $isDelivered = !empty($record);
+            $isFavorited = $this->getJobService()->isFavorited($job['id'], $user['id']);
         }
-        $isFavorited = $this->getJobService()->isFavorited($job['id'], $user['id']);
         return $app['twig']->render('frontend/job/view.html.twig', array(
             'job'         => $job,
             'owner'       => $owner,

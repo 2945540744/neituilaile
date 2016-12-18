@@ -1,0 +1,12 @@
+.job-action {
+	float: left;
+    width: 100%;
+    text-align: center;
+}
+
+.job {
+    display: block;
+    float: left;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #bbb;
+}
