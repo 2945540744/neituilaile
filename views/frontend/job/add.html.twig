@@ -14,7 +14,7 @@
 		<div class="row form-title"><span class="title">发布职位</span></div>
 		{% if company is not empty %}
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">公司信息</div>
+			<div class="col-xs-4 col-form-label">公司信息：</div>
 			<div class="col-xs-8">
 				<input type="hidden" name="company_id" value="{{company.id}}">
 				<a href="/company/index" class="form-control" style="text-align: right;">{{company.short_name}}|{{company.industry}} ></a>
@@ -22,31 +22,31 @@
 		</div>
 		{% else %}
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">公司全称</div>
+			<div class="col-xs-4 col-form-label">公司全称：</div>
 			<div class="col-xs-8">
 				<input class="form-control" type="text" name="full_name" placeholder="公司全称" />
 			</div>
 		</div>
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">公司简称</div>
+			<div class="col-xs-4 col-form-label">公司简称：</div>
 			<div class="col-xs-8">
 				<input class="form-control" type="text" name="short_name" placeholder="公司简称" />
 			</div>
 		</div>
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">所属行业</div>
+			<div class="col-xs-4 col-form-label">所属行业：</div>
 			<div class="col-xs-8">
 				<input class="form-control" type="text" name="industry" placeholder="所属行业" />
 			</div>
 		</div>
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">人员规模</div>
+			<div class="col-xs-4 col-form-label">人员规模：</div>
 			<div class="col-xs-8">
 				<input class="form-control" type="text" name="scale" placeholder="人员规模" />
 			</div>
 		</div>
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">融资阶段</div>
+			<div class="col-xs-4 col-form-label">融资阶段：</div>
 			<div class="col-xs-8">
 				<input class="form-control" type="text" name="fund" placeholder="融资阶段" />
 			</div>
@@ -58,7 +58,7 @@
 			</div>
 		</div>-->
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">公司官网</div>
+			<div class="col-xs-4 col-form-label">公司官网：</div>
 			<div class="col-xs-8">
 				<input class="form-control" type="text" name="website" placeholder="公司官网" />
 			</div>
@@ -66,7 +66,7 @@
 		{% endif %}
 		<div class="row spacer"></div>
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">职位类型</div>
+			<div class="col-xs-4 col-form-label">职位类型：</div>
 			<div class="col-xs-8">
 				<select class="form-control col-xs-12 mobileSelect js-post-type" name="job_type" data-title="请选择职位类型">
 					<optgroup label="技术">
@@ -90,19 +90,19 @@
 			</div>
 		</div>
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">职位名称</div>
+			<div class="col-xs-4 col-form-label">职位名称：</div>
 			<div class="col-xs-8">
 				<input type="text" class="form-control" name="title" placeholder="职位名称" />
 			</div>
 		</div>
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">技能要求</div>
+			<div class="col-xs-4 col-form-label">技能要求：</div>
 			<div class="col-xs-8">
 				<input class="form-control" type="text" name="skills" placeholder="技能要求，每项之间以空格分隔" />
 			</div>
 		</div>
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">薪资范围</div>
+			<div class="col-xs-4 col-form-label">薪资范围：</div>
 			<div class="col-xs-8">
 				<select class="form-control col-xs-5 js-post-salary-min" name="pay_range_from" data-style="btn-blink">
 					{%for i in range(1, 50) %}
@@ -119,7 +119,7 @@
 		</div>
 		<div class="row spacer"></div>
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">经验要求</div>
+			<div class="col-xs-4 col-form-label">经验要求：</div>
 			<div class="col-xs-8">
 				<select class="form-control col-xs-12 js-post-exp" name="exp_level">
 					<option value="不限">不限</option>
@@ -133,7 +133,7 @@
 			</div>
 		</div>
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">学历要求</div>
+			<div class="col-xs-4 col-form-label">学历要求：</div>
 			<div class="col-xs-8">
 				<select class="form-control col-xs-12 js-post-cert" name="edu_level">
 					<option value="不限">不限</option>
@@ -147,7 +147,7 @@
 		</div>
 		<div class="row spacer"></div>
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">工作城市</div>
+			<div class="col-xs-4 col-form-label">工作城市：</div>
 			<div class="col-xs-8">
 				<select class="form-control col-xs-12 js-post-city" name="addr_city" placeholder="工作城市" data-style="data-link">
 					<optgroup label="北京">
@@ -168,13 +168,13 @@
 			</div>
 		</div>
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">工作地点</div>
+			<div class="col-xs-4 col-form-label">工作地点：</div>
 			<div class="col-xs-8">
 				<input type="text" name="address" placeholder="工作地点" />
 			</div>
 		</div>
 		<div class="form-group row">
-			<div class="col-xs-4 col-form-label">职位描述</div>
+			<div class="col-xs-4 col-form-label">职位描述：</div>
 			<div class="col-xs-8">
 				<textarea rows="10" class="col-xs-12" name="summary" placeholder="填写详细，清晰的职位描述有助于您更精确的展开招聘需求
 例如：

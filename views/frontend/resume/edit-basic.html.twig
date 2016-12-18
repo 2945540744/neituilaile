@@ -16,13 +16,13 @@
 			<a href="javascript:;" class="btn btn-link title-pull-right head-menu js-btn-edit">保存</a>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">姓名</label>
+			<label class="col-xs-3">姓名：</label>
 			<div class="col-xs-9">
 				<input class="form-control" type="text" name="name" value="{{basic.nickname|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">性别</label>
+			<label class="col-xs-3">性别：</label>
 			<div class="col-xs-9">
 				<label for="genderMale" class="radio-label">
 					<input class="radio" type="radio" id="genderMale" name="gender" value="男" {% if basic.gender|default('男') == '男' %}checked{% endif %}/>
@@ -36,7 +36,7 @@
 		</div>
 
 		<div class="row form-group">
-			<label class="col-xs-3">最高学历</label>
+			<label class="col-xs-3">最高学历：</label>
 			<div class="col-xs-9">
 				<select class="form-control col-xs-12 js-user-edu" name="edu_level">
 					<option value="高中" {% if basic.edu_level == '高中' %}selected{% endif %}>高中</option>
@@ -48,7 +48,7 @@
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">工作年限</label>
+			<label class="col-xs-3">工作年限：</label>
 			<div class="col-xs-9">
 				<select class="form-control col-xs-12 js-post-exp" name="exp_level">
 					<option value="在读" {% if basic.exp_level == '在读' %}selected{% endif %}>在读</option>
@@ -62,13 +62,13 @@
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">生日</label>
+			<label class="col-xs-3">生日：</label>
 			<div class="col-xs-9">
 				<input class="form-control" type="date" min="1970-01-01" max="2016-12-31" name="birthday" value="{{basic.birthday|default('')}}" placeholder="1990-01-01" />
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">所在城市</label>
+			<label class="col-xs-3">所在城市：</label>
 			<div class="col-xs-9">
 				<select class="form-control col-xs-12 js-post-city" name="addr_city" placeholder="所在城市">
 					<optgroup label="北京">
@@ -89,19 +89,19 @@
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">联系电话</label>
+			<label class="col-xs-3">联系电话：</label>
 			<div class="col-xs-9">
 				<input class="form-control" type="text" name="mobile" value="{{basic.mobile|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">联系邮箱</label>
+			<label class="col-xs-3">联系邮箱：</label>
 			<div class="col-xs-9">
 				<input class="form-control" type="text" name="email" value="{{basic.email|default('')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-3">一句话介绍</label>
+			<label class="col-xs-3">一句话介绍：</label>
 			<div class="col-xs-9">
 				<input class="form-control" type="text" name="profile" value="{{basic.profile|default('')}}"/>
 			</div>
