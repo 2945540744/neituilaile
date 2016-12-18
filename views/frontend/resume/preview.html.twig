@@ -1,4 +1,4 @@
-{% extends 'frontend/front-layout.html.twig' %}
+{% extends 'frontend/page-layout.html.twig' %}
 {% block sub_css_block %}
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/resume/preview.css">
@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/assets/js/resume/preview.js"></script>
 {% endblock %}
 
-{% block body %}
+{% block content %}
 <div class="container">
   <div class="row basic">
   	<div class="col-12 align-center">
@@ -20,50 +20,64 @@
 	  		<span class="age">{{age(basic.birthday)}}</span>
 	  	</div>
 	  	<div class="weight">
-	  		<span>现任 {{exps.position_name}}</span>&nbsp;
-	  		<span>{{resume.on_the_job ? '在职' : '离职'}}</span>
-	  		@<span>{{exps.company_name}}</span>
+	  		<span>现任 {{exps.position_name|default('某职位')}}</span>&nbsp;
+	  		<span>{{resume.on_the_job|default(1) ? '在职' : '离职'}}</span>
+	  		@<span>{{exps.company_name|default('某公司')}}</span>
 	  	</div>
 	  	<div class="light">
-	  		<span><i class="icon icon-exp-level"></i>{{basic.exp_level}}</span>
-	  		<span><i class="icon icon-edu-level"></i>{{basic.edu_level}}</span>
-	  		<span><i class="icon icon-pay-range"></i>{{resume.pay_range_from}}k-{{resume.pay_range_to}}k</span>
+	  		<span><i class="icon icon-exp-level"></i>{{basic.exp_level|default('未填写')}}</span>
+	  		<span><i class="icon icon-edu-level"></i>{{basic.edu_level|default('未填写')}}</span>
+	  		<span><i class="icon icon-pay-range"></i>{{resume.pay_range_from|default('1')}}k-{{resume.pay_range_to|default('1')}}k</span>
 	  	</div>
   	</div>
   	
   	<div class="col-12">
+      {% if resume.summary|default('') %}
   		<pre style="padding: 3px 5px;">{{resume.summary}}</pre>
+      {% endif %}
   	</div>
   </div>
 
   <div class="row resume">
   	<div class="column-header">求职期望</div>
+    {% if resume.post_name|default(null) %}
   	<div class="col-12">
-  		<span class="weight">{{resume.post_name}}</span>
-  		<span class="pull-right">{{resume.pay_range_from}}k~{{resume.pay_range_to}}k</span>
+  		<span class="weight">{{resume.post_name|default('无')}}</span>
+  		<span class="pull-right">{{resume.pay_range_from|default('1')}}k~{{resume.pay_range_to|default('1')}}k</span>
   	</div>
   	<div class="col-12">
   		<span>期望行业：</span>
-  		<span>{{resume.industry}}</span>
+  		<span>{{resume.industry|default('无')}}</span>
   	</div>
   	<div class="col-12">
   		<span>期望城市：</span>
-  		<span>{{resume.addr_city}}</span>
+  		<span>{{resume.addr_city|default('无')}}</span>
   	</div>
+    {% else %}
+    <div class="col-12">
+      <span class="unfilled">无</span>
+    </div>
+    {% endif %}
   </div>
 
   <div class="row exp">
   	<div class="column-header">工作经历</div>
+    {% if exps.company_name|default(null) %}
   	<div class="col-12">
-  		<span class="subtitle">{{exps.company_name}}</span>
-  		<span class="pull-right date-range">{{exps.start_date}}-{{exps.end_date}}</span>
+  		<span class="subtitle">{{exps.company_name|default('无')}}</span>
+  		<span class="pull-right date-range">{{exps.start_date|default('无')}}-{{exps.end_date|default('无')}}</span>
   	</div>
   	<div class="col-12">
-  		<span>任职 {{exps.position_name}}</span>
+  		<span>任职 {{exps.position_name|default('无')}}</span>
   	</div>
   	<div class="col-12">
-  		<pre>{{exps.summary}}</pre>
+  		<pre>{{exps.summary|default('无')}}</pre>
   	</div>
+    {% else %}
+    <div class="col-12">
+      <span class="unfilled">无</span>
+    </div>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

@@ -4,6 +4,7 @@ namespace Neitui\Service\Impl;
 
 use Neitui\Common\ArrayToolkit;
 use Neitui\Service\UserService;
+use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 class UserServiceImpl extends BaseService implements UserService
 {
@@ -47,6 +48,8 @@ class UserServiceImpl extends BaseService implements UserService
             'passwd'     => '111111',
             'wx_unionid' => $user['unionid']
         );
+        $new['salt']   = md5(time().mt_rand(0, 1000));
+        $new['passwd'] = $this->getPasswordEncoder()->encodePassword($new['passwd'], $new['salt']);
         if ($type == 'weixinmob') {
             $new['wx_mob'] = $user['openid'];
         } else {
@@ -164,8 +167,8 @@ class UserServiceImpl extends BaseService implements UserService
         return $this->kernel->dao('Neitui:UserEducationDao');
     }
 
-//     private function getPasswordEncoder()
-    //     {
-    //         return new MessageDigestPasswordEncoder('sha256');
-    //     }
+    private function getPasswordEncoder()
+    {
+        return new MessageDigestPasswordEncoder('sha256');
+    }
 }

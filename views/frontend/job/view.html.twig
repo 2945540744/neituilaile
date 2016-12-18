@@ -1,4 +1,4 @@
-{% extends 'frontend/front-layout.html.twig' %}
+{% extends 'frontend/page-layout.html.twig' %}
 {% block sub_css_block %}
 <link rel="stylesheet" type="text/css" href="mobile-selector/bootstrap-fullscreen-select.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
@@ -9,9 +9,9 @@
 <script type="text/javascript" src="/assets/js/job/view.js"></script>
 {% endblock %}
 
-{% block body %}
+{% block content %}
 <div class="container">
-	<div class="row title">
+	<div class="row">
 		<span class="title">职位详情</span>
 	</div>
 	<!-- 职位基本要求 -->
@@ -37,27 +37,9 @@
 	</div>
 	<!-- 公司信息 -->
 	<div class="row col-12" style="border-bottom: 1px dashed #6699ff; border-top: 1px dashed #6699ff; margin: 15px 0; padding: 10px 0;">
-		{# <div class="col-12">{{company.scale|default('')}}</div>
-		<div class="col-12">{{company.website|default('')}}</div>
-		<div class="col-12">{{company.real_name_full|default('')}}</div>
-		<div class="col-12">{{company.address|default('')}}</div> #}
 		<span style="padding: 0 15px;">公司主页</span>
 		<a href="company/view/{job.company_id}" class="pull-right"> > </a>
 	</div>
-	<!-- 职位发布者信息 -->
-	{# <div class="row col-12">
-		<div class="col-xs-3"><img src="{{owner.avatar}}" class="avatar-sm"></div>
-		<div class="col-xs-9">
-			<div class="col-12">
-				<span>{{owner.nickname|default('')}}</span>
-			</div>
-			<div class="col-12">
-				<span>{{owner.position|default('')}}</span>
-				<span>{{company.real_name_shot|default('')}}</span>
-				<span>{{company.industry|default('')}}</span>
-			</div>
-		</div>
-	</div> #}
 	<!-- 职位描述 -->
 	<div class="row col-12">
 		<span class="post-desc" style="background: #6699ff; width: 100%; text-align: left; margin-bottom: 10px; padding: 0 15px; color: white;">职位描述</span>
@@ -67,8 +49,8 @@
 		</div>
 	</div>
 	
-	<!-- <div class="row bottom-spacer"></div> -->
 	<!-- 底部菜单 -->
+	<div class="row bottom-spacer">&nbsp;</div>
 	<div class="bottom-menu">
 		{% if job.status == '关闭' %}
 			<button class="btn btn-mini btn-secondary btn-half disabled">已关闭</button>			
@@ -82,9 +64,6 @@
 			<button class="btn btn-mini btn-secondary btn-half js-btn-delivery" data-action="/resume/delivery/{{job.id}}">投递简历</button>
 			{% endif %}
 		{% endif %}
-		{% include 'frontend/bottom-nav.html.twig' %}
 	</div>
-
 </div>
-
 {% endblock %}

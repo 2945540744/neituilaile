@@ -14,7 +14,7 @@ pre {
 
 .bottom-menu {
 	position: fixed;
-	margin-left: -15px; 
+	margin-bottom: 4em;
 	bottom: 1px;
 	border: none !important;
 	text-align: center;
@@ -99,7 +99,7 @@ pre {
 
 .bottom-nav > a {
 	display: inline-block;
-	width: 50%;
+	width: 49%;
     line-height: 3em;
 	text-align: center;
 	color: #0b429e;

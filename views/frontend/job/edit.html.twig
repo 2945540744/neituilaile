@@ -1,4 +1,4 @@
-{% extends 'frontend/front-layout.html.twig' %}
+{% extends 'frontend/page-layout.html.twig' %}
 {% block sub_css_block %}
 <link rel="stylesheet" type="text/css" href="/assets/libs/mobile-selector/1.5.1/bootstrap-fullscreen-select.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
@@ -10,7 +10,7 @@
 <script type="text/javascript" src="/assets/js/job/edit.js"></script>
 {% endblock %}
 
-{% block body %}
+{% block content %}
 <div class="container main-container">
 	<form id="post-form" action="/job/edit/{{job.id}}" method="post">
 		<div class="row form-title"><span class="title">编辑职位</span></div>
@@ -133,11 +133,10 @@
 				3.特殊说明..." >{{job.summary|default('')}}</textarea>
 			</div>
 		</div>
-		<div class="row bottom-spacer"></div>
-		<div class="row bottom-menu col-xs-12">
-			<button type="button" class="btn btn-mini btn-primary col-xs-12 js-btn-edit">保存</button>
+		<div class="row bottom-spacer">&nbsp;</div>
+		<div class="bottom-menu">
+			<button type="button" class="btn btn-mini btn-primary col-12 js-btn-edit">保存</button>
 		</div>
 	</form>
 </div>
-
 {% endblock %}

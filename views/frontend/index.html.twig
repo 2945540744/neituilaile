@@ -39,7 +39,7 @@
 		</a>
 		{% endfor %}
 	</div>
-{% include 'frontend/bottom-nav.html.twig' %}
 </div>
+{% include 'frontend/bottom-nav.html.twig' with {active: 'index'} %}
 
 {% endblock %}

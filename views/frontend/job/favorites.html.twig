@@ -1,4 +1,4 @@
-{% extends 'frontend/front-layout.html.twig' %}
+{% extends 'frontend/page-layout.html.twig' %}
 {% block sub_css_block %}
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/index.css">
@@ -32,11 +32,11 @@
 			</div>
 		</div>
 		<div class="job-action">
-			<button class="btn btn-mini btn-link js-btn-unfavorite" data-url="/job/favorite/{{job.id}}/0">取消收藏</button>
+			<button class="btn btn-sm btn-warning js-btn-unfavorite" data-url="/job/favorite/{{job.id}}/0">取消收藏</button>
 			{% if job.deliveryed|default(false) %}
-			<span>已投递</span>
+			<span class="btn btn-sm btn-secondary">已投递</span>
 			{% else %}
-			<button class="btn btn-mini btn-success js-btn-delivery" data-url="/resume/delivery/{{job.id}}">投递简历</button>
+			<button class="btn btn-sm btn-success js-btn-delivery" data-url="/resume/delivery/{{job.id}}">投递简历</button>
 			{% endif %}
 		</div>
 	</div>

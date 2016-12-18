@@ -1,0 +1,7 @@
+{% extends 'frontend/front-layout.html.twig' %}
+{% block body %}
+{% block content %}{% endblock %}
+{% if app.user.id > 0 %}
+{% include 'frontend/bottom-nav.html.twig' %}
+{% endif %}
+{% endblock %}

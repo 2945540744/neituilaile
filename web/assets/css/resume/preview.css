@@ -38,6 +38,7 @@ body {
 }
 
 .preview-avatar {
+	margin: 15px;
 	border-radius: 50%;
 	width: 100px;
 	height: 100px;
@@ -81,3 +82,8 @@ pre {
 	margin-right: 15px;
 }
 
+.unfilled {
+	margin: 5px;
+	font-style: italic;
+	color: #bbb;
+}

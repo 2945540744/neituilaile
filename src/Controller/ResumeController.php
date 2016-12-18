@@ -19,7 +19,7 @@ class ResumeController extends BaseController
 
         return $app['twig']->render('frontend/resume/view.html.twig', array(
             'basic'  => $basic,
-            'edus'   => array($edu),
+            'edus'   => empty($edu) ? array() : array($edu),
             'exps'   => $exp,
             'resume' => $resume
         ));

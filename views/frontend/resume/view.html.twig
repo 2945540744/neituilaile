@@ -1,4 +1,4 @@
-{% extends 'frontend/front-layout.html.twig' %}
+{% extends 'frontend/page-layout.html.twig' %}
 {% block sub_css_block %}
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/resume/view.css">
@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/assets/js/resume/view.js"></script>
 {% endblock %}
 
-{% block body %}
+{% block content %}
 <div class="container">
 	<div class="row">
 		{# <span class="title">简历完整度：58%</span> #}
@@ -102,16 +102,6 @@
 		</div>
 		<div class="row-body">
 			<a href="/resume/edit/edu" class="btn btn-link dock-top-right">编辑</a>
-			<!-- 目前只收录一条教育经历（最高学历） -->
-			{# <ul class="edu-list">
-				{% for edu in edus %}
-					<li class="edu-item">
-						<span>{{edu.start_date|default('')}} - {{edu.end_date|default('')}}</span>
-						<span><i>{{edu.school_name|default('')}}</i> &nbsp; {{edu.major_name|default('')}}（{{edu.edu_level|default('')}}）</span>
-						<pre>{{edu.summary}}</pre>
-					</li>
-				{% endfor %}
-			</ul> #}
 			<div class="edu-item">
 				{% for edu in edus %}
 					<span>{{edu.start_date|default('')}} - {{edu.end_date|default('')}}</span>
@@ -138,10 +128,6 @@
 			
 		</div>
 	</div>
-{# 	<div class="row bottom-spacer"></div>
-	<div class="bottom-menu">
-		<button class="btn btn-mini btn-success btn-delivery" data-action="/job/delivery">投递简历</button>
-	</div>#}
 </div>
 
 {% endblock %}
