@@ -41,7 +41,7 @@ $app->post('/job/close/{id}', 'JobController:close');
 $app->get('/job/list', 'JobController:index');
 $app->get('/job/index', 'JobController:index');
 $app->get('/job/favorites', 'JobController:favorites');
-$app->post('/job/favorite/{jobId}/{$favorite}', 'JobController:favorite');
+$app->post('/job/favorite/{jobId}/{favorite}', 'JobController:favorite');
 
 // $app->post('/job/add','JobController:add');
 

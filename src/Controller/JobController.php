@@ -11,7 +11,7 @@ class JobController extends BaseController
 {
     public function index(Application $app)
     {
-        $jobList = $this->getJobService()->findJobList($app['user']['id']);
+        $jobList = $this->getJobService()->findJobs($app['user']['id']);
         return $app['twig']->render('frontend/job/jobs.html.twig', array(
             'jobList' => $jobList
         ));
@@ -28,12 +28,14 @@ class JobController extends BaseController
             $record      = $this->getResumeService()->getDeliveryRecord($job['id'], $user['id']);
             $isDelivered = !empty($record);
         }
+        $isFavorited = $this->getJobService()->isFavorited($job['id'], $user['id']);
         return $app['twig']->render('frontend/job/view.html.twig', array(
             'job'         => $job,
             'owner'       => $owner,
             'company'     => $company,
             'user'        => $app['user'],
-            'isDelivered' => $isDelivered
+            'isDelivered' => $isDelivered,
+            'isFavorited' => $isFavorited
         ));
     }
 
@@ -85,7 +87,7 @@ class JobController extends BaseController
     public function favorite(Application $app, Request $request, $jobId, $favorite)
     {
         try {
-            if ($favorite === 1) {
+            if ($favorite == 1) {
                 $this->getJobService()->addFavorite($jobId, $app['user']['id']);
             } else {
                 $this->getJobService()->removeFavorite($jobId, $app['user']['id']);

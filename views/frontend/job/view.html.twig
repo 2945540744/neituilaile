@@ -22,7 +22,7 @@
 			{% if isFavorited|default(false) %}
 				<span>已收藏</span>
 			{% else %}
-				<a class="js-favorite" data-url="/job/{job.id}/favorite">收藏</a>
+				<a class="js-favorite" data-url="/job/favorite/{{job.id}}/1">收藏</a>
 			{% endif %}
 			</span>
 		</div>
@@ -80,7 +80,9 @@
 			<button class="btn btn-mini btn-secondary btn-half js-btn-delivery" data-action="/resume/delivery/{{job.id}}">投递简历</button>
 			{% endif %}
 		{% endif %}
+		{% include 'frontend/bottom-nav.html.twig' %}
 	</div>
+
 </div>
 
 {% endblock %}

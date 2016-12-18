@@ -15,6 +15,11 @@ class JobDaoImpl extends GeneralDaoImpl implements JobDao
         return $this->db()->fetchAll($sql, array());
     }
 
+    public function findByUserId($userId)
+    {
+        return $this->findInField('creator', array($userId));
+    }
+
     public function declares()
     {
         return array(

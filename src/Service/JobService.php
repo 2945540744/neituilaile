@@ -6,9 +6,9 @@ interface JobService
 {
     public function getJob($id);
 
-    public function findJobs();
+    public function searchJobs();
 
-    public function findJobList($userId);
+    public function findJobs($userId);
 
     public function createJob($job, $userId);
 
@@ -17,6 +17,10 @@ interface JobService
     public function deleteJob($jobId, $userId);
 
     public function closeJob($jobId, $userId);
+
+    public function getFavorites($userId);
+
+    public function isFavorited($jobId, $userId);
 
     public function addFavorite($jobId, $userId);
 

@@ -64,6 +64,11 @@ pre {
     border-left: 4px solid transparent;
 }
 
+.title-pull-right {
+	position: absolute;
+	right: 0;
+}
+
 .pull-right {
 	position: relative;
 	float: right;
@@ -78,5 +83,30 @@ pre {
 
 .align-center {
 	text-align: center;
+}
+
+.nav-spaer {
+	display: block;
+	height: 4em;
+	line-height: 4em;
+}
+.bottom-nav {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+    background-color: #00b38a;
+}
+
+.bottom-nav > a {
+	display: inline-block;
+	width: 50%;
+    line-height: 3em;
+	text-align: center;
+	color: #0b429e;
+	font-size: 1.2em;
+}
+
+.bottom-nav > .active {
+	color: white;
 }
 

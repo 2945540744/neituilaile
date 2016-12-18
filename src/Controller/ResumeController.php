@@ -83,8 +83,7 @@ class ResumeController extends BaseController
 
     public function preview(Application $app, Request $request)
     {
-        // $userId = $app['user']['id'];
-        $userId = 46;
+        $userId = $app['user']['id'];
         $basic  = $this->getUserService()->getUser($userId);
         $edu    = $this->getUserService()->getEducation($userId);
         $exp    = $this->getUserService()->getExperiences($userId);

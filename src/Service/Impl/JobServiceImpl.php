@@ -20,9 +20,9 @@ class JobServiceImpl extends BaseService//implements JobService
         return $this->getJobDao()->searchJobs();
     }
 
-    public function findJobList($userId)
+    public function findJobs($userId)
     {
-        return $this->getJobDao()->findJobList('creator', array($userId));
+        return $this->getJobDao()->findByUserId($userId);
     }
 
     public function createJob($job, $userId)
@@ -97,6 +97,17 @@ class JobServiceImpl extends BaseService//implements JobService
         return $this->getJobDao()->update($jobId, array('status' => '关闭'));
     }
 
+    public function getFavorites($userId)
+    {
+        return $this->getFavoriteDao()->getFavorites($userId);
+    }
+
+    public function isFavorited($jobId, $userId)
+    {
+        $fav = $this->getFavoriteDao()->getFavorite($jobId, $userId);
+        return !empty($fav);
+    }
+
     public function addFavorite($jobId, $userId)
     {
         $fav = $this->getFavoriteDao()->getFavorite($jobId, $userId);
@@ -115,7 +126,7 @@ class JobServiceImpl extends BaseService//implements JobService
     public function removeFavorite($jobId, $userId)
     {
         $fav = $this->getFavoriteDao()->getFavorite($jobId, $userId);
-        if (!empty($fav)) {
+        if (empty($fav)) {
             throw new \Exception('您尚未收藏该职位');
         }
         return $this->getFavoriteDao()->delete($fav['id']);
