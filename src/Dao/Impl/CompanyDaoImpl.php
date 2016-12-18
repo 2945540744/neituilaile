@@ -9,11 +9,6 @@ class CompanyDaoImpl extends GeneralDaoImpl implements CompanyDao
 {
     protected $table = 'n2_company';
 
-    public function getByJobId($jobId)
-    {
-        return $this->getByFields(array('company_id' => $jobId));
-    }
-
     public function getByUserId($userId)
     {
         return $this->getByFields(array('creator' => $userId));

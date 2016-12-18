@@ -52,13 +52,12 @@ class ResumeServiceImpl extends BaseService
             throw new \Exception('用户#{$userId}已投递过职位#{$jobId}');
         }
         $resume = $this->getResumeByUserId($userId);
-
-        $company = $this->getUserService()->getCompanyByJobId($jobId);
-        $fields  = array(
+        $job    = $this->getJobDao()->get($jobId);
+        $fields = array(
             'resume_id'           => $resume['id'],
             'member_id'           => $userId,
             // 'delivery_time'       => time(),
-            'delivery_company_id' => $company['id'],
+            'delivery_company_id' => $job['company_id'],
             'delivery_job_id'     => $jobId,
             'deliver_status'      => '已投递',
             'receiver_status'     => '已受理',
@@ -96,5 +95,10 @@ class ResumeServiceImpl extends BaseService
     protected function getUserService()
     {
         return $this->kernel->service('Neitui:UserService');
+    }
+
+    protected function getJobDao()
+    {
+        return $this->kernel->dao('Neitui:JobDao');
     }
 }
