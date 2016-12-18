@@ -64,9 +64,9 @@
 			<button class="btn btn-mini btn-secondary btn-half js-btn-close" data-action="/job/close/{{job.id}}">关闭职位</button>
 		{% elseif user.current_identity == 'JOBHUNTER' %}
 			{% if isDelivered %}
-			<button class="btn btn-mini btn-secondary btn-half disabled">已投递</button>
+			<button class="btn btn-mini btn-secondary col-12 disabled">已投递</button>
 			{% else %}
-			<button class="btn btn-mini btn-secondary btn-half js-btn-delivery" data-action="/resume/delivery/{{job.id}}">投递简历</button>
+			<button class="btn btn-mini btn-secondary col-12 js-btn-delivery" data-action="/resume/delivery/{{job.id}}">投递简历</button>
 			{% endif %}
 		{% endif %}
 	</div>
