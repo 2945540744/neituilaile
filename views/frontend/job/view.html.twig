@@ -37,11 +37,12 @@
 	<!-- 公司信息 -->
 	<div class="row col-12" style="border-bottom: 1px dashed #6699ff; border-top: 1px dashed #6699ff; margin: 15px 0; padding: 10px 0;">
 		<span style="padding: 0 15px;">公司主页</span>
-		<a href="company/view/{job.company_id}" class="pull-right"> > </a>
+		{# <a href="company/view/{job.company_id}" class="pull-right"> > </a> #}
+		<a href="javascript:;" class="pull-right"> > </a>
 	</div>
 	<!-- 职位描述 -->
 	<div class="row col-12">
-		<span class="post-desc" style="background: #6699ff; width: 100%; text-align: left; margin-bottom: 10px; padding: 0 15px; color: white;">职位描述</span>
+		<span class="post-desc col-12" style="background: #6699ff; width: 100%; text-align: left; margin-bottom: 10px; padding: 0 15px; color: white;">职位描述</span>
 		<div class="col-12" style="padding: 0 15px;">
 			<pre>{{job.summary|default('')}}
 			</pre>
@@ -55,7 +56,7 @@
 			{% if user.id == job.creator %}
 			<button class="btn btn-mini btn-secondary btn-half js-btn-edit" data-action="/job/edit/{{job.id}}">编辑职位</button>
 			{% endif %}
-			<button class="btn btn-mini btn-secondary btn-half js-btn-open" data-action="job/open/{{job.id}}">开放岗位</button>			
+			<button class="btn btn-mini btn-secondary btn-half js-btn-open" data-action="/job/open/{{job.id}}">开放岗位</button>			
 		{% elseif user.id == job.creator %}
 			<button class="btn btn-mini btn-secondary btn-half js-btn-edit" data-action="/job/edit/{{job.id}}">编辑职位</button>
 			<button class="btn btn-mini btn-secondary btn-half js-btn-close" data-action="/job/close/{{job.id}}">关闭职位</button>

@@ -24,6 +24,7 @@
 }
 
 .job-info > .company {
+	color: #333;
 	font-size: 1em;
 	font-weight: bold;
 }

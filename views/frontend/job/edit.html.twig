@@ -52,6 +52,16 @@
 		<div class="form-group row">
 			<div class="col-xs-4 col-form-label">薪资范围：</div>
 			<div class="col-xs-8">
+
+				{# <label for="pay-range-from" class="col-xs-5">
+					<input type="number" id="pay-range-from" class="col-xs-8" name="pay_range_from" value="{{job.pay_range_from|default(1)}}">
+					k
+				</label>
+				<label for="pay-range-to" class="col-xs-5">
+					<input type="number" id="pay-range-from" name="pay_range_to" value="{{job.pay_range_to|default(1)}}">
+					k
+				</label> #}
+
 				<select class="form-control col-xs-5 js-post-salary-min" name="pay_range_from" data-style="btn-blink">
 					{%for i in range(1, 50) %}
 					<option value="{{i}}" {% if job.pay_range_from == i %}selected{% endif %}>{{i}}k</option>

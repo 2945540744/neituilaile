@@ -17,7 +17,8 @@
 			<div class="col-xs-4 col-form-label">公司信息：</div>
 			<div class="col-xs-8">
 				<input type="hidden" name="company_id" value="{{company.id}}">
-				<a href="/company/index" class="form-control" style="text-align: right;">{{company.short_name}}|{{company.industry}} ></a>
+				{# /company/index #}
+				<a href="javascript:;" class="form-control" style="text-align: right;">{{company.short_name}}|{{company.industry}} ></a>
 			</div>
 		</div>
 		{% else %}
