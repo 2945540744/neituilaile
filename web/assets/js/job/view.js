@@ -43,7 +43,12 @@ $(document).ready(function(){
 					alert('简历投递成功！');
 					location.reload();
 				}else{
-					alert('简历投递失败：' + resp.message);
+					if(resp.error == 10010){
+						alert(resp.message);
+						location.href = location.origin + '/resume/index';
+					}else{
+						alert('简历投递失败：' + resp.message);
+					}
 				}
 			}
 		});

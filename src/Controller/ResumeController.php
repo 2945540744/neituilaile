@@ -117,6 +117,10 @@ class ResumeController extends BaseController
         //获取当前用户的简历，投递给指定的job
         $user = $app['user'];
         try {
+            $resume = $this->getResumeService()->getResumeByUserId($user['id']);
+            if (empty($resume)) {
+                return $this->jsonError('请先创建简历！', 10010);
+            }
             $this->getResumeService()->deliveryResume($jobId, $user['id']);
             return $this->jsonSuccess();
         } catch (\Exception $e) {

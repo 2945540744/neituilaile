@@ -22,7 +22,7 @@
 			{% if isFavorited|default(false) %}
 				<span>已收藏</span>
 			{% else %}
-				<a class="js-favorite" data-url="/job/favorite/{{job.id}}/1">收藏</a>
+				<a class="btn btn-sm btn-outline-secondary js-favorite" data-url="/job/favorite/{{job.id}}/1">收藏</a>
 			{% endif %}
 			</span>
 			{% endif %}
