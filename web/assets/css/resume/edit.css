@@ -3,6 +3,10 @@
 	border-bottom: 1px solid #eee;
 }
 
+.row {
+	padding: 5px 15px;
+}
+
 .form-group > label {
 	padding-top: 5px;
 }

@@ -42,8 +42,8 @@ class UserServiceImpl extends BaseService implements UserService
         }
         $new = array(
             'nickname'   => $user['nickname'],
-            'username'   => $user['nickname'],
-            'gender'     => $user['gender'],
+            'username'   => $user['nickname'].'-'.time().mt_rand(0, 1000),
+            'gender'     => $user['gender'] == 1 ? '男' : '女',
             'avatar'     => $user['avatar'],
             'passwd'     => '111111',
             'wx_unionid' => $user['unionid']

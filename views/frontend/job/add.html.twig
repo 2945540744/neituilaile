@@ -105,13 +105,13 @@
 		<div class="form-group row">
 			<div class="col-xs-4 col-form-label">薪资范围：</div>
 			<div class="col-xs-8">
-				<select class="form-control col-xs-5 js-post-salary-min" name="pay_range_from" data-style="btn-blink">
+				<select class="form-control col-xs-5 js-pay-range-from" name="pay_range_from" data-style="btn-blink">
 					{%for i in range(1, 50) %}
 					<option value="{{i}}">{{i}}k</option>
 					{% endfor %}
 				</select>
 				<span class="col-xs-2">~</span>
-				<select class="form-control col-xs-5 js-post-salary-max" name="pay_range_to">
+				<select class="form-control col-xs-5 js-pay-range-to" name="pay_range_to">
 					{%for i in range(1, 50) %}
 					<option value="{{i}}">{{i}}k</option>
 					{% endfor %}
