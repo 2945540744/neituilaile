@@ -1,12 +1,17 @@
-.nickname {
+.avatar {
 	margin: 0 auto;	
 	text-align: center;
 	display: block;
 	border: 1px solid #ddd;
 	background-color: #eee;
 	border-radius: 50%;
-	line-height: 8em;
-    width: 8em;
+	line-height: 6em;
+    width: 6em;
+}
+
+.nickname {
+	margin-top: 5px;
+	text-align: center;
 }
 
 .user-nav {
