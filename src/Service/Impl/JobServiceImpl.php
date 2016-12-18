@@ -51,6 +51,7 @@ class JobServiceImpl extends BaseService//implements JobService
         if (isset($job['website'])) {
             $company['website'] = $job['website'];
         }
+
         if (isset($company['id'])) {
             $company['updator'] = $userId;
             $this->getCompanyDao()->update($company['id'], $company);
@@ -73,8 +74,9 @@ class JobServiceImpl extends BaseService//implements JobService
             'summary'
         ));
 
-        $job['creator'] = $userId;
-        $job['status']  = '开放';
+        $job['creator']    = $userId;
+        $job['status']     = '开放';
+        $job['company_id'] = $company['id'];
 
         return $this->getJobDao()->create($job);
     }
