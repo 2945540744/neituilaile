@@ -65,7 +65,7 @@
     {% if exps.company_name|default(null) %}
   	<div class="col-12">
   		<span class="subtitle">{{exps.company_name|default('无')}}</span>
-  		<span class="pull-right date-range">{{exps.start_date|default('无')}}-{{exps.end_date|default('无')}}</span>
+  		<span class="pull-right date-range">{{month(exps.start_date|default(''))}}~{{month(exps.end_date|default(''))}}</span>
   	</div>
   	<div class="col-12">
   		<span>任职 {{exps.position_name|default('无')}}</span>
@@ -78,6 +78,24 @@
       <span class="unfilled">无</span>
     </div>
     {% endif %}
+  </div>
+
+  <div class="row edu">
+    <div class="column-header">教学经历</div>
+    <div class="col-12">
+      {% if edus is empty %}
+      <div class="col-12">
+        <span class="unfilled">无</span>
+      </div>
+      {% else %}
+      <div class="edu-item">
+        <span class="col-12" style="font-weight: bold;">{{edus.school_name|default('')}}</span>
+        <span class="col-12">{{month(edus.start_date|default(''))}} ~ {{month(edus.end_date|default(''))}}</span>
+        <span class="col-12">{{edus.major_name|default('')}}（{{edus.edu_level|default('')}}）</span>
+        <pre>{{edus.summary|default('')}}</pre>
+      </div>
+      {% endif %}
+    </div>
   </div>
 </div>
 {% endblock %}

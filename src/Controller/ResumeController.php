@@ -90,7 +90,7 @@ class ResumeController extends BaseController
         $resume = $this->getResumeService()->getResumeByUserId($userId);
         return $app['twig']->render('frontend/resume/preview.html.twig', array(
             'basic'  => $basic,
-            'edus'   => $edu,
+            'edus'   => empty($edu) ? array() : $edu,
             'exps'   => empty($exp) ? array() : $exp[0],
             'resume' => $resume
         ));
@@ -106,7 +106,7 @@ class ResumeController extends BaseController
 
         return $app['twig']->render('frontend/resume/preview.html.twig', array(
             'basic'  => $basic,
-            'edus'   => $edu,
+            'edus'   => empty($edu) ? array() : $edu,
             'exps'   => empty($exp) ? array() : $exp[0],
             'resume' => $resume
         ));
