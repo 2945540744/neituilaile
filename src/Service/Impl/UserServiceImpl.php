@@ -23,6 +23,11 @@ class UserServiceImpl extends BaseService implements UserService
         return $this->getCompanyDao()->getByUserId($userId);
     }
 
+    public function getCompanyByJobId($jobId)
+    {
+        return $this->getCompanyDao()->getByJobId($jobId);
+    }
+
     public function getUserByWxUnionId($wid)
     {
         return $this->getUserDao()->getByFields(array('wx_unionid' => $wid));

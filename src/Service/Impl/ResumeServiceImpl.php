@@ -51,8 +51,9 @@ class ResumeServiceImpl extends BaseService
         if ($existed) {
             throw new \Exception('用户#{$userId}已投递过职位#{$jobId}');
         }
-        $resume  = $this->getResumeByUserId($userId);
-        $company = $this->getUserService()->getCompanyByUserId($userId);
+        $resume = $this->getResumeByUserId($userId);
+
+        $company = $this->getUserService()->getCompanyByJobId($jobId);
         $fields  = array(
             'resume_id'           => $resume['id'],
             'member_id'           => $userId,
