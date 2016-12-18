@@ -14,15 +14,17 @@
 	<div class="row">
 		<span class="title">已发布的职位</span>
 	</div>
-	<div class="row bottom-menu col-xs-12">
-		<span class="col-xs-1"></span>
-		<button class="btn btn-secondary btn-mini col-xs-10 js-btn-new-post">发布新职位</button>
-	</div>
+	
 	{% for job in jobList %}
 	<div class="row post-item col-xs-12" data-detail-url="/job/view/{{job.id}}">
 		<span>{{job.title|default('')}}</span>
 		<span></span>
 	</div>
 	{% endfor %}
+	<div class="row bottom-spacer">&nbsp;</div>
+	<div class="bottom-menu">
+		<span class="col-xs-1"></span>
+		<button class="btn btn-secondary btn-mini col-xs-10 js-btn-new-post">发布新职位</button>
+	</div>
 </div>
 {% endblock %}
