@@ -110,3 +110,8 @@ pre {
 	color: white;
 }
 
+select {
+	text-align: right;
+}
+
+

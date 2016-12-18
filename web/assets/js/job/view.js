@@ -2,7 +2,6 @@ $(document).ready(function(){
 	$('.js-btn-edit').off('click').on('click', function(event){
 		console.log('go to : ', $(event.target).data('action'));
 		location.href = location.origin + $(event.target).data('action');
-		// location.href = location.origin + '/demo/new-post.html';
 	});
 
 	$('.js-btn-open').off('click').on('click', function(event){
@@ -21,7 +20,6 @@ $(document).ready(function(){
 	});
 
 	$('.js-btn-close').off('click').on('click', function(event){
-		// alert('Close the Post: '+ $(event.target).data('action'));
 		$.ajax({
 			url: $(event.currentTarget).data('action'),
 			type: 'POST',

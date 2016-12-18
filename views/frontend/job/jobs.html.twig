@@ -16,10 +16,10 @@
 	</div>
 	
 	{% for job in jobList %}
-	<div class="row post-item col-xs-12" data-detail-url="/job/view/{{job.id}}">
+	<a href="javascript:;" class="post-item col-xs-12" data-detail-url="/job/view/{{job.id}}">
 		<span>{{job.title|default('')}}</span>
-		<span></span>
-	</div>
+		<span class="pull-right"> > </span>
+	</a>
 	{% endfor %}
 	<div class="row bottom-spacer">&nbsp;</div>
 	<div class="bottom-menu">

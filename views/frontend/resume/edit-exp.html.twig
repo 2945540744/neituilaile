@@ -1,6 +1,5 @@
 {% extends 'frontend/page-layout.html.twig' %}
 {% block sub_css_block %}
-<link rel="stylesheet" type="text/css" href="mobile-selector/bootstrap-fullscreen-select.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/resume/edit.css">
 {% endblock %}
@@ -32,13 +31,13 @@
 		<div class="row form-group">
 			<label class="col-xs-4">入职时间：</label>
 			<div class="col-xs-8">
-				<input class="form-control" type="text" name="start_date" value="{{exp.start_date|default('')}}"/>
+				<input class="form-control" type="month" name="start_date" value="{{month(exp.start_date, 'Y-m')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
 			<label class="col-xs-4">离职时间：</label>
 			<div class="col-xs-8">
-				<input class="form-control" type="text" name="end_date" value="{{exp.end_date|default('')}}"/>
+				<input class="form-control" type="month" name="end_date" value="{{month(exp.end_date, 'Y-m')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">

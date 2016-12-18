@@ -1,12 +1,10 @@
 {% extends 'frontend/page-layout.html.twig' %}
 {% block sub_css_block %}
-<link rel="stylesheet" type="text/css" href="/assets/libs/mobile-selector/1.5.1/bootstrap-fullscreen-select.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/job/job.css">
 {% endblock %}
 
 {% block sub_js_block %}
-<script type="text/javascript" src="/assets/libs/mobile-selector/1.5.1/bootstrap-fullscreen-select.js"></script>
 <script type="text/javascript" src="/assets/js/job/new.js"></script>
 {% endblock %}
 
@@ -70,7 +68,7 @@
 		<div class="form-group row">
 			<div class="col-xs-4 col-form-label">职位类型</div>
 			<div class="col-xs-8">
-				<select class="form-control col-xs-12 mobileSelect js-post-type" name="job_type" data-title="请选择职位类型" data-style="btn-link">
+				<select class="form-control col-xs-12 mobileSelect js-post-type" name="job_type" data-title="请选择职位类型">
 					<optgroup label="技术">
 						<option value="后端开发">后端开发</option>	
 						<option value="前端开发">前端开发</option>
@@ -106,14 +104,13 @@
 		<div class="form-group row">
 			<div class="col-xs-4 col-form-label">薪资范围</div>
 			<div class="col-xs-8">
-				<!-- <input type="text" name="post_salary" placeholder="薪资范围" /> -->
-				<select class="form-control col-xs-5 mobileSelect js-post-salary-min" name="pay_range_from" data-style="btn-blink">
+				<select class="form-control col-xs-5 js-post-salary-min" name="pay_range_from" data-style="btn-blink">
 					{%for i in range(1, 50) %}
 					<option value="{{i}}">{{i}}k</option>
 					{% endfor %}
 				</select>
 				<span class="col-xs-2">~</span>
-				<select class="form-control col-xs-5 mobileSelect js-post-salary-max" name="pay_range_to" data-style="btn-link">
+				<select class="form-control col-xs-5 js-post-salary-max" name="pay_range_to">
 					{%for i in range(1, 50) %}
 					<option value="{{i}}">{{i}}k</option>
 					{% endfor %}
@@ -124,8 +121,7 @@
 		<div class="form-group row">
 			<div class="col-xs-4 col-form-label">经验要求</div>
 			<div class="col-xs-8">
-				<!-- <input type="text" name="post_exp" placeholder="经验要求" /> -->
-				<select class="form-control col-xs-12 mobileSelect js-post-exp" name="exp_level" data-style="btn-link">
+				<select class="form-control col-xs-12 js-post-exp" name="exp_level">
 					<option value="不限">不限</option>
 					<option value="应届生">应届生</option>
 					<option value="1年以内">1年以内</option>
@@ -139,8 +135,7 @@
 		<div class="form-group row">
 			<div class="col-xs-4 col-form-label">学历要求</div>
 			<div class="col-xs-8">
-				<!-- <input type="text" name="post_cert" placeholder="学历要求" /> -->
-				<select class="form-control col-xs-12 mobileSelect js-post-cert" name="edu_level" data-style="btn-link">
+				<select class="form-control col-xs-12 js-post-cert" name="edu_level">
 					<option value="不限">不限</option>
 					<option value="高中">高中</option>
 					<option value="专科">专科</option>
@@ -154,8 +149,7 @@
 		<div class="form-group row">
 			<div class="col-xs-4 col-form-label">工作城市</div>
 			<div class="col-xs-8">
-				<!-- <input type="text" name="post_city" placeholder="工作城市" /> -->
-				<select class="form-control col-xs-12 mobileSelect js-post-city" name="addr_city" placeholder="工作城市" data-style="data-link">
+				<select class="form-control col-xs-12 js-post-city" name="addr_city" placeholder="工作城市" data-style="data-link">
 					<optgroup label="北京">
 						<option value="北京">北京</option>
 					</optgroup>

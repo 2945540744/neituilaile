@@ -1,6 +1,5 @@
 {% extends 'frontend/page-layout.html.twig' %}
 {% block sub_css_block %}
-<link rel="stylesheet" type="text/css" href="mobile-selector/bootstrap-fullscreen-select.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/resume/edit.css">
 {% endblock %}
@@ -32,19 +31,19 @@
 		<div class="row form-group">
 			<label class="col-xs-4">入学时间：</label>
 			<div class="col-xs-8">
-				<input class="form-control" type="text" name="start_date" value="{{edu.start_date|default('')}}"/>
+				<input class="form-control" type="month" min="1970-01" max="2016-12" name="start_date" value="{{month(edu.start_date, 'Y-m')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
 			<label class="col-xs-4">毕业时间：</label>
 			<div class="col-xs-8">
-				<input class="form-control" type="text" name="end_date" value="{{edu.end_date|default('')}}"/>
+				<input class="form-control" type="month" min="1970-01" max="2016-12" name="end_date" value="{{month(edu.end_date, 'Y-m')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
 			<label class="col-xs-4">学历：</label>
 			<div class="col-xs-8">
-				<select class="form-control col-xs-12 mobileSelect" name="edu_level" data-style="btn-link">
+				<select class="form-control col-xs-12" name="edu_level">
 					<option value="高中" {% if edu.edu_level|default('') == '高中' %}selected{% endif %}>高中</option>
 					<option value="专科" {% if edu.edu_level|default('') == '专科' %}selected{% endif %}>专科</option>
 					<option value="本科" {% if edu.edu_level|default('') == '本科' %}selected{% endif %}>本科</option>

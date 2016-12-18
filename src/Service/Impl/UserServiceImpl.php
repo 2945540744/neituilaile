@@ -95,6 +95,12 @@ class UserServiceImpl extends BaseService implements UserService
             'end_date',
             'edu_level'
         ));
+        if (!empty($edu['start_date'])) {
+            $edu['start_date'] = date('Y-m-d', strtotime($edu['start_date']));
+        }
+        if (!empty($edu['end_date'])) {
+            $edu['end_date'] = date('Y-m-d', strtotime($edu['end_date']));
+        }
 
         $existed = $this->getEducation($userId);
         if (!empty($existed)) {
@@ -118,6 +124,14 @@ class UserServiceImpl extends BaseService implements UserService
             'end_date',
             'summary'
         ));
+
+        if (!empty($exp['start_date'])) {
+            $exp['start_date'] = date('Y-m-d', strtotime($exp['start_date']));
+        }
+        if (!empty($exp['end_date'])) {
+            $exp['end_date'] = date('Y-m-d', strtotime($exp['end_date']));
+        }
+
         //假设只有一份工作经历
         $existed = $this->getUserCompanyDao()->findByUserId($userId);
         if (!empty($existed)) {

@@ -1,6 +1,5 @@
 {% extends 'frontend/page-layout.html.twig' %}
 {% block sub_css_block %}
-<link rel="stylesheet" type="text/css" href="mobile-selector/bootstrap-fullscreen-select.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/resume/edit.css">
 {% endblock %}
@@ -39,7 +38,7 @@
 		<div class="row form-group">
 			<label class="col-xs-3">最高学历</label>
 			<div class="col-xs-9">
-				<select class="form-control col-xs-12 mobileSelect js-user-edu" name="edu_level" data-style="btn-link">
+				<select class="form-control col-xs-12 js-user-edu" name="edu_level">
 					<option value="高中" {% if basic.edu_level == '高中' %}selected{% endif %}>高中</option>
 					<option value="专科" {% if basic.edu_level == '专科' %}selected{% endif %}>专科</option>
 					<option value="本科" {% if basic.edu_level == '本科' %}selected{% endif %}>本科</option>
@@ -51,7 +50,7 @@
 		<div class="row form-group">
 			<label class="col-xs-3">工作年限</label>
 			<div class="col-xs-9">
-				<select class="form-control col-xs-12 mobileSelect js-post-exp" name="exp_level" data-style="btn-link">
+				<select class="form-control col-xs-12 js-post-exp" name="exp_level">
 					<option value="在读" {% if basic.exp_level == '在读' %}selected{% endif %}>在读</option>
 					<option value="应届生" {% if basic.exp_level == '应届生' %}selected{% endif %}>应届生</option>
 					<option value="1年以内" {% if basic.exp_level == '1年以内' %}selected{% endif %}>1年以内</option>
@@ -65,13 +64,13 @@
 		<div class="row form-group">
 			<label class="col-xs-3">生日</label>
 			<div class="col-xs-9">
-				<input class="form-control date-picker" type="text" name="birthday" value="{{basic.birthday|default('')}}" placeholder="1990-01-01" />
+				<input class="form-control" type="date" min="1970-01-01" max="2016-12-31" name="birthday" value="{{basic.birthday|default('')}}" placeholder="1990-01-01" />
 			</div>
 		</div>
 		<div class="row form-group">
 			<label class="col-xs-3">所在城市</label>
 			<div class="col-xs-9">
-				<select class="form-control col-xs-12 mobileSelect js-post-city" name="addr_city" placeholder="所在城市" data-style="data-link">
+				<select class="form-control col-xs-12 js-post-city" name="addr_city" placeholder="所在城市">
 					<optgroup label="北京">
 						<option value="北京" {% if basic.addr_city == '北京' %}selected{% endif %}>北京</option>
 					</optgroup>

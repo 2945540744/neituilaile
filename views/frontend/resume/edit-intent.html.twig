@@ -1,6 +1,5 @@
 {% extends 'frontend/page-layout.html.twig' %}
 {% block sub_css_block %}
-<link rel="stylesheet" type="text/css" href="mobile-selector/bootstrap-fullscreen-select.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/resume/edit.css">
 {% endblock %}
@@ -25,7 +24,7 @@
 		<div class="row form-group">
 			<label class="col-xs-4">岗位类型：</label>
 			<div class="col-xs-8">
-				<select class="form-control col-xs-12 mobileSelect js-job-type" name="job_type" data-style="btn-link">
+				<select class="form-control col-xs-12 js-job-type" name="job_type">
 					<option value="兼职" {% if resume.job_type|default('') == '兼职' %}selected{% endif %}>兼职</option>
 					<option value="全职" {% if resume.job_type|default('') == '全职' %}selected{% endif %}>全职</option>
 					<option value="实习" {% if resume.job_type|default('') == '实习' %}selected{% endif %}>实习</option>
@@ -35,7 +34,7 @@
 		<div class="row form-group">
 			<label class="col-xs-4">期望城市：</label>
 			<div class="col-xs-8">
-				<select class="form-control col-xs-12 mobileSelect js-intent-city" name="addr_city" placeholder="工作城市" data-style="data-link">
+				<select class="form-control col-xs-12 js-intent-city" name="addr_city" placeholder="工作城市" data-style="data-link">
 					<optgroup label="北京">
 						<option value="北京" {% if resume.addr_city|default('') == '北京' %}selected{% endif %}>北京</option>
 					</optgroup>
@@ -56,13 +55,13 @@
 		<div class="row form-group">
 			<label class="col-xs-4">期望月薪：</label>
 			<div class="col-xs-8">
-				<select class="form-control col-xs-5 mobileSelect js-intent-salary-min" name="pay_range_from" data-style="btn-blink">
+				<select class="form-control col-xs-5 js-intent-salary-min" name="pay_range_from" data-style="btn-blink">
 					{%for i in range(1, 50) %}
 					<option value="{{i}}" {% if resume.pay_range_from|default('1') == i %}selected{% endif %}>{{i}}k</option>
 					{% endfor %}
 				</select>
 				<span class="col-xs-2">~</span>
-				<select class="form-control col-xs-5 mobileSelect js-intent-salary-max" name="pay_range_to" data-style="btn-link">
+				<select class="form-control col-xs-5 js-intent-salary-max" name="pay_range_to">
 					{%for i in range(1, 50) %}
 					<option value="{{i}}" {% if resume.pay_range_to|default('1') == i %}selected{% endif %}>{{i}}k</option>
 					{% endfor %}

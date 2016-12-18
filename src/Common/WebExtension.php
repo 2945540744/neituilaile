@@ -18,7 +18,8 @@ class WebExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFunction('dict', array($this, 'getDictValue')),
-            new \Twig_SimpleFunction('age', array($this, 'calcAge'))
+            new \Twig_SimpleFunction('age', array($this, 'calcAge')),
+            new \Twig_SimpleFunction('month', array($this, 'month'))
         );
     }
 
@@ -38,6 +39,15 @@ class WebExtension extends \Twig_Extension
         }
 
         return ((int) date('Y', time()) - (int) substr($date, 0, 4)).'岁';
+    }
+
+    public function month($date, $fmt = 'Y/m')
+    {
+        if (empty($date)) {
+            return '';
+        }
+
+        return date($fmt, strtotime($date));
     }
 
     public function getName()
