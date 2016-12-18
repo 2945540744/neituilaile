@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$('.js-btn-edit').off('click').on('click', function(event){
-		console.log('go to : ', $(event.target).data('action'));
-		location.href = location.origin + $(event.target).data('action');
+		console.log('go to : ', $(event.currentTarget).data('action'));
+		location.href = location.origin + $(event.currentTarget).data('action');
 	});
 
 	$('.js-btn-open').off('click').on('click', function(event){

@@ -1,4 +1,8 @@
 $(document).ready(function(){
+	$('.js-job-item').off('click').on('click', function(event){
+		location.href = location.origin + $(event.currentTarget).data('url');
+	});
+
 	$('.js-btn-delivery').off('click').on('click', function(event){
 		$.ajax({
 			url: $(event.currentTarget).data('url'),

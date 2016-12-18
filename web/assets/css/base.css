@@ -125,4 +125,16 @@ select {
     color: #666;
 }
 
+.star-empty {
+	width: 20px;
+	height: 20px;
+	background-image: url('/assets/img/star-small.png');
+	background-position: 0 -60px;
+}
 
+.star {
+	width: 20px;
+	height: 20px;
+	background-image: url('/assets/img/star-small.png');
+	background-position: 0 -40px;	
+}
