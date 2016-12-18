@@ -53,7 +53,7 @@
 	<div class="row bottom-spacer">&nbsp;</div>
 	<div class="bottom-menu">
 		{% if job.status == '关闭' %}
-			{% if %}
+			{% if user.id == job.creator %}
 			<button class="btn btn-mini btn-secondary btn-half js-btn-edit" data-action="/job/edit/{{job.id}}">编辑职位</button>
 			{% endif %}
 			<button class="btn btn-mini btn-secondary btn-half js-btn-open" data-action="job/open/{{job.id}}">开放岗位</button>			

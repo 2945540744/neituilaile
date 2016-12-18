@@ -14,21 +14,6 @@
 		<span class="title">简历管理</span>
 		{# <a href="/resume/preview" class="btn btn-link title-pull-right head-menu">预览</a> #}
 	</div>	
-	{# <div class="row resume">
-		<div class="col-sm-12 delivery_time">{date|humanizedDate}</div>
-		<div class="col-sm-12 delivery_content">
-			<div class="col-sm-12 resume-header">
-				投递给"<span class="resume-post">{post_name}</span>"职位
-			</div>
-			<div style="padding-left: 15px; padding-top: 15px;">
-				<img src="###"  class="user-avatar">
-				<div style="float: left; padding-left: 10px;">
-					<span style="display: block;">{nickname}的在线简历</span>
-					<a style="display: block;" href="{'/resume/preview?rid=' ~ resume.id}"><i class="icon icon-preview"></i>点击查看</a>
-				</div>
-			</div>
-		</div>
-	</div> #}
 	{% for resume in resumes %}
 	<div class="row resume">
 		<div class="col-sm-12 delivery_time">{{resume.delivery_time|date('m-d H:i:s')}}</div>
@@ -40,7 +25,7 @@
 				<img src="{{resume.avatar}}"  class="user-avatar">
 				<div style="float: left; padding-left: 10px;">
 					<span style="display: block;">{{resume.nickname}}的在线简历</span>
-					<a style="display: block;" href="{{'/resume/preview?rid=' ~ resume.resume_id}}"><i class="icon icon-preview"></i>点击查看</a>
+					<a style="display: block;" href="{{'/resume/preview/' ~ resume.resume_id}}"><i class="icon icon-preview"></i>点击查看</a>
 				</div>
 			</div>
 		</div>

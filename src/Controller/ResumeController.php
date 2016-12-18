@@ -81,13 +81,29 @@ class ResumeController extends BaseController
         ));
     }
 
-    public function preview(Application $app, Request $request)
+    public function previewSelf(Application $app, Request $request)
     {
         $userId = $app['user']['id'];
         $basic  = $this->getUserService()->getUser($userId);
         $edu    = $this->getUserService()->getEducation($userId);
         $exp    = $this->getUserService()->getExperiences($userId);
         $resume = $this->getResumeService()->getResumeByUserId($userId);
+        return $app['twig']->render('frontend/resume/preview.html.twig', array(
+            'basic'  => $basic,
+            'edus'   => $edu,
+            'exps'   => empty($exp) ? array() : $exp[0],
+            'resume' => $resume
+        ));
+    }
+
+    public function preview(Application $app, Request $request, $rid)
+    {
+        $resume = $this->getResumeService()->getResume($rid);
+        $userId = $resume['member_id'];
+        $basic  = $this->getUserService()->getUser($userId);
+        $edu    = $this->getUserService()->getEducation($userId);
+        $exp    = $this->getUserService()->getExperiences($userId);
+
         return $app['twig']->render('frontend/resume/preview.html.twig', array(
             'basic'  => $basic,
             'edus'   => $edu,

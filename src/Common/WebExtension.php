@@ -34,7 +34,7 @@ class WebExtension extends \Twig_Extension
     public function calcAge($date)
     {
         if (empty($date)) {
-            return '未知';
+            return '';
         }
 
         return ((int) date('Y', time()) - (int) substr($date, 0, 4)).'岁';

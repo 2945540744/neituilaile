@@ -57,6 +57,7 @@ $app->post('/resume/edit/exp', 'ResumeController:editExp');
 $app->get('/resume/edit/intent', 'ResumeController:editIntent');
 $app->post('/resume/edit/intent', 'ResumeController:editIntent');
 $app->post('/resume/delete/{type}/{id}', 'ResumeController:delete');
-$app->get('/resume/preview', 'ResumeController:preview');
+$app->get('/resume/preview', 'ResumeController:previewSelf');
+$app->get('/resume/preview/{rid}', 'ResumeController:preview');
 $app->get('/resume/resumes', 'ResumeController:resumes');
 $app->post('/resume/delivery/{jobId}', 'ResumeController:delivery');
