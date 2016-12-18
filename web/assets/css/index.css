@@ -13,7 +13,7 @@
 .company-logo {
 	position: absolute;
 	float: left;
-	margin-top: 10px;
+	margin-bottom: 15px;
 }
 
 .company-logo > img {
@@ -26,6 +26,7 @@
 	margin-left: 4.5em;
     float: left;
     margin-top: 0;
+    width: 80%;
 }
 
 .job-info > .company {
