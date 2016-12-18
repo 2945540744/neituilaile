@@ -6,8 +6,8 @@ $(document).ready(function(){
 	});
 
 	$('.js-btn-edit').click(function(event){
-		if(validator.form()){
+		// if(validator.form()){
 			$form.submit();
-		}
+		// }
 	});
 });

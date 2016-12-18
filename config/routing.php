@@ -38,6 +38,7 @@ $app->get('/job/edit/{id}', 'JobController:edit');
 $app->post('/job/edit/{id}', 'JobController:edit');
 $app->get('/job/view/{id}', 'JobController:view');
 $app->post('/job/close/{id}', 'JobController:close');
+$app->post('/job/open/{id}', 'JobController:open');
 $app->get('/job/list', 'JobController:index');
 $app->get('/job/index', 'JobController:index');
 $app->get('/job/favorites', 'JobController:favorites');

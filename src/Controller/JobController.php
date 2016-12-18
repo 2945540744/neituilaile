@@ -80,6 +80,16 @@ class JobController extends BaseController
         }
     }
 
+    public function open(Application $app, Request $request, $id)
+    {
+        try {
+            $this->getJobService()->openJob($id, $app['user']['id']);
+            return $this->jsonSuccess();
+        } catch (\Exception $e) {
+            return $this->jsonError($e->getMessage());
+        }
+    }
+
     public function favorites(Application $app, Request $request)
     {
         $jobs = $this->getJobService()->getFavorites($app['user']['id']);

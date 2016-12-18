@@ -93,8 +93,12 @@ class JobServiceImpl extends BaseService//implements JobService
 
     public function closeJob($jobId, $userId)
     {
-        //check if job exist
         return $this->getJobDao()->update($jobId, array('status' => '关闭'));
+    }
+
+    public function openJob($jobId, $userId)
+    {
+        return $this->getJobDao()->update($jobId, array('status' => '开放'));
     }
 
     public function getFavorites($userId)

@@ -5,6 +5,21 @@ $(document).ready(function(){
 		// location.href = location.origin + '/demo/new-post.html';
 	});
 
+	$('.js-btn-open').off('click').on('click', function(event){
+		$.ajax({
+			url: $(event.currentTarget).data('action'),
+			type: 'POST',
+			success: function(resp){
+				if(resp.success){
+					alert('职位开放成功！');
+					location.reload();
+				}else{
+					alert('职位开放失败：' + resp.message);
+				}
+			}
+		});
+	});
+
 	$('.js-btn-close').off('click').on('click', function(event){
 		// alert('Close the Post: '+ $(event.target).data('action'));
 		$.ajax({

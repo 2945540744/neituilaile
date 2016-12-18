@@ -102,6 +102,7 @@ class UserServiceImpl extends BaseService implements UserService
         }
 
         if (!isset($edu['id'])) {
+            $edu['member_id'] = $userId;
             $this->getUserEducationDao()->create($edu);
         } else {
             $this->getUserEducationDao()->update($edu['id'], $edu);
@@ -118,7 +119,7 @@ class UserServiceImpl extends BaseService implements UserService
             'summary'
         ));
         //假设只有一份工作经历
-        $existed = $this->getCompanies($userId);
+        $existed = $this->getUserCompanyDao()->findByUserId($userId);
         if (!empty($existed)) {
             $exp = array_merge($existed[0], $exp);
         }

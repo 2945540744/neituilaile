@@ -14,9 +14,6 @@ class OAuth2ClientController extends BaseController
 {
     public function login(Application $app, Request $request, $type)
     {
-        //test only
-        return $app['twig']->render('login.html.twig', array());
-
         if ($type === 'weixin' && preg_match('/MicroMessenger/i', $request->headers->get('user-agent')) === 1) {
             $type = 'weixinmob';
         }
