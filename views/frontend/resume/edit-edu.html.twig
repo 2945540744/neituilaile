@@ -31,13 +31,13 @@
 		<div class="row form-group">
 			<label class="col-xs-4">入学时间：</label>
 			<div class="col-xs-8">
-				<input class="form-control" type="month" min="1970-01" max="2016-12" name="start_date" value="{{month(edu.start_date, 'Y-m')}}"/>
+				<input class="form-control" type="month" min="1970-01" max="2016-12" name="start_date" value="{{month(edu.start_date|default(''), 'Y-m')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
 			<label class="col-xs-4">毕业时间：</label>
 			<div class="col-xs-8">
-				<input class="form-control" type="month" min="1970-01" max="2016-12" name="end_date" value="{{month(edu.end_date, 'Y-m')}}"/>
+				<input class="form-control" type="month" min="1970-01" max="2016-12" name="end_date" value="{{month(edu.end_date|default(''), 'Y-m')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">

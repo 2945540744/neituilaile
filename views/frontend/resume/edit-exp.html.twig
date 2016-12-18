@@ -31,13 +31,13 @@
 		<div class="row form-group">
 			<label class="col-xs-4">入职时间：</label>
 			<div class="col-xs-8">
-				<input class="form-control" type="month" name="start_date" value="{{month(exp.start_date, 'Y-m')}}"/>
+				<input class="form-control" type="month" name="start_date" value="{{month(exp.start_date|default(''), 'Y-m')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">
 			<label class="col-xs-4">离职时间：</label>
 			<div class="col-xs-8">
-				<input class="form-control" type="month" name="end_date" value="{{month(exp.end_date, 'Y-m')}}"/>
+				<input class="form-control" type="month" name="end_date" value="{{month(exp.end_date|default(''), 'Y-m')}}"/>
 			</div>
 		</div>
 		<div class="row form-group">

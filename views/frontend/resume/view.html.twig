@@ -84,7 +84,7 @@
 			{# </ul> #}
 			<div class="exp-item">
 				{% for exp in exps %}
-					<span>{{month(exp.start_date)}} ~ {{month(exp.end_date)}}</span>
+					<span>{{month(exp.start_date|default(''))}} ~ {{month(exp.end_date|default(''))}}</span>
 					<span>{{exp.company_name}}/{{exp.position_name}}</span>
 					<pre>{{exp.summary|default('')}}</pre>
 				{% endfor %}
