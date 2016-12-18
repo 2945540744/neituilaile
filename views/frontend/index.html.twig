@@ -25,14 +25,20 @@
 			</div>
 			<div class="job-info">
 				<div class="col-sm-12 company">
-					<span>{{job.short_name|default('')}}</span>
+					<span style="font-size: 1.1em; line-height: 1.2em;">{{job.title|default('')}}</span>
+					<span class="pull-right" style="color: #fd7558;">{{job.pay_range_from}}~{{job.pay_range_to}}k</span>
 				</div>
-				<div class="col-sm-12 job-detail">
-					<span>{{job.title|default('')}}[{{job.addr_city|default('')}}]</span>
-					<span class="">{{job.pay_range_from}}k~{{job.pay_range_to}}k</span>
+				<div class="col-sm-12" style="font-weight: 200; font-size: 1em; color: #333;">
+					{{job.short_name|default('')}}
 				</div>
-				<div class="col-sm-12 job-time">
-					<span>{{job.updated|date('H:i:s')}}</span>
+				<div class="col-sm-12" style="font-weight: 200; font-size: 0.9em; color: #999;">
+					<span>
+						{{job.addr_city|default('')}} &nbsp; {{job.exp_level|default('经验不限')}}
+					</span>
+					<span class="job-time pull-right">{{job.updated|date('m月d日')}}</span>
+				</div>
+				<div class="col-sm-12" style="font-weight: 200; font-size: 0.9em; color: #999;">
+					{{job.fund}} | {{job.scale}} | {{job.industry}}
 				</div>
 			</div>
 		</div>

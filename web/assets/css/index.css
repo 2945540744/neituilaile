@@ -4,13 +4,16 @@
 }
 
 .job {
+	position: relative;
     margin: 0 15px;
     padding: 15px;
     border-top: 1px solid #eee;
 }
 
 .company-logo {
+	position: absolute;
 	float: left;
+	margin-top: 10px;
 }
 
 .company-logo > img {
@@ -20,7 +23,9 @@
 
 .job-info {
 	position: relative;
+	margin-left: 4.5em;
     float: left;
+    margin-top: 0;
 }
 
 .job-info > .company {
@@ -37,4 +42,8 @@
 .job-info > .job-time {
 	font-size: 0.6em;
 	color: #bbb;
+}
+
+.pull-right {
+	right: 15px;
 }
