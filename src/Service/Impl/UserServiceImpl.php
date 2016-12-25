@@ -84,7 +84,7 @@ class UserServiceImpl extends BaseService implements UserService
     {
         $validator = new Validator();
         $validator->validate($fields, array(
-            'nickname'  => 'required|lenrange(2,40)',
+            'nickname'  => 'required|lenrange(1,40)',
             'gender'    => 'required|in("男","女")',
             'edu_level' => 'required|lenrange(1,50)',
             'exp_level' => 'required|lenrange(1,50)',

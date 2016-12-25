@@ -5,7 +5,7 @@ $(document).ready(function(){
 		rules: {
 			nickname: {
 				required: true,
-				minlength: 3,
+				minlength: 1,
 				maxlength: 20
 			},
 			edu_level: {
