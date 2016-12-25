@@ -17,12 +17,16 @@ class JobController extends BaseController
         ));
     }
 
-    public function view(Application $app, $id = 0)
+    public function view(Application $app, Request $request, $id = 0)
     {
-        $job         = $this->getJobService()->getJob($id);
-        $owner       = $this->getUserService()->getUser($job['creator']);
-        $company     = $this->getJobService()->getCompany($job['company_id']);
-        $user        = $app['user'];
+        $isManager = $request->query->get('admin', 0);
+        $job       = $this->getJobService()->getJob($id);
+        $owner     = $this->getUserService()->getUser($job['creator']);
+        $company   = $this->getJobService()->getCompany($job['company_id']);
+        $user      = $app['user'];
+        if (empty($user)) {
+            return new RedirectResponse('/login');
+        }
         $isDelivered = false;
         $isFavorited = false;
         if ($user['id'] != $job['creator']) {
@@ -35,6 +39,7 @@ class JobController extends BaseController
             'owner'       => $owner,
             'company'     => $company,
             'user'        => $app['user'],
+            'isManager'   => $isManager,
             'isDelivered' => $isDelivered,
             'isFavorited' => $isFavorited
         ));

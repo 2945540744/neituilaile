@@ -11,7 +11,10 @@
 {% block content %}
 <div class="container main-container">
 	<form id="post-form" action="/job/edit/{{job.id}}" method="post">
-		<div class="row form-title"><span class="title">编辑职位</span></div>
+		<div class="row form-title">
+			{% include 'frontend/go-back-btn.html.twig' %}
+			<span class="title">编辑职位</span>
+		</div>
 		<div class="row spacer"></div>
 		<div class="form-group row">
 			<select class="form-control col-xs-12" name="job_type" data-title="请选择职位类型">

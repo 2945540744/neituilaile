@@ -24,11 +24,30 @@ body {
 	height: 100px;
 }
 
+.basic-header {
+	padding-bottom: 15px !important;
+	border-bottom: 1px solid #eee;
+}
+
+.avatar-wraper {
+	position: absolute; 
+	float:left; 
+	margin-bottom: 15px;
+}
+
 .preview-avatar {
 	margin: 15px;
 	border-radius: 50%;
-	width: 100px;
-	height: 100px;
+	width: 4.5em;
+	height: 4.5em;
+}
+
+.basic-text {
+	position: relative; 
+	margin-left: 6.5em; 
+	float:left; 
+	margin-top: 15px; 
+	width: 80%;
 }
 
 .nickname {
@@ -38,6 +57,12 @@ body {
 
 .age {
 	font-size: 0.7em;
+}
+
+.gender {
+	font-size: 0.8em;
+	font-weight: bold;
+	color: red;
 }
 
 .weight {

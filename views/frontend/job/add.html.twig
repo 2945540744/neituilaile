@@ -11,7 +11,10 @@
 {% block content %}
 <div class="container main-container">
 	<form id="post-form" action="/job/add" method="post">
-		<div class="row form-title"><span class="title">发布职位</span></div>
+		<div class="row form-title">
+			{% include 'frontend/go-back-btn.html.twig' %}
+			<span class="title">发布职位</span>
+		</div>
 		{% if company is not empty %}
 		<div class="form-group row">
 			<div class="col-xs-12">

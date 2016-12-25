@@ -78,6 +78,18 @@ pre {
     border-left: 4px solid transparent;
 }
 
+.title-pull-left {
+	position: absolute;
+	top: 5px;
+	left: 0;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+.title-pull-left:hover {
+	text-decoration: none;
+}
+
 .title-pull-right {
 	position: absolute;
 	top: 5px;

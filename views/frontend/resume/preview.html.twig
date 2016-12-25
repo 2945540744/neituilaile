@@ -11,7 +11,7 @@
 {% block content %}
 <div class="container">
   <div class="row basic">
-  	<div class="col-12 align-center">
+  	{# <div class="col-12 align-center">
   		<img src="{{basic.avatar}}" class="preview-avatar">
   	</div>
   	<div class="col-12 align-center">
@@ -29,7 +29,31 @@
 	  		<span><i class="icon icon-edu-level"></i>{{basic.edu_level|default('')}}</span>
 	  		<span><i class="icon icon-pay-range"></i>{{resume.pay_range_from|default('1')}}k-{{resume.pay_range_to|default('1')}}k</span>
 	  	</div>
-  	</div>
+  	</div> #}
+
+    <div class="col-12 basic-header">
+      <div class="avatar-wraper">
+        <img src="{{basic.avatar}}" class="preview-avatar">
+      </div>
+      <div class="basic-text">
+        <div class="col-12">
+          <span class="nickname">{{basic.nickname}}</span>
+          <span class="age">{{age(basic.birthday)}}</span>
+          <span class="gender">{% if basic.gender|default('男') == '男' %}♂{% else %}♀{% endif %}</span>
+        </div>
+        <div class="col-12 weight">
+          <span>现任 {{exps.position_name|default('某职位')}}</span>&nbsp;
+          <span>{{resume.on_the_job|default(1) ? '在职' : '离职'}}</span>
+          @<span>{{exps.company_name|default('某公司')}}</span>
+        </div>
+        <div class="col-12 light">
+          <span><i class="icon icon-exp-level"></i>{{basic.exp_level|default('')}}</span>
+          <span><i class="icon icon-edu-level"></i>{{basic.edu_level|default('')}}</span>
+          <span><i class="icon icon-pay-range"></i>{{resume.pay_range_from|default('1')}}k-{{resume.pay_range_to|default('1')}}k</span>
+        </div>
+      </div>
+    </div>
+
   	
   	<div class="col-12">
       {% if resume.summary|default('') %}

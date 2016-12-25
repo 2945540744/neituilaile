@@ -12,17 +12,18 @@
 
 <div class="container">
 	<div class="row">
+		{% include 'frontend/go-back-btn.html.twig' %}
 		<span class="title">已发布的职位</span>
 	</div>
 	
 	{% for job in jobList %}
 		{% if job.status == '关闭' %}
-			<a href="javascript:;" class="post-item col-xs-12" style="color: #999;" data-detail-url="/job/view/{{job.id}}">
+			<a href="javascript:;" class="post-item col-xs-12" style="color: #999;" data-detail-url="/job/view/{{job.id}}?admin=1">
 			<span>{{job.title|default('')}}</span>
 			<span class="pull-right"><i class="btn btn-sm btn-closed">已关闭</i> > </span>
 			</a>
 		{% else %}
-			<a href="javascript:;" class="post-item col-xs-12" data-detail-url="/job/view/{{job.id}}">
+			<a href="javascript:;" class="post-item col-xs-12" data-detail-url="/job/view/{{job.id}}?admin=1">
 				<span>{{job.title|default('')}}</span>
 				<span class="pull-right"> > </span>
 			</a>

@@ -11,6 +11,7 @@
 {% block content %}
 <div class="container">
 	<div class="row">
+		{% include 'frontend/go-back-btn.html.twig' %}
 		<span class="title">职位详情</span>
 	</div>
 	<!-- 职位基本要求 -->
@@ -55,13 +56,15 @@
 	<div class="row bottom-spacer">&nbsp;</div>
 	<div class="bottom-menu">
 		{% if job.status == '关闭' %}
-			{% if user.id == job.creator %}
+			{% if user.id == job.creator and isManager|default(false) %}
 			<button class="btn btn-mini btn-secondary btn-half js-btn-edit" data-action="/job/edit/{{job.id}}">编辑职位</button>
 			{% endif %}
 			<button class="btn btn-mini btn-secondary btn-half js-btn-open" data-action="/job/open/{{job.id}}">开放岗位</button>			
 		{% elseif user.id == job.creator %}
+			{% if isManager|default(false) %}
 			<button class="btn btn-mini btn-secondary btn-half js-btn-edit" data-action="/job/edit/{{job.id}}">编辑职位</button>
 			<button class="btn btn-mini btn-secondary btn-half js-btn-close" data-action="/job/close/{{job.id}}">关闭职位</button>
+			{% endif %}
 		{% elseif user.current_identity == 'JOBHUNTER' %}
 			{% if isDelivered %}
 			<button class="btn btn-mini btn-secondary col-12 disabled">已投递</button>
