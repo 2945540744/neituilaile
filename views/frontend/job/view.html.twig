@@ -20,12 +20,12 @@
 			<span class="post-title">{{job.title|default('')}}</span>	
 			{% if user.id != job.creator %}
 				{% if isFavorited|default(false) %}
-					<a href="btn btn-sm js-unfavorite pull-right star-empty" data-url="/job/favorite/{{job.id}}/0">
-						<span class="star">&nbsp;</span>
+					<a class="btn btn-sm js-unfavorite pull-right" data-url="/job/favorite/{{job.id}}/0">
+						<i class="icon-large icon-star"></i>
 					</a>
 				{% else %}
-					<a class="btn btn-sm js-favorite pull-right star-empty" data-url="/job/favorite/{{job.id}}/1">
-						&nbsp;
+					<a class="btn btn-sm js-favorite pull-right" data-url="/job/favorite/{{job.id}}/1">
+						<i class="icon-large icon-star-empty"></i>
 					</a>
 				{% endif %}
 			{% endif %}

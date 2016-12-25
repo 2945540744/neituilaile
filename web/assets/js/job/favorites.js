@@ -9,10 +9,12 @@ $(document).ready(function(){
 			type: 'POST',
 			success: function(resp){
 				if(resp.success){
-					alert('简历投递成功！');
-					location.reload();
+					notify('简历投递成功！');
+					setTimeout(function(){
+						location.reload();
+					}, 1000);
 				}else{
-					alert('简历投递失败：' + resp.message);
+					notify('简历投递失败：' + resp.message);
 				}
 			}
 		});
@@ -24,10 +26,12 @@ $(document).ready(function(){
 			type: 'POST',
 			success: function(resp){
 				if(resp.success){
-					alert('已取消收藏！');
-					location.reload();
+					notify('已取消收藏！');
+					setTimeout(function(){
+						location.reload();
+					}, 1000);
 				}else{
-					alert('取消收藏失败：' + resp.message);
+					notify('取消收藏失败：' + resp.message);
 				}
 			}
 		});

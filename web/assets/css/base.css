@@ -194,3 +194,16 @@ p.input-error {
 textarea.form-control {
 	background-color: rgba(238, 238, 238, 0.5);
 }
+
+.icon-large {
+	font-size: 1.2em;
+}
+
+i.icon-star,
+i.icon-star-empty {
+	color: rgba(255,0,0,0.5);
+}
+
+div.alert {
+	width: 50%;
+}
