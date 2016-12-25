@@ -1,0 +1,74 @@
+{% extends 'frontend/page-layout.html.twig' %}
+{% block sub_css_block %}
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/company/view.css">
+{% endblock %}
+
+{% block sub_js_block %}
+<script type="text/javascript" src="/assets/js/company/view.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<span class="title">公司简介</span>
+	</div>
+	<!-- 职位基本要求 -->
+	<div class="row col-12" style="margin-top: 10px;">
+		<div class="col-12" style="border-bottom: 1px solid #bbb; padding: 0 15px;">
+			<span class="post-title">{{job.title|default('')}}</span>	
+			{% if user.id != job.creator %}
+				{% if isFavorited|default(false) %}
+					<a href="btn btn-sm js-unfavorite pull-right star-empty" data-url="/job/favorite/{{job.id}}/0">
+						<span class="star">&nbsp;</span>
+					</a>
+				{% else %}
+					<a class="btn btn-sm js-favorite pull-right star-empty" data-url="/job/favorite/{{job.id}}/1">
+						&nbsp;
+					</a>
+				{% endif %}
+			{% endif %}
+		</div>
+		<div class="col-12" style="padding: 10px 15px;">
+			<span class="col-12">薪水：{{job.pay_range_from|default('')}}k ~ {{job.pay_range_to|default('')}}k</span>
+			<span class="col-12">经验：{{job.experience_level|default('不限')}}</span>
+			<span class="col-12">教育：{{job.edu_level|default('')}}</span>	
+			<span class="col-12">地点：{{job.address|default('')}}</span>
+		</div>
+	</div>
+	<!-- 公司信息 -->
+	<div class="row col-12" style="border-bottom: 1px dashed #6699ff; border-top: 1px dashed #6699ff; margin: 15px 0; padding: 10px 0;">
+		<span style="padding: 0 15px;">公司主页</span>
+		{# <a href="company/view/{job.company_id}" class="pull-right"> > </a> #}
+		<span class="pull-right"> {{company.short_name}}|{{company.industry}} > </span>
+	</div>
+	<!-- 职位描述 -->
+	<div class="row col-12">
+		<span class="post-desc col-12" style="background: #6699ff; width: 100%; text-align: left; margin-bottom: 10px; padding: 0 15px; color: white;">职位描述</span>
+		<div class="col-12" style="padding: 0 15px;">
+			<pre>{{job.summary|default('')}}
+			</pre>
+		</div>
+	</div>
+	
+	<!-- 底部菜单 -->
+	<div class="row bottom-spacer">&nbsp;</div>
+	<div class="bottom-menu">
+		{% if job.status == '关闭' %}
+			{% if user.id == job.creator %}
+			<button class="btn btn-mini btn-secondary btn-half js-btn-edit" data-action="/job/edit/{{job.id}}">编辑职位</button>
+			{% endif %}
+			<button class="btn btn-mini btn-secondary btn-half js-btn-open" data-action="/job/open/{{job.id}}">开放岗位</button>			
+		{% elseif user.id == job.creator %}
+			<button class="btn btn-mini btn-secondary btn-half js-btn-edit" data-action="/job/edit/{{job.id}}">编辑职位</button>
+			<button class="btn btn-mini btn-secondary btn-half js-btn-close" data-action="/job/close/{{job.id}}">关闭职位</button>
+		{% elseif user.current_identity == 'JOBHUNTER' %}
+			{% if isDelivered %}
+			<button class="btn btn-mini btn-secondary col-12 disabled">已投递</button>
+			{% else %}
+			<button class="btn btn-mini btn-secondary col-12 js-btn-delivery" data-action="/resume/delivery/{{job.id}}">投递简历</button>
+			{% endif %}
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

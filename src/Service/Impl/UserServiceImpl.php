@@ -19,6 +19,11 @@ class UserServiceImpl extends BaseService implements UserService
         return $this->getUserDao()->getByFields(array('username' => $username));
     }
 
+    public function getCompany($id)
+    {
+        return $this->getCompanyDao()->get($id);
+    }
+
     public function getCompanyByUserId($userId)
     {
         return $this->getCompanyDao()->getByUserId($userId);
@@ -107,6 +112,37 @@ class UserServiceImpl extends BaseService implements UserService
         ));
 
         return $this->getUserDao()->update($id, $fields);
+    }
+
+    public function saveCompany($userId, $fields)
+    {
+        $validator = new Validator();
+        $validator->validate($fields, array(
+            'full_name'  => 'required|lenrange(2,100)',
+            'short_name' => 'required|lenrange(1,100)',
+            'industry'   => 'required|lenrange(1,50)',
+            'scale'      => 'required|lenrange(1,50)',
+            'fund'       => 'required|lenrange(1,50)',
+            'profile'    => 'required|lenrange(1,200)',
+            'address'    => 'required|lenrange(1,100)',
+            'website'    => 'required|lenrange(1,200)',
+            'summary'    => 'required|lenrange(1,2000)'
+        ));
+
+        if ($validator->fails()) {
+            return $this->createInvalidArgumentException('参数有误');
+        }
+
+        $existed = $this->getCompanyByUserId($userId);
+        if (!empty($existed)) {
+            $fields = array_merge($existed, $fields);
+        }
+        if (isset($fields['id'])) {
+            return $this->getCompanyDao()->update($fields['id'], $fields);
+        } else {
+            $fields['creator'] = $userId;
+            return $this->getCompanyDao()->create($fields);
+        }
     }
 
     public function saveEdu($userId, $edu)

@@ -80,7 +80,9 @@ pre {
 
 .title-pull-right {
 	position: absolute;
+	top: 5px;
 	right: 0;
+	font-weight: bold;
 }
 
 .pull-right {

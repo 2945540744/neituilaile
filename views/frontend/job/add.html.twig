@@ -22,19 +22,71 @@
 		</div>
 		{% else %}
 		<div class="form-group row">
-			<input class="form-control col-xs-12" type="text" name="full_name" placeholder="请输入公司全称" />
+			<input class="form-control col-xs-12" type="text" name="full_name" placeholder="请输入公司全称"/>
 		</div>
 		<div class="form-group row">
-			<input class="form-control col-xs-12" type="text" name="short_name" placeholder="请输入公司简称" />
+			<input class="form-control col-xs-12" type="text" name="short_name" placeholder="请输入公司简称"/>
 		</div>
 		<div class="form-group row">
-			<input class="form-control col-xs-12" type="text" name="industry" placeholder="请输入所属行业" />
+			<select class="form-control col-xs-12" name="industry" placeholder="请选择所属行业">
+				<option value="移动互联网">移动互联网</option>
+				<option value="电子商务">电子商务</option>
+				<option value="健康医疗">健康医疗</option>
+				<option value="生活服务">生活服务</option>
+				<option value="旅游">旅游</option>
+				<option value="金融">金融</option>
+				<option value="信息安全">信息安全</option>
+				<option value="广告营销">广告营销</option>
+				<option value="数据服务">数据服务</option>
+				<option value="智能硬件">智能硬件</option>
+				<option value="文化娱乐">文化娱乐</option>
+				<option value="企业服务">企业服务</option>
+				<option value="社交网络">社交网络</option>
+				<option value="网络招聘">网络招聘</option>
+				<option value="分类信息">分类信息</option>
+				<option value="教育培训">教育培训</option>
+				<option value="O2O"}>O2O</option>
+				<option value="游戏">游戏</option>
+				<option value="媒体">媒体</option>
+				<option value="IT软件">IT软件</option>
+				<option value="通信">通信</option>
+				<option value="贸易">贸易</option>
+				<option value="其它">其它</option>
+			</select>
 		</div>
 		<div class="form-group row">
-			<input class="form-control col-xs-12" type="text" name="scale" placeholder="请选择人员规模" />
+			<select class="form-control col-xs-12" name="scale" placeholder="请选择人员规模">
+				<option value="少于15人">
+					少于15人
+				</option>
+				<option value="15-50人">
+					15-50人
+				</option>
+				<option value="50-150人">
+					50-150人
+				</option>
+				<option value="150-500人">
+					150-500人
+				</option>
+				<option value="500-2000人">
+					500-2000人
+				</option>
+				<option value="2000人以上">
+					2000人以上
+				</option>
+			</select>
 		</div>
 		<div class="form-group row">
-			<input class="form-control col-xs-12" type="text" name="fund" placeholder="请选择融资阶段" />
+			<select class="form-control col-xs-12" name="fund" placeholder="请选择融资阶段">
+				<option value="未融资">未融资</option>
+				<option value="天使轮">天使轮</option>
+				<option value="A轮" >A轮</option>
+				<option value="B轮" >B轮</option>
+				<option value="C轮" >C轮</option>
+				<option value="D轮及以上">D轮及以上</option>
+				<option value="上市公司">上市公司</option>
+				<option value="不需要融资">不需要融资</option>
+			</select>
 		</div>
 		<!--<div class="form-group row">
 			<div class="col-xs-4 col-form-label">公司Logo</div>

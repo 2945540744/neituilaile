@@ -1,7 +1,9 @@
 <?php
 
 use Neitui\Controller\JobController;
+use Neitui\Controller\ErrorController;
 use Neitui\Controller\ResumeController;
+use Neitui\Controller\CompanyController;
 use Neitui\Controller\DefaultController;
 use Neitui\Controller\OAuth2ClientController;
 
@@ -9,8 +11,16 @@ $app['DefaultController'] = function () use ($app) {
     return new DefaultController($app['service.kernel']);
 };
 
+$app['ErrorController'] = function () use ($app) {
+    return new ErrorController($app['service.kernel']);
+};
+
 $app['JobController'] = function () use ($app) {
     return new JobController($app['service.kernel']);
+};
+
+$app['CompanyController'] = function () use ($app) {
+    return new CompanyController($app['service.kernel']);
 };
 
 $app['ResumeController'] = function () use ($app) {
@@ -44,7 +54,9 @@ $app->get('/job/index', 'JobController:index');
 $app->get('/job/favorites', 'JobController:favorites');
 $app->post('/job/favorite/{jobId}/{favorite}', 'JobController:favorite');
 
-// $app->post('/job/add','JobController:add');
+//公司
+$app->get('/company/edit', 'CompanyController:edit');
+$app->post('/company/edit', 'CompanyController:edit');
 
 //简历
 $app->get('/resume/index', 'ResumeController:index');
@@ -61,3 +73,9 @@ $app->get('/resume/preview', 'ResumeController:previewSelf');
 $app->get('/resume/preview/{rid}', 'ResumeController:preview');
 $app->get('/resume/resumes', 'ResumeController:resumes');
 $app->post('/resume/delivery/{jobId}', 'ResumeController:delivery');
+
+//Error page
+$app->get('/error/401', 'ErrorController:err401')->bind('err401');
+$app->get('/error/403', 'ErrorController:err403')->bind('err403');
+$app->get('/error/404', 'ErrorController:err404')->bind('err404');
+$app->get('/error/500', 'ErrorController:err500')->bind('err500');
