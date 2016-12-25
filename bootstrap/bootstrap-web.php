@@ -29,6 +29,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => ROOT_DIR.'/views'
 ));
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
+    $twig->addExtension(new Neitui\Common\SysParamExtension());
     $twig->addExtension(new Neitui\Common\WebExtension());
     return $twig;
 });
