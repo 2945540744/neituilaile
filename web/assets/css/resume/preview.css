@@ -15,19 +15,6 @@ body {
 }
 
 
-.col-3 {
-	width: 25%;
-}
-
-.col-9 {
-	width: 74%;
-}
-
-.col-12 {
-	width: 100%;
-}
-
-
 .basic > div {
 	float: left;
 	display: inline-block;

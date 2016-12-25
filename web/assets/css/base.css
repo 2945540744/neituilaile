@@ -2,6 +2,7 @@
 	padding: 0;
 	margin: 0;
 	width: 100%;
+	max-width: 100%;
 }
 
 pre {
@@ -34,6 +35,23 @@ pre {
     font-size: 1.3em;
 }
 
+.col-3 {
+	width: 25%;
+}
+
+.col-9 {
+	width: 74%;
+}
+
+.col-12 {
+	width: 100%;
+}
+
+.row {
+	max-width: 100%;
+	margin: 0;
+}
+
 .row.spacer {
 	height: 12px;
 	background-color: #eee;	
@@ -43,12 +61,6 @@ pre {
 	border: none; 
 	height: 50px;
 	width: 100%;
-}
-
-.btn-mobileSelect-gen {
-	margin: 10px 0 0 0;
-	width: 100% !important;
-	background-color: transparent;
 }
 
 .form-control {
@@ -112,6 +124,13 @@ pre {
 	color: white;
 }
 
+select.form-control, 
+input[type='text'].form-control,
+input[type='date'].form-control,
+textarea.form-control {
+	padding-left: 20px;
+}
+
 select {
 	text-align: right;
 }
@@ -138,3 +157,40 @@ select {
 	background-image: url('/assets/img/star-small.png');
 	background-position: 0 -40px;	
 }
+
+.alert-danger {
+	background-color: rgba(0,0,0,0.5) !important;
+	color: #fff !important;
+}
+
+input.input-error {
+	border: 1px solid rgba(255,0,0,0.5);
+}
+
+p.input-error {
+	color: red;
+	padding-left: 20px;
+}
+
+// .has-error .help-block,
+// .has-error .control-label,
+// .has-error .radio,
+// .has-error .checkbox,
+// .has-error .radio-inline,
+// .has-error .checkbox-inline,
+// .has-error.radio label,
+// .has-error.checkbox label,
+// .has-error.radio-inline label,
+// .has-error.checkbox-inline label {
+//   color: #a94442;
+// }
+// .has-error .form-control {
+//   border-color: #a94442;
+//   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+//   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+// }
+// .has-error .form-control:focus {
+//   border-color: #843534;
+//   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+//   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+// }

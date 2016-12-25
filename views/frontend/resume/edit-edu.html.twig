@@ -16,41 +16,26 @@
 			<a href="javascript:;" class="btn btn-link title-pull-right head-menu js-btn-edit">保存</a>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-4">毕业院校：</label>
-			<div class="col-xs-8">
-				<input type="hidden" name="part" value="edu">
-				<input class="form-control" type="text" name="school_name" value="{{edu.school_name|default('')}}"/>
-			</div>
+			<input type="hidden" name="part" value="edu">
+			<input class="form-control col-xs-12" type="text" name="school_name" value="{{edu.school_name|default('')}}" placeholder="您的学校名称" />
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-4">专业：</label>
-			<div class="col-xs-8">
-				<input class="form-control" type="text" name="major_name" value="{{edu.major_name|default('')}}"/>
-			</div>
+			<input class="form-control col-xs-12" type="text" name="major_name" value="{{edu.major_name|default('')}}" placeholder="您的专业名称" />
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-4">入学时间：</label>
-			<div class="col-xs-8">
-				<input class="form-control" type="month" min="1970-01" max="2016-12" name="start_date" value="{{month(edu.start_date|default(''), 'Y-m')}}"/>
-			</div>
+			<input class="form-control col-xs-12" id="start_date" type="month" min="1970-01" max="{{now('Y-m')}}" name="start_date" value="{{month(edu.start_date|default(''), 'Y-m')}}" placeholder="您的入学时间" />
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-4">毕业时间：</label>
-			<div class="col-xs-8">
-				<input class="form-control" type="month" min="1970-01" max="2016-12" name="end_date" value="{{month(edu.end_date|default(''), 'Y-m')}}"/>
-			</div>
+			<input class="form-control col-xs-12" id="end_date" type="month" min="1970-01" max="{{now('Y-m')}}" name="end_date" value="{{month(edu.end_date|default(''), 'Y-m')}}" placeholder="您的毕业时间" />
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-4">学历：</label>
-			<div class="col-xs-8">
-				<select class="form-control col-xs-12" name="edu_level">
-					<option value="高中" {% if edu.edu_level|default('') == '高中' %}selected{% endif %}>高中</option>
-					<option value="专科" {% if edu.edu_level|default('') == '专科' %}selected{% endif %}>专科</option>
-					<option value="本科" {% if edu.edu_level|default('') == '本科' %}selected{% endif %}>本科</option>
-					<option value="硕士" {% if edu.edu_level|default('') == '硕士' %}selected{% endif %}>硕士</option>
-					<option value="博士" {% if edu.edu_level|default('') == '博士' %}selected{% endif %}>博士</option>
-				</select>
-			</div>
+			<select class="form-control col-xs-12" name="edu_level" placeholder="学历">
+				<option value="高中" {% if edu.edu_level|default('') == '高中' %}selected{% endif %}>高中</option>
+				<option value="专科" {% if edu.edu_level|default('') == '专科' %}selected{% endif %}>专科</option>
+				<option value="本科" {% if edu.edu_level|default('') == '本科' %}selected{% endif %}>本科</option>
+				<option value="硕士" {% if edu.edu_level|default('') == '硕士' %}selected{% endif %}>硕士</option>
+				<option value="博士" {% if edu.edu_level|default('') == '博士' %}selected{% endif %}>博士</option>
+			</select>
 		</div>
 		{# <div class="row bottom-spacer"></div>
 		<div class="bottom-menu">

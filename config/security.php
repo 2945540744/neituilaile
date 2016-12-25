@@ -42,6 +42,10 @@ $app['security.access_rules'] = array(
     array('^/login_check', 'IS_AUTHENTICATED_ANONYMOUSLY'),
     array('^/oauth2', 'IS_AUTHENTICATED_ANONYMOUSLY'),
     array('^/test', 'IS_AUTHENTICATED_ANONYMOUSLY'),
+    array('^/job/view', 'IS_AUTHENTICATED_ANONYMOUSLY'),
+    array('^/resume/preview', 'IS_AUTHENTICATED_ANONYMOUSLY'),
+    array('^/$', 'IS_AUTHENTICATED_ANONYMOUSLY'),
+    array('^/index$', 'IS_AUTHENTICATED_ANONYMOUSLY'),
     array('^.*$', 'ROLE_USER')
     //test only
     // array('^.*$', 'IS_AUTHENTICATED_ANONYMOUSLY')
@@ -67,7 +71,3 @@ $app['security.entry_point.form._proto'] = $app->protect(function ($name, array 
     $login_path = isset($options['login_path']) ? $options['login_path'] : '/login';
     return new AuthenticationEntryPoint($app['security.http_utils'], $login_path);
 });
-
-// $app->on(SecurityEvents::INTERACTIVE_LOGIN, function ($event) use ($app) {
-//     SecurityToolkit::configTgc($app);
-// });

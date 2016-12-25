@@ -3,6 +3,7 @@
 namespace Neitui\Service\Impl;
 
 use Neitui\Common\ArrayToolkit;
+use Codeages\Biz\Framework\Validation\Validator;
 
 // use Neitui\Service\JobService;
 // use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
@@ -33,6 +34,48 @@ class JobServiceImpl extends BaseService//implements JobService
         if (isset($job['company_id'])) {
             $company = $this->getCompanyDao()->get($job['company_id']);
         }
+        //validate company
+        $cvalidator = new Validator();
+        if (!empty($company)) {
+            $cvalidator->validate($job, array(
+                'full_name'  => 'lenrange(2,30)',
+                'short_name' => 'lenrange(2,10)',
+                'industry'   => 'lenrange(1,20)',
+                'scale'      => 'lenrange(1,20)',
+                'fund'       => 'lenrange(1,20)',
+                'website'    => 'lenrange(1,150)'
+            ));
+        } else {
+            $cvalidator->validate($job, array(
+                'full_name'  => 'required|lenrange(2,30)',
+                'short_name' => 'required|lenrange(2,10)',
+                'industry'   => 'required|lenrange(1,20)',
+                'scale'      => 'required|lenrange(1,20)',
+                'fund'       => 'required|lenrange(1,20)',
+                'website'    => 'required|lenrange(1,150)'
+            ));
+        }
+        //validate job
+        $jvalidator = new Validator();
+        $jvalidator->validate($job, array(
+            'job_type'       => 'required|lenrange(2,30)',
+            'title'          => 'required|lenrange(2,40)',
+            // 'skills'         => 'required|lenrange(1,200)',
+            'pay_range_from' => 'required|range(1,100)',
+            'pay_range_to'   => 'required|range(1,100)',
+            'exp_level'      => 'required|lenrange(1,50)',
+            'edu_level'      => 'required|lenrange(1,50)',
+            'addr_city'      => 'required|lenrange(1,50)',
+            'address'        => 'required|lenrange(1,100)',
+            'summary'        => 'lenrange(1,1000)'
+        ));
+
+        if ($cvalidator->fails()
+            || $jvalidator->fails()
+            || intval($job['pay_range_from']) > intval($job['pay_range_to'])) {
+            return $this->createInvalidArgumentException('参数有误');
+        }
+
         if (isset($job['full_name'])) {
             $company['full_name'] = $job['full_name'];
         }
@@ -64,7 +107,7 @@ class JobServiceImpl extends BaseService//implements JobService
         $job = ArrayToolkit::parts($job, array(
             'job_type',
             'title',
-            'skills',
+            // 'skills',
             'pay_range_from',
             'pay_range_to',
             'exp_level',
@@ -83,6 +126,26 @@ class JobServiceImpl extends BaseService//implements JobService
 
     public function updateJob($job, $userId)
     {
+        //validate job
+        $jvalidator = new Validator();
+        $jvalidator->validate($job, array(
+            'id'             => 'required|int',
+            'job_type'       => 'required|lenrange(2,30)',
+            'title'          => 'required|lenrange(2,40)',
+            'skills'         => 'required|lenrange(1,200)',
+            'pay_range_from' => 'required|range(1,100)',
+            'pay_range_to'   => 'required|range(1,100)',
+            'exp_level'      => 'required|lenrange(1,50)',
+            'edu_level'      => 'required|lenrange(1,50)',
+            'addr_city'      => 'required|lenrange(1,50)',
+            'address'        => 'required|lenrange(1,100)',
+            'summary'        => 'lenrange(1,1000)'
+        ));
+
+        if ($jvalidator->fails()) {
+            return $this->createInvalidArgumentException('参数有误');
+        }
+
         $job['updator'] = $userId;
 
         return $this->getJobDao()->update($job['id'], $job);

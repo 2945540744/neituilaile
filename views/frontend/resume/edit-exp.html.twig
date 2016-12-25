@@ -16,37 +16,22 @@
 			<a href="javascript:;" class="btn btn-link title-pull-right head-menu js-btn-edit">保存</a>
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-4">公司名称：</label>
-			<div class="col-xs-8">
-				<input type="hidden" name="part" value="exp">
-				<input class="form-control" type="text" name="company_name" value="{{exp.company_name|default('')}}"/>
-			</div>
+			<input type="hidden" name="part" value="exp">
+			<input class="form-control col-xs-12" type="text" name="company_name" value="{{exp.company_name|default('')}}" placeholder="公司名称" />
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-4">岗位：</label>
-			<div class="col-xs-8">
-				<input class="form-control" type="text" name="position_name" value="{{exp.position_name|default('')}}"/>
-			</div>
+			<input class="form-control col-xs-12" type="text" name="position_name" value="{{exp.position_name|default('')}}" placeholder="职位" />
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-4">入职时间：</label>
-			<div class="col-xs-8">
-				<input class="form-control" type="month" name="start_date" value="{{month(exp.start_date|default(''), 'Y-m')}}"/>
-			</div>
+			<input class="form-control col-xs-12" id="start_date" type="month" min="1970-01" max="{{now('Y-m')}}" name="start_date" value="{{month(exp.start_date|default(''), 'Y-m')}}" placeholder="入职日期" />
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-4">离职时间：</label>
-			<div class="col-xs-8">
-				<input class="form-control" type="month" name="end_date" value="{{month(exp.end_date|default(''), 'Y-m')}}"/>
-			</div>
+			<input class="form-control col-xs-12" id="end_date" type="month" min="1970-01" max="{{now('Y-m')}}" name="end_date" value="{{month(exp.end_date|default(''), 'Y-m')}}" placeholder="离职日期" />
 		</div>
 		<div class="row form-group">
-			<label class="col-xs-4">工作内容：</label>
-			<div class="col-xs-8">
-				<textarea class="form-control text-field" rows="15" name="summary" placeholder="职责描述：xxxxx
+			<textarea class="form-control text-field col-xs-12" rows="15" name="summary" placeholder="职责描述：xxxxx
 				工作地点：xxxx
 				项目描述：xxxxxx">{{exp.summary|default('')}}</textarea>
-			</div>
 		</div>
 		{# <div class="row bottom-spacer"></div>
 		<div class="bottom-menu">

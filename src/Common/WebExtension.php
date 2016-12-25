@@ -19,7 +19,8 @@ class WebExtension extends \Twig_Extension
         return array(
             new \Twig_SimpleFunction('dict', array($this, 'getDictValue')),
             new \Twig_SimpleFunction('age', array($this, 'calcAge')),
-            new \Twig_SimpleFunction('month', array($this, 'month'))
+            new \Twig_SimpleFunction('month', array($this, 'month')),
+            new \Twig_SimpleFunction('now', array($this, 'now'))
         );
     }
 
@@ -48,6 +49,11 @@ class WebExtension extends \Twig_Extension
         }
 
         return date($fmt, strtotime($date));
+    }
+
+    public function now($fmt = 'Y-m-d')
+    {
+        return date($fmt);
     }
 
     public function getName()

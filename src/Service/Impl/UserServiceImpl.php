@@ -4,6 +4,7 @@ namespace Neitui\Service\Impl;
 
 use Neitui\Common\ArrayToolkit;
 use Neitui\Service\UserService;
+use Codeages\Biz\Framework\Validation\Validator;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 class UserServiceImpl extends BaseService implements UserService
@@ -76,6 +77,23 @@ class UserServiceImpl extends BaseService implements UserService
 
     public function updateUser($id, $fields)
     {
+        $validator = new Validator();
+        $validator->validate($fields, array(
+            'nickname'  => 'required|lenrange(2,40)',
+            'gender'    => 'required|in("男","女")',
+            'edu_level' => 'required|lenrange(1,50)',
+            'exp_level' => 'required|lenrange(1,50)',
+            'birthday'  => 'required|date',
+            'addr_city' => 'required|lenrange(1,50)',
+            'mobile'    => 'required|lenrange(1,100)',
+            'email'     => 'required|lenrange(1,1000)',
+            'profile'   => 'lenrange(1,200)'
+        ));
+
+        if ($validator->fails()) {
+            return $this->createInvalidArgumentException('参数有误');
+        }
+
         $fields = ArrayToolkit::parts($fields, array(
             'nickname',
             'gender',
@@ -93,6 +111,18 @@ class UserServiceImpl extends BaseService implements UserService
 
     public function saveEdu($userId, $edu)
     {
+        $validator = new Validator();
+        $validator->validate($edu, array(
+            'school_name' => 'required|lenrange(2,100)',
+            'major_name'  => 'required|lenrange(2,100)',
+            'start_date'  => 'required|date("Y-m")',
+            'end_date'    => 'required|date("Y-m")|after(start_date)',
+            'edu_level'   => 'required|lenrange(1,50)'
+        ));
+
+        if ($validator->fails()) {
+            return $this->createInvalidArgumentException('参数有误');
+        }
         $edu = ArrayToolkit::parts($edu, array(
             'school_name',
             'major_name',
@@ -122,6 +152,18 @@ class UserServiceImpl extends BaseService implements UserService
 
     public function saveExp($userId, $exp)
     {
+        $validator = new Validator();
+        $validator->validate($exp, array(
+            'company_name'  => 'required|lenrange(2,100)',
+            'position_name' => 'required|lenrange(2,100)',
+            'start_date'    => 'required|date("Y-m")',
+            'end_date'      => 'required|date("Y-m")|after(start_date)',
+            'summary'       => 'lenrange(1,1000)'
+        ));
+
+        if ($validator->fails()) {
+            return $this->createInvalidArgumentException('参数有误');
+        }
         $exp = ArrayToolkit::parts($exp, array(
             'company_name',
             'position_name',

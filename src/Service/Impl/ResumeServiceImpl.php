@@ -3,6 +3,7 @@
 namespace Neitui\Service\Impl;
 
 use Neitui\Common\ArrayToolkit;
+use Codeages\Biz\Framework\Validation\Validator;
 
 class ResumeServiceImpl extends BaseService
 {
@@ -23,7 +24,22 @@ class ResumeServiceImpl extends BaseService
 
     public function saveResume($userId, $resume)
     {
+        $validator = new Validator();
+        $validator->validate($resume, array(
+            'job_type'       => 'required|lenrange(2,30)',
+            'post_name'      => 'required|lenrange(2,40)',
+            'pay_range_from' => 'required|range(1,100)',
+            'pay_range_to'   => 'required|range(1,100)',
+            'addr_city'      => 'required|lenrange(1,50)',
+            'on_the_job'     => 'required|bool',
+            'summary'        => 'lenrange(1,1000)'
+        ));
+
+        if ($validator->fails() || intval($resume['pay_range_from']) > intval($resume['pay_range_to'])) {
+            return $this->createInvalidArgumentException('参数有误');
+        }
         $resume = ArrayToolkit::parts($resume, array(
+            'id',
             'post_name',
             'job_type',
             'addr_city',
