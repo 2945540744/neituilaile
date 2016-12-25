@@ -63,6 +63,14 @@ $(document).ready(function(){
 		}
 	});
 
+	$('#pay_range_from').change(function(event){
+		$from = $('#pay_range_from').val();
+		$to = $('#pay_range_to').val();
+		if($from > $to){
+			$('#pay_range_to').val($from);
+		}
+	});	
+
 	$('.js-btn-edit').click(function(event){
 		if(!validator.form()){
 			notify(validator.errorList[0].message);
