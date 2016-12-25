@@ -17,71 +17,86 @@
 			<a href="javascript:;" class="btn btn-link title-pull-right head-menu js-btn-edit">保存</a>
 		</div>
 		<div class="form-group row">
-			<input class="form-control col-xs-12" type="text" name="full_name" placeholder="请输入公司全称" value="{{company.full_name|default('')}}" />
+			<div class="col-xs-4 col-form-label">公司全称：</div>
+			<div class="col-xs-8">
+				<input class="form-control col-xs-12" type="text" name="full_name" placeholder="请输入公司全称" value="{{company.full_name|default('')}}" />
+			</div>
 		</div>
 		<div class="form-group row">
-			<input class="form-control col-xs-12" type="text" name="short_name" placeholder="请输入公司简称" value="{{company.short_name|default('')}}" />
+			<div class="col-xs-4 col-form-label">公司简称：</div>
+			<div class="col-xs-8">
+				<input class="form-control col-xs-12" type="text" name="short_name" placeholder="请输入公司简称" value="{{company.short_name|default('')}}" />
+			</div>
 		</div>
 		<div class="form-group row">
-			<select class="form-control col-xs-12" name="industry" placeholder="请选择所属行业">
-				<option value="移动互联网" {% if company.industry|default('移动互联网') == '移动互联网' %}selected{% endif %}>移动互联网</option>
-				<option value="电子商务" {% if company.industry|default('移动互联网') == '电子商务' %}selected{% endif %}>电子商务</option>
-				<option value="健康医疗" {% if company.industry|default('移动互联网') == '健康医疗' %}selected{% endif %}>健康医疗</option>
-				<option value="生活服务" {% if company.industry|default('移动互联网') == '生活服务' %}selected{% endif %}>生活服务</option>
-				<option value="旅游" {% if company.industry|default('移动互联网') == '旅游' %}selected{% endif %}>旅游</option>
-				<option value="金融" {% if company.industry|default('移动互联网') == '金融' %}selected{% endif %}>金融</option>
-				<option value="信息安全" {% if company.industry|default('移动互联网') == '信息安全' %}selected{% endif %}>信息安全</option>
-				<option value="广告营销" {% if company.industry|default('移动互联网') == '广告营销' %}selected{% endif %}>广告营销</option>
-				<option value="数据服务" {% if company.industry|default('移动互联网') == '数据服务' %}selected{% endif %}>数据服务</option>
-				<option value="智能硬件" {% if company.industry|default('移动互联网') == '智能硬件' %}selected{% endif %}>智能硬件</option>
-				<option value="文化娱乐" {% if company.industry|default('移动互联网') == '文化娱乐' %}selected{% endif %}>文化娱乐</option>
-				<option value="企业服务" {% if company.industry|default('移动互联网') == '企业服务' %}selected{% endif %}>企业服务</option>
-				<option value="社交网络" {% if company.industry|default('移动互联网') == '社交网络' %}selected{% endif %}>社交网络</option>
-				<option value="网络招聘" {% if company.industry|default('移动互联网') == '网络招聘' %}selected{% endif %}>网络招聘</option>
-				<option value="分类信息" {% if company.industry|default('移动互联网') == '分类信息' %}selected{% endif %}>分类信息</option>
-				<option value="教育培训" {% if company.industry|default('移动互联网') == '教育培训' %}selected{% endif %}>教育培训</option>
-				<option value="O2O" {% if company.industry|default('移动互联网') == 'O2O' %}selected{% endif %}>O2O</option>
-				<option value="游戏" {% if company.industry|default('移动互联网') == '游戏' %}selected{% endif %}>游戏</option>
-				<option value="媒体" {% if company.industry|default('移动互联网') == '媒体' %}selected{% endif %}>媒体</option>
-				<option value="IT软件" {% if company.industry|default('移动互联网') == 'IT软件' %}selected{% endif %}>IT软件</option>
-				<option value="通信" {% if company.industry|default('移动互联网') == '通信' %}selected{% endif %}>通信</option>
-				<option value="贸易" {% if company.industry|default('移动互联网') == '贸易' %}selected{% endif %}>贸易</option>
-				<option value="其它" {% if company.industry|default('移动互联网') == '其它' %}selected{% endif %}>其它</option>
-			</select>
+			<div class="col-xs-4 col-form-label">所属行业：</div>
+			<div class="col-xs-8">
+				<select class="form-control col-xs-12" name="industry" placeholder="请选择所属行业">
+					<option value="移动互联网" {% if company.industry|default('移动互联网') == '移动互联网' %}selected{% endif %}>移动互联网</option>
+					<option value="电子商务" {% if company.industry|default('移动互联网') == '电子商务' %}selected{% endif %}>电子商务</option>
+					<option value="健康医疗" {% if company.industry|default('移动互联网') == '健康医疗' %}selected{% endif %}>健康医疗</option>
+					<option value="生活服务" {% if company.industry|default('移动互联网') == '生活服务' %}selected{% endif %}>生活服务</option>
+					<option value="旅游" {% if company.industry|default('移动互联网') == '旅游' %}selected{% endif %}>旅游</option>
+					<option value="金融" {% if company.industry|default('移动互联网') == '金融' %}selected{% endif %}>金融</option>
+					<option value="信息安全" {% if company.industry|default('移动互联网') == '信息安全' %}selected{% endif %}>信息安全</option>
+					<option value="广告营销" {% if company.industry|default('移动互联网') == '广告营销' %}selected{% endif %}>广告营销</option>
+					<option value="数据服务" {% if company.industry|default('移动互联网') == '数据服务' %}selected{% endif %}>数据服务</option>
+					<option value="智能硬件" {% if company.industry|default('移动互联网') == '智能硬件' %}selected{% endif %}>智能硬件</option>
+					<option value="文化娱乐" {% if company.industry|default('移动互联网') == '文化娱乐' %}selected{% endif %}>文化娱乐</option>
+					<option value="企业服务" {% if company.industry|default('移动互联网') == '企业服务' %}selected{% endif %}>企业服务</option>
+					<option value="社交网络" {% if company.industry|default('移动互联网') == '社交网络' %}selected{% endif %}>社交网络</option>
+					<option value="网络招聘" {% if company.industry|default('移动互联网') == '网络招聘' %}selected{% endif %}>网络招聘</option>
+					<option value="分类信息" {% if company.industry|default('移动互联网') == '分类信息' %}selected{% endif %}>分类信息</option>
+					<option value="教育培训" {% if company.industry|default('移动互联网') == '教育培训' %}selected{% endif %}>教育培训</option>
+					<option value="O2O" {% if company.industry|default('移动互联网') == 'O2O' %}selected{% endif %}>O2O</option>
+					<option value="游戏" {% if company.industry|default('移动互联网') == '游戏' %}selected{% endif %}>游戏</option>
+					<option value="媒体" {% if company.industry|default('移动互联网') == '媒体' %}selected{% endif %}>媒体</option>
+					<option value="IT软件" {% if company.industry|default('移动互联网') == 'IT软件' %}selected{% endif %}>IT软件</option>
+					<option value="通信" {% if company.industry|default('移动互联网') == '通信' %}selected{% endif %}>通信</option>
+					<option value="贸易" {% if company.industry|default('移动互联网') == '贸易' %}selected{% endif %}>贸易</option>
+					<option value="其它" {% if company.industry|default('移动互联网') == '其它' %}selected{% endif %}>其它</option>
+				</select>
+			</div>
 		</div>
 		<div class="form-group row">
-			<select class="form-control col-xs-12" name="scale" placeholder="请选择人员规模">
-				<option value="少于15人" {% if company.scale|default('少于15人') == '少于15人' %}selected{% endif %}>
-					少于15人
-				</option>
-				<option value="15-50人" {% if company.scale|default('少于15人') == '15-50人' %}selected{% endif %}>
-					15-50人
-				</option>
-				<option value="50-150人" {% if company.scale|default('少于15人') == '50-150人' %}selected{% endif %}>
-					50-150人
-				</option>
-				<option value="150-500人" {% if company.scale|default('少于15人') == '150-500人' %}selected{% endif %}>
-					150-500人
-				</option>
-				<option value="500-2000人" {% if company.scale|default('少于15人') == '500-2000人' %}selected{% endif %}>
-					500-2000人
-				</option>
-				<option value="2000人以上" {% if company.scale|default('少于15人') == '2000人以上' %}selected{% endif %}>
-					2000人以上
-				</option>
-			</select>
+			<div class="col-xs-4 col-form-label">公司规模：</div>
+			<div class="col-xs-8">
+				<select class="form-control col-xs-12" name="scale" placeholder="请选择公司规模">
+					<option value="少于15人" {% if company.scale|default('少于15人') == '少于15人' %}selected{% endif %}>
+						少于15人
+					</option>
+					<option value="15-50人" {% if company.scale|default('少于15人') == '15-50人' %}selected{% endif %}>
+						15-50人
+					</option>
+					<option value="50-150人" {% if company.scale|default('少于15人') == '50-150人' %}selected{% endif %}>
+						50-150人
+					</option>
+					<option value="150-500人" {% if company.scale|default('少于15人') == '150-500人' %}selected{% endif %}>
+						150-500人
+					</option>
+					<option value="500-2000人" {% if company.scale|default('少于15人') == '500-2000人' %}selected{% endif %}>
+						500-2000人
+					</option>
+					<option value="2000人以上" {% if company.scale|default('少于15人') == '2000人以上' %}selected{% endif %}>
+						2000人以上
+					</option>
+				</select>
+			</div>
 		</div>
 		<div class="form-group row">
-			<select class="form-control col-xs-12" name="fund" placeholder="请选择融资阶段">
-				<option value="未融资" {% if company.fund|default('未融资') == '未融资' %}selected{% endif %}>未融资</option>
-				<option value="天使轮" {% if company.fund|default('未融资') == '天使轮' %}selected{% endif %}>天使轮</option>
-				<option value="A轮" {% if company.fund|default('未融资') == 'A轮' %}selected{% endif %}>A轮</option>
-				<option value="B轮" {% if company.fund|default('未融资') == 'B轮' %}selected{% endif %}>B轮</option>
-				<option value="C轮" {% if company.fund|default('未融资') == 'C轮' %}selected{% endif %}>C轮</option>
-				<option value="D轮及以上" {% if company.fund|default('未融资') == 'D轮及以上' %}selected{% endif %}>D轮及以上</option>
-				<option value="上市公司" {% if company.fund|default('未融资') == '上市公司' %}selected{% endif %}>上市公司</option>
-				<option value="不需要融资" {% if company.fund|default('未融资') == '不需要融资' %}selected{% endif %}>不需要融资</option>
-			</select>
+			<div class="col-xs-4 col-form-label">融资阶段：</div>
+			<div class="col-xs-8">
+				<select class="form-control col-xs-12" name="fund" placeholder="请选择融资阶段">
+					<option value="未融资" {% if company.fund|default('未融资') == '未融资' %}selected{% endif %}>未融资</option>
+					<option value="天使轮" {% if company.fund|default('未融资') == '天使轮' %}selected{% endif %}>天使轮</option>
+					<option value="A轮" {% if company.fund|default('未融资') == 'A轮' %}selected{% endif %}>A轮</option>
+					<option value="B轮" {% if company.fund|default('未融资') == 'B轮' %}selected{% endif %}>B轮</option>
+					<option value="C轮" {% if company.fund|default('未融资') == 'C轮' %}selected{% endif %}>C轮</option>
+					<option value="D轮及以上" {% if company.fund|default('未融资') == 'D轮及以上' %}selected{% endif %}>D轮及以上</option>
+					<option value="上市公司" {% if company.fund|default('未融资') == '上市公司' %}selected{% endif %}>上市公司</option>
+					<option value="不需要融资" {% if company.fund|default('未融资') == '不需要融资' %}selected{% endif %}>不需要融资</option>
+				</select>
+			</div>
 		</div>
 		<!--<div class="form-group row">
 			<div class="col-xs-4 col-form-label">公司Logo</div>
@@ -90,17 +105,29 @@
 			</div>
 		</div>-->
 		<div class="form-group row">
-			<input class="form-control col-xs-12" type="text" name="profile" placeholder="一句话介绍" value="{{company.profile|default('')}}" />
+			<div class="col-xs-4 col-form-label">一句话介绍：</div>
+			<div class="col-xs-8">
+				<input class="form-control col-xs-12" type="text" name="profile" placeholder="一句话介绍" value="{{company.profile|default('')}}" />
+			</div>
 		</div>
 		<div class="form-group row">
-			<input class="form-control col-xs-12" type="text" name="address" placeholder="请输入公司地址" value="{{company.address|default('')}}" />
+			<div class="col-xs-4 col-form-label">公司地址：</div>
+			<div class="col-xs-8">
+				<input class="form-control col-xs-12" type="text" name="address" placeholder="请输入公司地址" value="{{company.address|default('')}}" />
+			</div>
 		</div>
 		<div class="form-group row">
-			<input class="form-control col-xs-12" type="text" name="website" placeholder="请输入公司官网" value="{{company.website|default('')}}" />
+			<div class="col-xs-4 col-form-label">公司官网：</div>
+			<div class="col-xs-8">
+				<input class="form-control col-xs-12" type="text" name="website" placeholder="请输入公司官网" value="{{company.website|default('')}}" />
+			</div>
 		</div>
 		<div class="form-group row">
-			<textarea rows="10" class="form-control col-xs-12" name="summary" placeholder="公司的详细说明" >{{company.summary|default('')}}
-			</textarea>
+			<div class="col-xs-4 col-form-label">公司介绍：</div>
+			<div class="col-xs-8">
+				<textarea rows="10" class="form-control col-xs-12" name="summary" placeholder="公司的详细说明" >{{company.summary|default('')}}
+				</textarea>
+			</div>
 		</div>
 	</form>
 </div>

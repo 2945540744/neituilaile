@@ -15,7 +15,7 @@ pre {
 
 .bottom-menu {
 	position: fixed;
-	margin-bottom: 4em;
+	margin-bottom: 0.5em;
 	bottom: 1px;
 	border: none !important;
 	text-align: center;
@@ -65,6 +65,7 @@ pre {
 
 .form-control {
 	border: none;
+	padding: 0;
 }
 
 .caret {
@@ -138,12 +139,12 @@ pre {
 	color: white;
 }
 
-select.form-control, 
-input[type='text'].form-control,
-input[type='date'].form-control,
-textarea.form-control {
-	padding-left: 20px;
-}
+// select.form-control, 
+// input[type='text'].form-control,
+// input[type='date'].form-control,
+// textarea.form-control {
+// 	padding-left: 20px;
+// }
 
 select {
 	text-align: right;
@@ -186,25 +187,10 @@ p.input-error {
 	padding-left: 20px;
 }
 
-// .has-error .help-block,
-// .has-error .control-label,
-// .has-error .radio,
-// .has-error .checkbox,
-// .has-error .radio-inline,
-// .has-error .checkbox-inline,
-// .has-error.radio label,
-// .has-error.checkbox label,
-// .has-error.radio-inline label,
-// .has-error.checkbox-inline label {
-//   color: #a94442;
-// }
-// .has-error .form-control {
-//   border-color: #a94442;
-//   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-//   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-// }
-// .has-error .form-control:focus {
-//   border-color: #843534;
-//   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
-//   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
-// }
+.col-form-label {
+	min-width: 120px;
+}
+
+textarea.form-control {
+	background-color: rgba(238, 238, 238, 0.5);
+}

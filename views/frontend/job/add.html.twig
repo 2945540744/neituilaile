@@ -10,86 +10,101 @@
 
 {% block content %}
 <div class="container main-container">
-	<form id="post-form" action="/job/add" method="post">
+	<form id="post-form" action="/job/add" method="post" class="form-horizontal">
 		<div class="row form-title">
 			{% include 'frontend/go-back-btn.html.twig' %}
 			<span class="title">发布职位</span>
 		</div>
 		{% if company is not empty %}
 		<div class="form-group row">
-			<div class="col-xs-12">
+			<div class="col-xs-4 col-form-label">公司信息：</div>
+			<div class="col-xs-8">
 				<input type="hidden" name="company_id" value="{{company.id}}">
-				{# /company/index #}
-				<a href="javascript:;" class="form-control" style="text-align: right;">{{company.short_name}}|{{company.industry}} ></a>
+				<a href="/company/edit" class="form-control" style="text-align: right;">{{company.short_name}}|{{company.industry}} ></a>
 			</div>
 		</div>
 		{% else %}
 		<div class="form-group row">
-			<input class="form-control col-xs-12" type="text" name="full_name" placeholder="请输入公司全称"/>
+			<div class="col-xs-4 col-form-label">公司全称：</div>
+			<div class="col-xs-8">
+				<input class="form-control col-xs-12" type="text" name="full_name" placeholder="请输入公司全称"/>
+			</div>
 		</div>
 		<div class="form-group row">
-			<input class="form-control col-xs-12" type="text" name="short_name" placeholder="请输入公司简称"/>
+			<div class="col-xs-4 col-form-label">公司简称：</div>
+			<div class="col-xs-8">
+				<input class="form-control col-xs-12" type="text" name="short_name" placeholder="请输入公司简称"/>
+			</div>
 		</div>
 		<div class="form-group row">
-			<select class="form-control col-xs-12" name="industry" placeholder="请选择所属行业">
-				<option value="移动互联网">移动互联网</option>
-				<option value="电子商务">电子商务</option>
-				<option value="健康医疗">健康医疗</option>
-				<option value="生活服务">生活服务</option>
-				<option value="旅游">旅游</option>
-				<option value="金融">金融</option>
-				<option value="信息安全">信息安全</option>
-				<option value="广告营销">广告营销</option>
-				<option value="数据服务">数据服务</option>
-				<option value="智能硬件">智能硬件</option>
-				<option value="文化娱乐">文化娱乐</option>
-				<option value="企业服务">企业服务</option>
-				<option value="社交网络">社交网络</option>
-				<option value="网络招聘">网络招聘</option>
-				<option value="分类信息">分类信息</option>
-				<option value="教育培训">教育培训</option>
-				<option value="O2O"}>O2O</option>
-				<option value="游戏">游戏</option>
-				<option value="媒体">媒体</option>
-				<option value="IT软件">IT软件</option>
-				<option value="通信">通信</option>
-				<option value="贸易">贸易</option>
-				<option value="其它">其它</option>
-			</select>
+			<div class="col-xs-4 col-form-label">所属行业：</div>
+			<div class="col-xs-8">
+				<select class="form-control col-xs-12" name="industry" placeholder="请选择所属行业">
+					<option value="移动互联网">移动互联网</option>
+					<option value="电子商务">电子商务</option>
+					<option value="健康医疗">健康医疗</option>
+					<option value="生活服务">生活服务</option>
+					<option value="旅游">旅游</option>
+					<option value="金融">金融</option>
+					<option value="信息安全">信息安全</option>
+					<option value="广告营销">广告营销</option>
+					<option value="数据服务">数据服务</option>
+					<option value="智能硬件">智能硬件</option>
+					<option value="文化娱乐">文化娱乐</option>
+					<option value="企业服务">企业服务</option>
+					<option value="社交网络">社交网络</option>
+					<option value="网络招聘">网络招聘</option>
+					<option value="分类信息">分类信息</option>
+					<option value="教育培训">教育培训</option>
+					<option value="O2O"}>O2O</option>
+					<option value="游戏">游戏</option>
+					<option value="媒体">媒体</option>
+					<option value="IT软件">IT软件</option>
+					<option value="通信">通信</option>
+					<option value="贸易">贸易</option>
+					<option value="其它">其它</option>
+				</select>
+			</div>
 		</div>
 		<div class="form-group row">
-			<select class="form-control col-xs-12" name="scale" placeholder="请选择人员规模">
-				<option value="少于15人">
-					少于15人
-				</option>
-				<option value="15-50人">
-					15-50人
-				</option>
-				<option value="50-150人">
-					50-150人
-				</option>
-				<option value="150-500人">
-					150-500人
-				</option>
-				<option value="500-2000人">
-					500-2000人
-				</option>
-				<option value="2000人以上">
-					2000人以上
-				</option>
-			</select>
+			<div class="col-xs-4 col-form-label">公司规模：</div>
+			<div class="col-xs-8">
+				<select class="form-control col-xs-12" name="scale" placeholder="请选择公司规模">
+					<option value="少于15人">
+						少于15人
+					</option>
+					<option value="15-50人">
+						15-50人
+					</option>
+					<option value="50-150人">
+						50-150人
+					</option>
+					<option value="150-500人">
+						150-500人
+					</option>
+					<option value="500-2000人">
+						500-2000人
+					</option>
+					<option value="2000人以上">
+						2000人以上
+					</option>
+				</select>
+			</div>
 		</div>
 		<div class="form-group row">
-			<select class="form-control col-xs-12" name="fund" placeholder="请选择融资阶段">
-				<option value="未融资">未融资</option>
-				<option value="天使轮">天使轮</option>
-				<option value="A轮" >A轮</option>
-				<option value="B轮" >B轮</option>
-				<option value="C轮" >C轮</option>
-				<option value="D轮及以上">D轮及以上</option>
-				<option value="上市公司">上市公司</option>
-				<option value="不需要融资">不需要融资</option>
-			</select>
+			<div class="col-xs-4 col-form-label">融资阶段：</div>
+			<div class="col-xs-8">
+				<select class="form-control col-xs-12" name="fund" placeholder="请选择融资阶段">
+					<option value="未融资">未融资</option>
+					<option value="天使轮">天使轮</option>
+					<option value="A轮" >A轮</option>
+					<option value="B轮" >B轮</option>
+					<option value="C轮" >C轮</option>
+					<option value="D轮及以上">D轮及以上</option>
+					<option value="上市公司">上市公司</option>
+					<option value="不需要融资">不需要融资</option>
+				</select>
+			</div>
 		</div>
 		<!--<div class="form-group row">
 			<div class="col-xs-4 col-form-label">公司Logo</div>
@@ -98,39 +113,49 @@
 			</div>
 		</div>-->
 		<div class="form-group row">
-			<input class="form-control col-xs-12" type="text" name="website" placeholder="请输入公司官网" />
+			<div class="col-xs-4 col-form-label">公司官网：</div>
+			<div class="col-xs-8">
+				<input class="form-control col-xs-12" type="text" name="website" placeholder="请输入公司官网" />
+			</div>
 		</div>
 		{% endif %}
 		<div class="row spacer"></div>
 		<div class="form-group row">
-			<select class="form-control col-xs-12" name="job_type" data-title="请选择职位类型">
-				<optgroup label="技术">
-					<option value="后端开发">后端开发</option>	
-					<option value="前端开发">前端开发</option>
-					<option value="测试">测试</option>
-					<option value="运维">运维</option>
-					<option value="移动开发">移动开发</option>
-				</optgroup>
-				<optgroup label="产品">
-					<option value="产品经理">产品经理</option>
-					<option value="产品设计师">产品设计师</option>
-					<option value="产品总监">产品总监</option>
-				</optgroup>
-				<optgroup label="运营">
-					<option value="运营">运营</option>
-					<option value="编辑">编辑</option>
-					<option value="客服">客服</option>
-				</optgroup>
-			</select>
+			<div class="col-xs-4 col-form-label">职位类型：</div>
+			<div class="col-xs-8">
+				<select class="form-control col-xs-12" name="job_type" data-title="请选择职位类型">
+					<optgroup label="技术">
+						<option value="后端开发">后端开发</option>	
+						<option value="前端开发">前端开发</option>
+						<option value="测试">测试</option>
+						<option value="运维">运维</option>
+						<option value="移动开发">移动开发</option>
+					</optgroup>
+					<optgroup label="产品">
+						<option value="产品经理">产品经理</option>
+						<option value="产品设计师">产品设计师</option>
+						<option value="产品总监">产品总监</option>
+					</optgroup>
+					<optgroup label="运营">
+						<option value="运营">运营</option>
+						<option value="编辑">编辑</option>
+						<option value="客服">客服</option>
+					</optgroup>
+				</select>
+			</div>
 		</div>
 		<div class="form-group row">
-			<input type="text" class="form-control col-xs-12" name="title" placeholder="请输入职位名称" />
+			<div class="col-xs-4 col-form-label">职位名称：</div>
+			<div class="col-xs-8">
+				<input type="text" class="form-control col-xs-12" name="title" placeholder="请输入职位名称" />
+			</div>
 		</div>
 		{# <div class="form-group row">
 			<input class="form-control" type="text" name="skills" placeholder="请输入技能要求，每项之间以空格分隔" />
 		</div> #}
 		<div class="form-group row">
-			<div class="col-xs-12">
+			<div class="col-xs-4 col-form-label">薪资范围：</div>
+			<div class="col-xs-8">
 				<select class="form-control col-xs-5" id="pay_range_from" name="pay_range_from" style="padding-left: 2px;">
 					{%for i in range(1, 50) %}
 					<option value="{{i}}">{{i}}k</option>
@@ -146,54 +171,69 @@
 		</div>
 		<div class="row spacer"></div>
 		<div class="form-group row">
-			<select class="form-control col-xs-12" name="exp_level" placeholder="请选择经验要求">
-				<option value="不限">经验不限</option>
-				<option value="应届生">应届生</option>
-				<option value="1年以内">1年以内</option>
-				<option value="1-3年">1-3年</option>
-				<option value="3-5年">3-5年</option>
-				<option value="5-10年">5-10年</option>
-				<option value="10年以上">10年以上</option>
-			</select>
+			<div class="col-xs-4 col-form-label">经验要求：</div>
+			<div class="col-xs-8">
+				<select class="form-control col-xs-12" name="exp_level" placeholder="请选择经验要求">
+					<option value="不限">经验不限</option>
+					<option value="应届生">应届生</option>
+					<option value="1年以内">1年以内</option>
+					<option value="1-3年">1-3年</option>
+					<option value="3-5年">3-5年</option>
+					<option value="5-10年">5-10年</option>
+					<option value="10年以上">10年以上</option>
+				</select>
+			</div>
 		</div>
 		<div class="form-group row">
-			<select class="form-control col-xs-12 js-post-cert" name="edu_level" placeholder="请选择学历要求">
-				<option value="不限">学历不限</option>
-				<option value="高中">高中</option>
-				<option value="专科">专科</option>
-				<option value="本科">本科</option>
-				<option value="硕士">硕士</option>
-				<option value="博士">博士</option>
-			</select>
+			<div class="col-xs-4 col-form-label">学历要求：</div>
+			<div class="col-xs-8">
+				<select class="form-control col-xs-12 js-post-cert" name="edu_level" placeholder="请选择学历要求">
+					<option value="不限">学历不限</option>
+					<option value="高中">高中</option>
+					<option value="专科">专科</option>
+					<option value="本科">本科</option>
+					<option value="硕士">硕士</option>
+					<option value="博士">博士</option>
+				</select>
+			</div>
 		</div>
 		<div class="row spacer"></div>
 		<div class="form-group row">
-			<select class="form-control col-xs-12 js-post-city" name="addr_city" placeholder="工作城市" data-style="data-link">
-				<optgroup label="北京">
-					<option value="北京">北京</option>
-				</optgroup>
-				<optgroup label="上海">
-					<option value="上海">上海</option>
-				</optgroup>
-				<optgroup label="浙江">
-					<option value="杭州">杭州</option>
-					<option value="宁波">宁波</option>
-				</optgroup>
-				<optgroup label="广东">
-					<option value="广州">广州</option>
-					<option value="深圳">深圳</option>
-				</optgroup>
-			</select>
+			<div class="col-xs-4 col-form-label">工作城市：</div>
+			<div class="col-xs-8">
+				<select class="form-control col-xs-12 js-post-city" name="addr_city" placeholder="工作城市" data-style="data-link">
+					<optgroup label="北京">
+						<option value="北京">北京</option>
+					</optgroup>
+					<optgroup label="上海">
+						<option value="上海">上海</option>
+					</optgroup>
+					<optgroup label="浙江">
+						<option value="杭州">杭州</option>
+						<option value="宁波">宁波</option>
+					</optgroup>
+					<optgroup label="广东">
+						<option value="广州">广州</option>
+						<option value="深圳">深圳</option>
+					</optgroup>
+				</select>
+			</div>
 		</div>
 		<div class="form-group row">
-			<input type="text" class="form-control col-xs-12" name="address" placeholder="请输入工作地点" />
+			<div class="col-xs-4 col-form-label">工作地点：</div>
+			<div class="col-xs-8">
+				<input type="text" class="form-control col-xs-12" name="address" placeholder="请输入工作地点" />
+			</div>
 		</div>
 		<div class="form-group row">
-			<textarea rows="10" class="form-control col-xs-12" name="summary" placeholder="填写详细，清晰的职位描述有助于您更精确的展开招聘需求
+			<div class="col-xs-4 col-form-label">职位描述：</div>
+			<div class="col-xs-8">
+				<textarea rows="10" class="form-control col-xs-12" name="summary" placeholder="填写详细，清晰的职位描述有助于您更精确的展开招聘需求
 例如：
 1.工作内容...
 2.任务要求...
 3.特殊说明..." ></textarea>
+			</div>
 		</div>
 		<div class="row bottom-spacer"></div>
 		<div class="bottom-menu">
