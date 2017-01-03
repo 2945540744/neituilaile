@@ -45,6 +45,10 @@ $(document).ready(function(){
 		messages: {
 			full_name: '请输入公司全称',
 			short_name: '请输入公司简称',
+			industry: '请选择所属行业',
+			scale: '请选择公司规模',
+			fund: '请选择融资阶段',
+			website: '请输入有效的网址',
 			profile: {
 				required: '请输入一句话介绍',
 				maxlength: '输入内容过长'

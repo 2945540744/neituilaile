@@ -29,6 +29,9 @@ $(document).ready(function(){
 		},
 		messages: {
 			nickname: '请输入您的昵称',
+			edu_level: '请选择最高学历',
+			exp_level: '请选择工作年限',
+			birthday: '请选择生日',
 			email: {
 				required: '请输入您的邮箱',
 				email: '邮箱格式有误'

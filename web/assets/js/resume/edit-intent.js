@@ -41,6 +41,8 @@ $(document).ready(function(){
 		},
 		messages: {
 			post_name: '请输入您的期望职位',
+			job_type: '请选择职位性质',
+			addr_city: '请选择工作城市',
 			pay_range_from: {
 				before: '薪水下限不应高于上限'
 			},

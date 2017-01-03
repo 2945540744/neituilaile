@@ -73,7 +73,16 @@ $(document).ready(function(){
 		messages: {
 			full_name: '请输入公司全称',
 			short_name: '请输入公司简称',
+			industry: '请选择所属行业',
+			scale: '请选择公司规模',
+			fund: '请选择融资阶段',
+			website: '请输入有效的网址',
+			job_type: '请选择职位类型',
 			title: '请输入职位名称',
+			exp_level: '请选择经验要求',
+			edu_level: '请选择学历要求',
+			addr_city: '请选择工作城市',
+			address: '请输入工作地点',
 			address: {
 				required: '请输入工作地点',
 				maxlength: '输入内容过长'

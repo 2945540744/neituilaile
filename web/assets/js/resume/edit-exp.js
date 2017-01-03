@@ -39,11 +39,10 @@ $(document).ready(function(){
 			company_name: '请输入您的公司名称',
 			position_name: '请输入您的职位',
 			start_date: {
-				before: '入职日期应早于离职日期'
+				required: '请选择入职时间',
+				before: '入职时间应早于离职时间'
 			},
-			// end_date: {
-			// 	after: '离职日期应晚于入职日期'
-			// },
+			end_date: '请选择离职时间',
 			summary: {
 				required: '请输入职责描述',
 				maxlength: '输入内容过长'

@@ -38,11 +38,10 @@ $(document).ready(function(){
 			school_name: '请输入您的学校名称',
 			major_name: '请输入您的专业名称',
 			start_date: {
-				before: '入学日期应早于毕业日期'
+				before: '入学时间应早于毕业时间'
 			}
-			// end_date: {
-			// 	after: '毕业日期应晚于入学日期'
-			// }
+			end_date: '请选择毕业时间',
+			edu_level: '请选择学历'
 		}
 	});
 
