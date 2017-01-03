@@ -12,7 +12,7 @@
 <div class="container main-container">
 	<form id="company-form" action="/company/edit" method="post">
 		<div class="row form-title">
-			{% include 'frontend/go-back-btn.html.twig' %}
+			{% include 'frontend/go-back-btn.html.twig' with { back_url: '/my'} %}
 			<span class="title">公司信息</span>
 			<a href="javascript:;" class="btn btn-link title-pull-right head-menu js-btn-edit">保存</a>
 		</div>

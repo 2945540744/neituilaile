@@ -36,7 +36,7 @@ class ResumeServiceImpl extends BaseService
         ));
 
         if ($validator->fails() || intval($resume['pay_range_from']) > intval($resume['pay_range_to'])) {
-            return $this->createInvalidArgumentException('参数有误');
+            throw $this->createInvalidArgumentException('参数有误');
         }
         $resume = ArrayToolkit::parts($resume, array(
             'id',

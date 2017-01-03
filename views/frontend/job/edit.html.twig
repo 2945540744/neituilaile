@@ -12,7 +12,7 @@
 <div class="container main-container">
 	<form id="post-form" action="/job/edit/{{job.id}}" method="post">
 		<div class="row form-title">
-			{% include 'frontend/go-back-btn.html.twig' %}
+			{% include 'frontend/go-back-btn.html.twig' with { back_url: '/job/index'} %}
 			<span class="title">编辑职位</span>
 		</div>
 		<div class="row spacer"></div>

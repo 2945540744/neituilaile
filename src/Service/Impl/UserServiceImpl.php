@@ -96,7 +96,7 @@ class UserServiceImpl extends BaseService implements UserService
         ));
 
         if ($validator->fails()) {
-            return $this->createInvalidArgumentException('参数有误');
+            throw $this->createInvalidArgumentException('参数有误');
         }
 
         $fields = ArrayToolkit::parts($fields, array(
@@ -130,7 +130,7 @@ class UserServiceImpl extends BaseService implements UserService
         ));
 
         if ($validator->fails()) {
-            return $this->createInvalidArgumentException('参数有误');
+            throw $this->createInvalidArgumentException('参数有误');
         }
 
         $existed = $this->getCompanyByUserId($userId);
@@ -157,7 +157,7 @@ class UserServiceImpl extends BaseService implements UserService
         ));
 
         if ($validator->fails()) {
-            return $this->createInvalidArgumentException('参数有误');
+            throw $this->createInvalidArgumentException('参数有误');
         }
         $edu = ArrayToolkit::parts($edu, array(
             'school_name',
@@ -198,7 +198,7 @@ class UserServiceImpl extends BaseService implements UserService
         ));
 
         if ($validator->fails()) {
-            return $this->createInvalidArgumentException('参数有误');
+            throw $this->createInvalidArgumentException('参数有误');
         }
         $exp = ArrayToolkit::parts($exp, array(
             'company_name',

@@ -12,7 +12,7 @@
 <div class="container">
 	<form id="resume-form" action="/resume/edit/intent" method="post">
 		<div class="row form-title">
-			{% include 'frontend/go-back-btn.html.twig' %}
+			{% include 'frontend/go-back-btn.html.twig' with { back_url: '/resume/index'} %}
 			<span class="title">期望工作</span>
 			<a href="javascript:;" class="btn btn-link title-pull-right head-menu js-btn-edit">保存</a>
 		</div>

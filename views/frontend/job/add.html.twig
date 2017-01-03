@@ -12,7 +12,7 @@
 <div class="container main-container">
 	<form id="post-form" action="/job/add" method="post" class="form-horizontal">
 		<div class="row form-title">
-			{% include 'frontend/go-back-btn.html.twig' %}
+			{% include 'frontend/go-back-btn.html.twig' with { back_url: '/job/index'} %}
 			<span class="title">发布职位</span>
 		</div>
 		{% if company is not empty %}

@@ -12,7 +12,7 @@
 <div class="container">
 	<form id="resume-form" action="/resume/edit/basic" method="post">
 		<div class="row form-title">
-			{% include 'frontend/go-back-btn.html.twig' %}
+			{% include 'frontend/go-back-btn.html.twig' with { back_url: '/resume/index'} %}
 			<span class="title">编辑基本信息</span>
 			<a href="javascript:;" class="btn btn-link title-pull-right head-menu js-btn-edit">保存</a>
 		</div>
@@ -65,7 +65,7 @@
 		<div class="row form-group">
 			<div class="col-xs-4 col-form-label">出生日期：</div>
 			<div class="col-xs-8">
-				<input class="form-control col-xs-12" id="birthday" type="date" min="1970-01-01" max="{{now()}}" name="birthday" value="{{basic.birthday|default('')}}" placeholder="1990-01-01" />
+				<input class="form-control col-xs-12" id="birthday" type="date" min="1970-01-01" max="{{now()}}" name="birthday" value="{{basic.birthday|default('now'|date('Y-m-d'))}}" placeholder="1990-01-01" />
 			</div>
 		</div>
 		<div class="row form-group">

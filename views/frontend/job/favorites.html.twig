@@ -12,7 +12,7 @@
 {% block content %}
 <div class="container">
 	<div class="row">
-		{% include 'frontend/go-back-btn.html.twig' %}
+		{% include 'frontend/go-back-btn.html.twig' with { back_url: '/my'} %}
 		<span class="title">我的收藏</span>
 	</div>	
 	{% for job in jobs %}

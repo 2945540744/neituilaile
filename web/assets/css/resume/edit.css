@@ -11,6 +11,10 @@
 	padding-top: 5px;
 }
 
+.form-control {
+	padding-top: 0.5em;
+}
+
 .radio-label {
 	width: auto;
 	padding: 0 10px;

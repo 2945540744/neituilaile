@@ -61,8 +61,8 @@ class JobServiceImpl extends BaseService//implements JobService
             'job_type'       => 'required|lenrange(2,30)',
             'title'          => 'required|lenrange(2,40)',
             // 'skills'         => 'required|lenrange(1,200)',
-            'pay_range_from' => 'required|range(1,100)',
-            'pay_range_to'   => 'required|range(1,100)',
+            'pay_range_from' => 'required|int|range(1,100)',
+            'pay_range_to'   => 'required|int|range(1,100)',
             'exp_level'      => 'required|lenrange(1,50)',
             'edu_level'      => 'required|lenrange(1,50)',
             'addr_city'      => 'required|lenrange(1,50)',
@@ -73,7 +73,7 @@ class JobServiceImpl extends BaseService//implements JobService
         if ($cvalidator->fails()
             || $jvalidator->fails()
             || intval($job['pay_range_from']) > intval($job['pay_range_to'])) {
-            return $this->createInvalidArgumentException('参数有误');
+            throw $this->createInvalidArgumentException('参数有误');
         }
 
         if (isset($job['full_name'])) {
@@ -143,7 +143,7 @@ class JobServiceImpl extends BaseService//implements JobService
         ));
 
         if ($jvalidator->fails()) {
-            return $this->createInvalidArgumentException('参数有误');
+            throw $this->createInvalidArgumentException('参数有误');
         }
 
         $job['updator'] = $userId;

@@ -49,8 +49,8 @@ class JobController extends BaseController
     {
         $company = $this->getUserService()->getCompanyByUserId($app['user']['id']);
         if ($request->isMethod('POST')) {
-            $data = RequestToolkit::getPostData($request);
-            $this->getJobService()->createJob($data, $app['user']['id']);
+            $data    = RequestToolkit::getPostData($request);
+            $created = $this->getJobService()->createJob($data, $app['user']['id']);
             return new RedirectResponse('/job/index');
         }
         return $app['twig']->render('frontend/job/add.html.twig', array(
