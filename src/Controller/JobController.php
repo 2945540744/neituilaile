@@ -34,6 +34,7 @@ class JobController extends BaseController
             $isDelivered = !empty($record);
             $isFavorited = $this->getJobService()->isFavorited($job['id'], $user['id']);
         }
+
         return $app['twig']->render('frontend/job/view.html.twig', array(
             'job'         => $job,
             'owner'       => $owner,
