@@ -21,7 +21,7 @@ class OAuth2ClientController extends BaseController
         $callbackUrl = $request->getSchemeAndHttpHost().'/oauth2/confirm/'.$type;
         $service     = $request->query->get('service');
         if (!empty($service)) {
-            $callbackUrl .= '?service='.$service;
+            $callbackUrl .= '?service='.base64_encode($service);
         }
         $url = $client->getAuthorizeUrl($callbackUrl);
         return new RedirectResponse($url);
@@ -29,9 +29,8 @@ class OAuth2ClientController extends BaseController
 
     public function confirmLogin(Application $app, Request $request, $type)
     {
-        $client = $app['aouth_factory']->create($type);
-        $code   = $request->query->get('code');
-
+        $client      = $app['aouth_factory']->create($type);
+        $code        = $request->query->get('code');
         $callbackUrl = $request->getSchemeAndHttpHost().'/oauth2/confirm/'.$type;
         $service     = $request->query->get('service');
         if (!empty($service)) {
@@ -45,7 +44,7 @@ class OAuth2ClientController extends BaseController
         NLogger::getLogger('OAuth2ClientController')->debug('confirmLogin user : ', $user);
         SecurityToolkit::login($app, $request, new CurrentUser($user));
 
-        return new RedirectResponse($service ? $service : '/');
+        return new RedirectResponse($service ? base64_decode($service) : '/');
     }
 
     private function downloadAvatar($uri)

@@ -21,8 +21,9 @@ $app['security.firewalls'] = array(
         'pattern'     => '^.*$',
         'anonymous'   => true,
         'form'        => array(
-            'login_path' => '/login',
-            'check_path' => '/login_check'
+            'login_path'  => '/login',
+            'use_referer' => true,
+            'check_path'  => '/login_check'
         ),
         'remember_me' => array(
             'key'                => 'dsjflkjgewfsefjiwejga',

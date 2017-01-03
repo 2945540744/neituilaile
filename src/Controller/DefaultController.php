@@ -24,10 +24,11 @@ class DefaultController extends BaseController
     {
         $curUser = $app['user'];
         if (empty($curUser)) {
-            $redirect = $request->headers->get('referer');
-            return new RedirectResponse('/oauth2/login/weixin?service='.urlencode($redirect ? $redirect : '/'));
+            //获取不到referer
+            $redirect = $request->headers->get('referer', '');
+            return new RedirectResponse('/oauth2/login/weixin?service='.urlencode($redirect ? $redirect : '/my'));
         }
-        return new RedirectResponse('/');
+        return new RedirectResponse('/my');
     }
 
     public function my(Application $app)
