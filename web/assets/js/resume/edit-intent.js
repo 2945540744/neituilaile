@@ -31,7 +31,7 @@ $(document).ready(function(){
 				}
 			},
 			on_the_job: {
-				required: true
+				required: false
 			},
 			summary: {
 				required: false,
