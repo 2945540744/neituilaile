@@ -26,6 +26,9 @@ class DefaultController extends BaseController
         if (empty($curUser)) {
             //获取不到referer
             $redirect = $request->headers->get('referer', '');
+            if (empty($redirect) || $redirect == '/') {
+                $redirect = '/my';
+            }
             return new RedirectResponse('/oauth2/login/weixin?service='.urlencode($redirect ? $redirect : '/my'));
         }
         return new RedirectResponse('/my');
