@@ -39,13 +39,14 @@ $(document).ready(function(){
 			major_name: '请输入您的专业名称',
 			start_date: {
 				before: '入学时间应早于毕业时间'
-			}
+			},
 			end_date: '请选择毕业时间',
 			edu_level: '请选择学历'
 		}
 	});
 
 	$('.js-btn-edit').click(function(event){
+		
 		if(!validator.form()){
 			notify(validator.errorList[0].message);
 		}else{
