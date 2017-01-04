@@ -1,6 +1,9 @@
 .column {
-	padding: 10px 20px;
 	background-color: rgb(240,241,245);
+}
+
+.column > div {
+	margin: 5px 20px;
 }
 
 .title {
