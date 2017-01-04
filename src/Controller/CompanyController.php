@@ -37,7 +37,7 @@ class CompanyController extends BaseController
         if ($request->isMethod('POST')) {
             $data = RequestToolkit::getPostData($request);
             $this->getUserService()->saveCompany($user['id'], $data);
-            return new RedirectResponse('/company/edit');
+            return new RedirectResponse('/my');
         }
         $company = $this->getUserService()->getCompanyByUserId($user['id']);
         return $app['twig']->render('frontend/company/edit.html.twig', array(
