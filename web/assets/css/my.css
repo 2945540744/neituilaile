@@ -26,10 +26,11 @@
 .user-nav > ul > li {
 	width: 100%;
 	border-bottom: 1px solid #bbb;
-	line-height: 4em;
+	line-height: 3em;
 }
 
 .user-nav > ul > li > a {
+	display: block;
     padding: 5px 0;
 	color: black;
     font-weight: bold;
@@ -39,4 +40,9 @@
 	position: relative;
 	float: right;
 	right: 15px;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #5cb85c;
 }

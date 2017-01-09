@@ -19,7 +19,7 @@ class ResumeDaoImpl extends GeneralDaoImpl implements ResumeDao
         $sql = "SELECT d.id AS 'delivery_id', d.delivery_time,m.nickname,m.avatar, d.resume_id, j.title AS 'job_title'  FROM n2_resume_delivery d
             LEFT JOIN n2_member m ON d.member_id = m.id
             LEFT JOIN n2_job j ON d.delivery_job_id = j.id
-            WHERE d.delivery_company_id = ? ";
+            WHERE d.delivery_company_id = ? ORDER BY d.delivery_time DESC";
         return $this->db()->fetchAll($sql, array($companyId));
     }
 

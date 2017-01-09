@@ -70,7 +70,7 @@ pre {
 
 .form-control {
 	border: none;
-	padding: 0;
+	padding: 0.5rem 0;
 }
 
 .caret {
@@ -211,4 +211,9 @@ i.icon-star-empty {
 
 div.alert {
 	width: 50%;
+}
+
+
+a:hover {
+	text-decoration: none;
 }
