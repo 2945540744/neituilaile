@@ -1,11 +1,11 @@
 {% extends 'frontend/page-layout.html.twig' %}
 {% block sub_css_block %}
-<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/resume/preview.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css?ver={{ver|default(1)}}">
+<link rel="stylesheet" type="text/css" href="/assets/css/resume/preview.css?ver={{ver|default(1)}}">
 {% endblock %}
 
 {% block sub_js_block %}
-<script type="text/javascript" src="/assets/js/resume/preview.js"></script>
+<script type="text/javascript" src="/assets/js/resume/preview.js?ver={{ver|default(1)}}"></script>
 {% endblock %}
 
 {% block content %}

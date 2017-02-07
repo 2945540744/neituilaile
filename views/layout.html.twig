@@ -1,4 +1,4 @@
-{% set ver= '1.0.5' %}
+{% set ver= random(100000000) %}
 <!DOCTYPE html>
 <html lang="zh_CN" class="">
 <head>
@@ -11,6 +11,6 @@
 
 <body>
   {% block body %} {% endblock %}
+  {% block js_block %}{% endblock %}
 </body>
-{% block js_block %}{% endblock %}
 </html>

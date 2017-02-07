@@ -1,11 +1,11 @@
 {% extends 'frontend/page-layout.html.twig' %}
 {% block sub_css_block %}
-<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/company/edit.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css?ver={{ver|default(1)}}">
+<link rel="stylesheet" type="text/css" href="/assets/css/company/edit.css?ver={{ver|default(1)}}">
 {% endblock %}
 
 {% block sub_js_block %}
-<script type="text/javascript" src="/assets/js/company/edit.js"></script>
+<script type="text/javascript" src="/assets/js/company/edit.js?ver={{ver|default(1)}}"></script>
 {% endblock %}
 
 {% block content %}

@@ -1,7 +1,7 @@
 {% extends 'frontend/page-layout.html.twig' %}
 {% block sub_css_block %}
-<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/resume/view.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/base.css?ver={{ver|default(1)}}">
+<link rel="stylesheet" type="text/css" href="/assets/css/resume/view.css?ver={{ver|default(1)}}">
 {% endblock %}
 
 {% block content %}
