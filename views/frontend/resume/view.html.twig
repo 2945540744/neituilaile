@@ -63,32 +63,16 @@
 			<span class="">工作经历</span><em class="required">必填</em>	
 		</div>
 		<div class="row-body">
-			<a href="/resume/edit/exp" class="btn btn-link dock-top-right">编辑</a>
-			{# <ul class="exp-list"> #}
-				{# {% for exp in exps %}
-					<li class="exp-item">
-						<span>{{exp.start_date}} - {{exp.end_date}}</span>
-						<span>{{exp.company_name}}/{{exp.position_name}}</span>
-						<pre>{{exp.summary}}</pre>
-					</li>
-				{% endfor %} #}
-				{# <li class="exp-item">
-					<span>2014.10 - 至今</span>
-					<span>Company/Position</span>
-					<pre>exp_content : 做了好多项目，为公司做出巨大贡献，这里是多行的，你要注意啊</pre>
-				</li>
-				<li class="exp-item">
-					<span>2012.06 - 2014.10</span>
-					<span>Company/Position</span>
-					<pre>exp_content : 做了好多项目，为公司做出巨大贡献，这里是多行的，你要注意啊</pre>
-				</li> #}
-			{# </ul> #}
+			{% for exp in exps %}
 			<div class="exp-item">
-				{% for exp in exps %}
-					<span>{{month(exp.start_date|default(''))}} ~ {{month(exp.end_date|default(''))}}</span>
-					<span>{{exp.company_name}}/{{exp.position_name}}</span>
-					<pre>{{exp.summary|default('')}}</pre>
-				{% endfor %}
+				<a href="/resume/edit/exp?id={{exp.id}}" class="btn btn-link dock-right">编辑</a>
+				<span>{{month(exp.start_date|default(''))}} ~ {{month(exp.end_date|default(''))}}</span>
+				<span>{{exp.company_name}}/{{exp.position_name}}</span>
+				<pre>{{exp.summary|default('')}}</pre>
+			</div>
+			{% endfor %}
+			<div class="exp-action">
+				<a class="btn btn-sm btn-secondary" href="/resume/edit/exp">新增</a>
 			</div>
 		</div>
 	</div>

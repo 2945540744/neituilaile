@@ -31,4 +31,6 @@ interface UserService
 
     //用户的工作经历
     public function getExperiences($userId);
+
+    public function getExperience($id);
 }

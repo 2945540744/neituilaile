@@ -11,14 +11,15 @@ class UserCompanyDaoImpl extends GeneralDaoImpl implements UserCompanyDao
 
     public function findByUserId($userId)
     {
-        return $this->findInField('member_id', array($userId));
+        $sql = "SELECT * FROM {$this->table()} WHERE member_id = ? ORDER BY end_date desc";
+        return $this->db()->fetchAll($sql, array($userId));
     }
 
     public function declares()
     {
         return array(
             'timestamps' => array('created', 'updated'),
-            'orderbys'   => array('work_end_date')
+            'orderbys'   => array('end_date')
         );
     }
 }

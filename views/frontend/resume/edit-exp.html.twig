@@ -13,13 +13,22 @@
 	<form id="resume-form" class="" action="/resume/edit/exp" method="post">
 		<div class="row form-title">
 			{% include 'frontend/go-back-btn.html.twig' with { back_url: '/resume/index'} %}
-			<span class="title">编辑最近工作经历</span>
+			<span class="title">
+			{% if exp %}
+				编辑工作经历
+			{% else %}
+				新增工作经历
+			{% endif %}
+			</span>
 			<a href="javascript:;" class="btn btn-link title-pull-right head-menu js-btn-edit">保存</a>
 		</div>
 		<div class="row form-group">
 			<div class="col-xs-4 col-form-label">公司名称：</div>
 			<div class="col-xs-8">
 				<input type="hidden" name="part" value="exp">
+				{% if exp.id|default(0) %}
+				<input type="hidden" name="id" value="{{exp.id}}">
+				{% endif %}
 				<input class="form-control col-xs-12" type="text" name="company_name" value="{{exp.company_name|default('')}}" placeholder="公司名称" />
 			</div>
 		</div>

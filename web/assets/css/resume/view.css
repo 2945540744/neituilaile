@@ -44,6 +44,12 @@ em.required {
 	z-index: 10000;
 }
 
+.dock-right {
+	position: absolute;
+	right: 0;
+	z-index: 10000;
+}
+
 .row-body {
 	position: relative;
 	padding: 10px 15px;
@@ -66,9 +72,23 @@ em.required {
 	padding-left: 20px;
 }
 
+.exp-action {
+	text-align: center;
+}
+
+.exp-action > a {
+	margin-top: 15px;
+	width: 50%;
+}
+
 .exp-item {
-	// list-style-type: none;
+	margin-bottom: 15px;
 	color: green;
+	border-bottom: 1px dashed #bbb;
+}
+
+.exp-item > a {
+	padding-top: 0;
 }
 
 .exp-item > span {

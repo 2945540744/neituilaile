@@ -60,10 +60,15 @@ class ResumeController extends BaseController
             $this->getUserService()->saveExp($app['user']['id'], $data);
             return new RedirectResponse('/resume/index');
         }
+        $expId = $request->query->get('id', 0);
+        $exp   = array();
+        if ($expId) {
+            //fixme 应校验expId是否属于当前用户
+            $exp = $this->getUserService()->getExperience($expId);
+        }
 
-        $exp = $this->getUserService()->getExperiences($app['user']['id']);
         return $app['twig']->render('frontend/resume/edit-exp.html.twig', array(
-            'exp' => empty($exp) ? array() : $exp[0]
+            'exp' => $exp
         ));
     }
 
@@ -86,12 +91,12 @@ class ResumeController extends BaseController
         $userId = $app['user']['id'];
         $basic  = $this->getUserService()->getUser($userId);
         $edu    = $this->getUserService()->getEducation($userId);
-        $exp    = $this->getUserService()->getExperiences($userId);
+        $exps   = $this->getUserService()->getExperiences($userId);
         $resume = $this->getResumeService()->getResumeByUserId($userId);
         return $app['twig']->render('frontend/resume/preview.html.twig', array(
             'basic'  => $basic,
             'edus'   => empty($edu) ? array() : $edu,
-            'exps'   => empty($exp) ? array() : $exp[0],
+            'exps'   => $exps,
             'resume' => $resume
         ));
     }
@@ -102,12 +107,12 @@ class ResumeController extends BaseController
         $userId = $resume['member_id'];
         $basic  = $this->getUserService()->getUser($userId);
         $edu    = $this->getUserService()->getEducation($userId);
-        $exp    = $this->getUserService()->getExperiences($userId);
+        $exps   = $this->getUserService()->getExperiences($userId);
 
         return $app['twig']->render('frontend/resume/preview.html.twig', array(
             'basic'  => $basic,
             'edus'   => empty($edu) ? array() : $edu,
-            'exps'   => empty($exp) ? array() : $exp[0],
+            'exps'   => $exps,
             'resume' => $resume
         ));
     }

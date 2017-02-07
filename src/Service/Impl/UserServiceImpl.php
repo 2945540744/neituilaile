@@ -201,6 +201,7 @@ class UserServiceImpl extends BaseService implements UserService
             throw $this->createInvalidArgumentException('参数有误');
         }
         $exp = ArrayToolkit::parts($exp, array(
+            'id',
             'company_name',
             'position_name',
             'start_date',
@@ -215,11 +216,10 @@ class UserServiceImpl extends BaseService implements UserService
             $exp['end_date'] = date('Y-m-d', strtotime($exp['end_date']));
         }
 
-        //假设只有一份工作经历
-        $existed = $this->getUserCompanyDao()->findByUserId($userId);
-        if (!empty($existed)) {
-            $exp = array_merge($existed[0], $exp);
-        }
+        // $existed = $this->getUserCompanyDao()->findByUserId($userId);
+        // if (!empty($existed)) {
+        //     $exp = array_merge($existed[0], $exp);
+        // }
 
         if (!isset($exp['id'])) {
             $exp['member_id'] = $userId;
@@ -243,6 +243,11 @@ class UserServiceImpl extends BaseService implements UserService
     public function getExperiences($userId)
     {
         return $this->getUserCompanyDao()->findByUserId($userId);
+    }
+
+    public function getExperience($id)
+    {
+        return $this->getUserCompanyDao()->get($id);
     }
 
     protected function getUserDao()
