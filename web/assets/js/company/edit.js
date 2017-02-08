@@ -28,8 +28,7 @@ $(document).ready(function(){
 				maxlength: 200
 			},
 			website: {
-				required: true,
-				url: true
+				required: true
 			},
 			address: {
 				required: true,
